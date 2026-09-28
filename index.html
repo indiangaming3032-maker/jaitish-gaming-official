@@ -16,7 +16,7 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 background:#03040b;
 color:white;
 overflow-x:hidden;
@@ -30,14 +30,13 @@ top:0;
 left:0;
 right:0;
 z-index:999;
-height:70px;
+padding:18px 6%;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 6%;
-background:rgba(3,4,11,.85);
+background:rgba(3,4,11,.88);
 backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(0,234,255,.2);
+border-bottom:1px solid rgba(0,234,255,.25);
 }
 
 .logo{
@@ -49,8 +48,10 @@ text-shadow:0 0 12px #00eaff;
 
 nav ul{
 display:flex;
-gap:25px;
+gap:22px;
 list-style:none;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 nav a{
@@ -65,7 +66,7 @@ color:#00eaff;
 text-shadow:0 0 10px #00eaff;
 }
 
-/* HERO */
+/* HOME */
 
 .hero{
 min-height:100vh;
@@ -73,7 +74,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:100px 20px 60px;
+padding:120px 20px 70px;
 position:relative;
 overflow:hidden;
 }
@@ -105,10 +106,31 @@ letter-spacing:2px;
 box-shadow:0 0 15px rgba(0,234,255,.3);
 }
 
+/* TOP PHOTO */
+
+.top-photo{
+margin:28px auto 10px;
+width:170px;
+height:170px;
+border-radius:50%;
+padding:5px;
+border:2px solid #00eaff;
+box-shadow:
+0 0 15px #00eaff,
+0 0 35px rgba(0,234,255,.5);
+overflow:hidden;
+}
+
+.top-photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+}
+
 .hero h1{
 font-size:clamp(45px,9vw,90px);
-margin:25px 0 10px;
-color:white;
+margin:22px 0 10px;
 text-shadow:
 0 0 10px #00eaff,
 0 0 30px #00eaff;
@@ -117,7 +139,7 @@ text-shadow:
 .hero p{
 font-size:18px;
 color:#aeb8c8;
-margin-bottom:30px;
+margin-bottom:28px;
 }
 
 .btn{
@@ -158,13 +180,14 @@ color:#9da7b8;
 margin-bottom:45px;
 }
 
-/* GAMES */
+/* CARDS */
 
 .cards{
 max-width:1100px;
 margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
@@ -172,7 +195,8 @@ gap:25px;
 padding:30px;
 border:1px solid rgba(0,234,255,.25);
 border-radius:22px;
-background:linear-gradient(
+background:
+linear-gradient(
 145deg,
 rgba(0,234,255,.08),
 rgba(10,10,25,.8)
@@ -256,7 +280,8 @@ position:relative;
 padding:28px;
 border:1px solid rgba(0,234,255,.25);
 border-radius:20px;
-background:linear-gradient(
+background:
+linear-gradient(
 145deg,
 rgba(0,234,255,.07),
 rgba(8,9,20,.9)
@@ -326,15 +351,79 @@ font-size:28px;
 /* ABOUT */
 
 .about{
-max-width:850px;
+max-width:900px;
 margin:auto;
 text-align:center;
+}
+
+.about-photo{
+width:190px;
+height:190px;
+margin:0 auto 25px;
+padding:5px;
+border-radius:50%;
+border:2px solid #00eaff;
+box-shadow:
+0 0 18px #00eaff,
+0 0 35px rgba(0,234,255,.4);
+}
+
+.about-photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+}
+
+.about h3{
+font-size:30px;
+color:#00eaff;
+margin-bottom:15px;
 }
 
 .about p{
 color:#b9c0cc;
 line-height:1.9;
 font-size:17px;
+}
+
+/* GALLERY */
+
+.gallery-box{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.gallery-item{
+height:180px;
+border:1px solid rgba(0,234,255,.3);
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:
+linear-gradient(
+145deg,
+rgba(0,234,255,.08),
+rgba(10,10,25,.8)
+);
+transition:.35s;
+}
+
+.gallery-item:hover{
+transform:scale(1.04);
+border-color:#00eaff;
+box-shadow:0 0 20px rgba(0,234,255,.3);
+}
+
+.gallery-item span{
+font-size:50px;
+margin-bottom:10px;
 }
 
 /* CONTACT */
@@ -351,7 +440,7 @@ margin-bottom:20px;
 /* FOOTER */
 
 footer{
-padding:30px;
+padding:35px;
 text-align:center;
 border-top:1px solid rgba(0,234,255,.2);
 color:#7f8999;
@@ -366,24 +455,25 @@ color:#00eaff;
 @media(max-width:700px){
 
 nav{
-height:auto;
-padding:18px 5%;
 flex-direction:column;
 gap:12px;
 }
 
 nav ul{
 gap:12px;
-flex-wrap:wrap;
-justify-content:center;
 }
 
 .hero{
-padding-top:150px;
+padding-top:170px;
 }
 
 .hero h1{
 font-size:48px;
+}
+
+.top-photo{
+width:145px;
+height:145px;
 }
 
 section{
@@ -404,6 +494,7 @@ padding:23px;
 </head>
 
 <body>
+
 
 <!-- NAVBAR -->
 
@@ -442,7 +533,21 @@ padding:23px;
 ⚡ OFFICIAL GAMING WEBSITE
 </div>
 
-<h1>JAITISH GAMING</h1>
+
+<!-- TOP PHOTO -->
+
+<div class="top-photo">
+
+<img
+src="jaitish.jpg"
+alt="Jaitish">
+
+</div>
+
+
+<h1>
+JAITISH GAMING
+</h1>
 
 <p>
 Gaming • Coding • Creativity • Fun
@@ -475,11 +580,16 @@ Explore my gaming projects
 
 <div class="cards">
 
+
 <div class="card">
 
-<div class="card-icon">🏎️</div>
+<div class="card-icon">
+🏎️
+</div>
 
-<h3>JAITISH NEON RACING</h3>
+<h3>
+JAITISH NEON RACING
+</h3>
 
 <p>
 A fast neon racing game with cars,
@@ -495,9 +605,13 @@ speed, coins and nitro.
 
 <div class="card">
 
-<div class="card-icon">👑</div>
+<div class="card-icon">
+👑
+</div>
 
-<h3>JAITISH</h3>
+<h3>
+JAITISH
+</h3>
 
 <p>
 Founder of Jaitish Gaming.
@@ -509,12 +623,17 @@ Gaming and coding enthusiast.
 
 <div class="card">
 
-<div class="card-icon">🤝</div>
+<div class="card-icon">
+🤝
+</div>
 
-<h3>PRINCE</h3>
+<h3>
+PRINCE
+</h3>
 
 <p>
-Friend and part of the Jaitish Gaming journey.
+Friend and part of the
+Jaitish Gaming journey.
 </p>
 
 </div>
@@ -539,8 +658,8 @@ Learn Python Step by Step
 </h2>
 
 <p>
-Beginner se coding start karo aur step-by-step
-Python programming seekho.
+Beginner se coding start karo aur
+step-by-step Python programming seekho.
 </p>
 
 </div>
@@ -549,26 +668,39 @@ Python programming seekho.
 <div class="python-roadmap">
 
 
+<!-- 01 -->
+
 <div class="python-card">
 
-<div class="python-number">01</div>
+<div class="python-number">
+01
+</div>
 
-<h3>🐍 Python Kya Hai?</h3>
+<h3>
+🐍 Python Kya Hai?
+</h3>
 
 <p>
-Python ek easy aur powerful programming language hai.
-Isse games, apps, automation aur AI projects banaye
+Python ek easy aur powerful programming
+language hai. Isse games, apps,
+automation aur AI projects banaye
 ja sakte hain.
 </p>
 
 </div>
 
 
+<!-- 02 -->
+
 <div class="python-card">
 
-<div class="python-number">02</div>
+<div class="python-number">
+02
+</div>
 
-<h3>💻 First Program</h3>
+<h3>
+💻 First Program
+</h3>
 
 <p>
 Apna first Python program run karo.
@@ -581,33 +713,47 @@ print("Hello Jaitish!")
 </div>
 
 
+<!-- 03 -->
+
 <div class="python-card">
 
-<div class="python-number">03</div>
+<div class="python-number">
+03
+</div>
 
-<h3>📦 Variables</h3>
+<h3>
+📦 Variables
+</h3>
 
 <p>
-Variables information store karne ke liye use hote hain.
+Variables information store karne
+ke liye use hote hain.
 </p>
 
 <div class="code-box">
 name = "Jaitish"<br>
-age = 19<br>
+age = 13<br>
 print(name)
 </div>
 
 </div>
 
 
+<!-- 04 -->
+
 <div class="python-card">
 
-<div class="python-number">04</div>
+<div class="python-number">
+04
+</div>
 
-<h3>➕ Calculations</h3>
+<h3>
+➕ Calculations
+</h3>
 
 <p>
-Python se mathematical calculations easily kar sakte ho.
+Python se mathematical calculations
+easily kar sakte ho.
 </p>
 
 <div class="code-box">
@@ -619,14 +765,21 @@ print(a + b)
 </div>
 
 
+<!-- 05 -->
+
 <div class="python-card">
 
-<div class="python-number">05</div>
+<div class="python-number">
+05
+</div>
 
-<h3>⌨️ User Input</h3>
+<h3>
+⌨️ User Input
+</h3>
 
 <p>
-User se information lene ke liye input() ka use hota hai.
+User se information lene ke liye
+input() ka use hota hai.
 </p>
 
 <div class="code-box">
@@ -637,35 +790,49 @@ print("Hello", name)
 </div>
 
 
+<!-- 06 -->
+
 <div class="python-card">
 
-<div class="python-number">06</div>
+<div class="python-number">
+06
+</div>
 
-<h3>🔀 If / Else</h3>
+<h3>
+🔀 If / Else
+</h3>
 
 <p>
-Conditions ke according program decisions le sakta hai.
+Conditions ke according program
+different decisions le sakta hai.
 </p>
 
 <div class="code-box">
-age = 18<br><br>
-if age &gt;= 18:<br>
-&nbsp;&nbsp;print("Adult")<br>
+age = 13<br><br>
+if age &gt;= 13:<br>
+&nbsp;&nbsp;print("Welcome")<br>
 else:<br>
-&nbsp;&nbsp;print("Under 18")
+&nbsp;&nbsp;print("Keep learning")
 </div>
 
 </div>
 
+
+<!-- 07 -->
 
 <div class="python-card">
 
-<div class="python-number">07</div>
+<div class="python-number">
+07
+</div>
 
-<h3>🔁 Loops</h3>
+<h3>
+🔁 Loops
+</h3>
 
 <p>
-Ek kaam ko baar-baar karne ke liye loops use hote hain.
+Ek kaam ko baar-baar karne ke liye
+loops use hote hain.
 </p>
 
 <div class="code-box">
@@ -676,14 +843,21 @@ for i in range(5):<br>
 </div>
 
 
+<!-- 08 -->
+
 <div class="python-card">
 
-<div class="python-number">08</div>
+<div class="python-number">
+08
+</div>
 
-<h3>⚙️ Functions</h3>
+<h3>
+⚙️ Functions
+</h3>
 
 <p>
-Functions code ko reusable aur organized banate hain.
+Functions code ko reusable aur
+organized banate hain.
 </p>
 
 <div class="code-box">
@@ -695,42 +869,65 @@ hello()
 </div>
 
 
+<!-- 09 -->
+
 <div class="python-card">
 
-<div class="python-number">09</div>
+<div class="python-number">
+09
+</div>
 
-<h3>🎮 Python Projects</h3>
+<h3>
+🎮 Python Projects
+</h3>
 
 <p>
 Practice ke liye small projects banao.
 </p>
 
 <ul>
+
 <li>🧮 Calculator</li>
+
 <li>🎯 Number Guessing Game</li>
+
 <li>✊ Rock Paper Scissors</li>
+
 <li>🏎️ Simple Car Game</li>
+
 </ul>
 
 </div>
 
 
+<!-- 10 -->
+
 <div class="python-card">
 
-<div class="python-number">10</div>
+<div class="python-number">
+10
+</div>
 
-<h3>🚀 Advanced Python</h3>
+<h3>
+🚀 Advanced Python
+</h3>
 
 <p>
 Basics ke baad advanced topics seekho.
 </p>
 
 <ul>
+
 <li>📁 File Handling</li>
+
 <li>📦 Modules</li>
+
 <li>🧱 OOP</li>
+
 <li>🌐 APIs</li>
+
 <li>🤖 AI & Automation</li>
+
 </ul>
 
 </div>
@@ -765,31 +962,44 @@ Learn • Practice • Build • Create
 Gaming • Coding • Creativity
 </p>
 
-<div class="cards">
+<div class="gallery-box">
 
-<div class="card">
-<div class="card-icon">🏎️</div>
+
+<div class="gallery-item">
+
+<span>🏎️</span>
+
 <h3>Racing</h3>
-<p>High speed racing projects.</p>
+
 </div>
 
-<div class="card">
-<div class="card-icon">🎮</div>
+
+<div class="gallery-item">
+
+<span>🎮</span>
+
 <h3>Gaming</h3>
-<p>My gaming projects.</p>
+
 </div>
 
-<div class="card">
-<div class="card-icon">⚡</div>
+
+<div class="gallery-item">
+
+<span>⚡</span>
+
 <h3>Action</h3>
-<p>Fast and exciting ideas.</p>
+
 </div>
 
-<div class="card">
-<div class="card-icon">💻</div>
+
+<div class="gallery-item">
+
+<span>💻</span>
+
 <h3>Coding</h3>
-<p>Learning and building with code.</p>
+
 </div>
+
 
 </div>
 
@@ -801,16 +1011,39 @@ Gaming • Coding • Creativity
 <section id="about">
 
 <h2 class="section-title">
-👑 ABOUT ME
+👑 ABOUT JAITISH
 </h2>
+
 
 <div class="about">
 
+
+<!-- BOTTOM PHOTO -->
+
+<div class="about-photo">
+
+<img
+src="jaitish.jpg"
+alt="Jaitish">
+
+</div>
+
+
+<h3>
+Jaitish Gaming
+</h3>
+
 <p>
+
 Welcome to JAITISH GAMING!
-This is my personal gaming and coding website
-where I share my games, Python learning journey,
-projects, ideas and future creations.
+
+This is my personal gaming and coding
+website where I share my games,
+Python learning journey, projects,
+ideas and future creations.
+
+Gaming • Coding • Creativity • Fun
+
 </p>
 
 </div>
@@ -841,11 +1074,15 @@ Gaming • Coding • Creativity
 
 <footer>
 
-© 2026 <span>JAITISH GAMING</span>
+© 2026
+<span>JAITISH GAMING</span>
+
 <br><br>
+
 Made with ❤️ & Code
 
 </footer>
+
 
 </body>
 </html>
