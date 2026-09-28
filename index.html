@@ -22,6 +22,34 @@ color:white;
 overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:#7b00ff;
+filter:blur(180px);
+opacity:.18;
+top:-200px;
+left:-200px;
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:450px;
+height:450px;
+background:#00eaff;
+filter:blur(180px);
+opacity:.12;
+bottom:-200px;
+right:-150px;
+z-index:-2;
+}
+
 /* NAVBAR */
 
 nav{
@@ -29,343 +57,269 @@ position:fixed;
 top:0;
 left:0;
 right:0;
-z-index:999;
-padding:18px 6%;
+height:65px;
 display:flex;
 align-items:center;
 justify-content:space-between;
+padding:0 6%;
 background:rgba(3,4,11,.88);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(15px);
 border-bottom:1px solid rgba(0,234,255,.25);
+z-index:1000;
 }
 
 .logo{
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 color:#00eaff;
-text-shadow:0 0 12px #00eaff;
+text-shadow:0 0 15px #00eaff;
 }
 
 nav ul{
 display:flex;
-gap:22px;
+gap:25px;
 list-style:none;
-flex-wrap:wrap;
-justify-content:center;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:14px;
+font-weight:bold;
 transition:.3s;
 }
 
 nav a:hover{
 color:#00eaff;
-text-shadow:0 0 10px #00eaff;
+text-shadow:0 0 12px #00eaff;
 }
 
-/* HOME */
+/* HERO */
 
 .hero{
 min-height:100vh;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
+align-items:center;
 text-align:center;
-padding:120px 20px 70px;
-position:relative;
-overflow:hidden;
+padding:100px 20px 50px;
 }
-
-.hero::before{
-content:"";
-position:absolute;
-width:450px;
-height:450px;
-background:#7b00ff;
-filter:blur(160px);
-opacity:.25;
-border-radius:50%;
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-}
-
-.badge{
-display:inline-block;
-padding:9px 18px;
-border:1px solid #00eaff;
-border-radius:30px;
-color:#00eaff;
-font-size:13px;
-letter-spacing:2px;
-box-shadow:0 0 15px rgba(0,234,255,.3);
-}
-
-/* TOP PHOTO */
 
 .top-photo{
-margin:28px auto 10px;
 width:170px;
 height:170px;
 border-radius:50%;
 padding:5px;
-border:2px solid #00eaff;
-box-shadow:
-0 0 15px #00eaff,
-0 0 35px rgba(0,234,255,.5);
-overflow:hidden;
+border:3px solid #00eaff;
+box-shadow:0 0 20px #00eaff,0 0 60px #7b00ff;
+margin-bottom:25px;
+animation:float 3s ease-in-out infinite;
 }
 
 .top-photo img{
 width:100%;
 height:100%;
-object-fit:cover;
 border-radius:50%;
+object-fit:cover;
 }
 
-.hero h1{
+.badge{
+display:inline-block;
+padding:8px 18px;
+border:1px solid #00eaff;
+border-radius:30px;
+color:#00eaff;
+box-shadow:0 0 15px rgba(0,234,255,.4);
+margin-bottom:20px;
+}
+
+h1{
 font-size:clamp(45px,9vw,90px);
-margin:22px 0 10px;
-text-shadow:
-0 0 10px #00eaff,
-0 0 30px #00eaff;
+color:white;
+text-shadow:0 0 10px #00eaff,0 0 35px #7b00ff;
 }
 
 .hero p{
 font-size:18px;
-color:#aeb8c8;
-margin-bottom:28px;
+color:#bbb;
+margin:15px 0 30px;
+}
+
+.buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .btn{
 display:inline-block;
-padding:14px 25px;
-margin:7px;
+padding:13px 22px;
 border-radius:30px;
 border:1px solid #00eaff;
+background:#06141b;
 color:#00eaff;
 text-decoration:none;
 font-weight:bold;
+box-shadow:0 0 15px rgba(0,234,255,.3);
 transition:.3s;
 }
 
 .btn:hover{
 background:#00eaff;
 color:#03040b;
-box-shadow:0 0 25px #00eaff;
+box-shadow:0 0 30px #00eaff;
+transform:translateY(-3px);
 }
 
 /* SECTIONS */
 
 section{
-padding:90px 7%;
+padding:100px 7%;
 }
 
 .section-title{
 text-align:center;
-font-size:40px;
-margin-bottom:15px;
+font-size:42px;
+margin-bottom:12px;
 color:#00eaff;
-text-shadow:0 0 15px rgba(0,234,255,.5);
+text-shadow:0 0 15px #00eaff;
 }
 
 .section-subtitle{
 text-align:center;
-color:#9da7b8;
+color:#999;
 margin-bottom:45px;
 }
 
 /* CARDS */
 
 .cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
 max-width:1100px;
 margin:auto;
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
 }
 
 .card{
 padding:30px;
-border:1px solid rgba(0,234,255,.25);
-border-radius:22px;
-background:
-linear-gradient(
-145deg,
-rgba(0,234,255,.08),
-rgba(10,10,25,.8)
-);
-transition:.35s;
-text-align:center;
+border:1px solid rgba(0,234,255,.3);
+border-radius:20px;
+background:rgba(10,15,25,.75);
+box-shadow:0 0 20px rgba(0,234,255,.08);
+transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-8px);
 border-color:#00eaff;
-box-shadow:0 0 25px rgba(0,234,255,.25);
-}
-
-.card-icon{
-font-size:55px;
-margin-bottom:15px;
+box-shadow:0 0 30px rgba(0,234,255,.3);
 }
 
 .card h3{
 color:#00eaff;
-margin-bottom:10px;
+margin-bottom:12px;
+font-size:22px;
 }
 
 .card p{
-color:#b9c0cc;
+color:#bbb;
 line-height:1.6;
-margin-bottom:20px;
+}
+
+.card a{
+color:#00eaff;
+text-decoration:none;
 }
 
 /* PYTHON */
 
 .python-section{
-background:
-radial-gradient(
-circle at center,
-rgba(0,234,255,.08),
-transparent 55%
-);
-}
-
-.python-header{
-text-align:center;
-margin-bottom:50px;
-}
-
-.python-badge{
-display:inline-block;
-padding:8px 18px;
-border:1px solid #00eaff;
-border-radius:30px;
-color:#00eaff;
-font-size:13px;
-letter-spacing:2px;
-}
-
-.python-header h2{
-font-size:clamp(32px,6vw,55px);
-margin:18px 0 10px;
-text-shadow:0 0 20px rgba(0,234,255,.5);
-}
-
-.python-header p{
-color:#aeb8c8;
-max-width:650px;
-margin:auto;
-line-height:1.7;
-}
-
-.python-roadmap{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+background:rgba(0,234,255,.025);
 }
 
 .python-card{
-position:relative;
-padding:28px;
-border:1px solid rgba(0,234,255,.25);
-border-radius:20px;
-background:
-linear-gradient(
-145deg,
-rgba(0,234,255,.07),
-rgba(8,9,20,.9)
-);
-transition:.35s;
-}
-
-.python-card:hover{
-transform:translateY(-8px);
-border-color:#00eaff;
-box-shadow:0 0 25px rgba(0,234,255,.25);
-}
-
-.python-number{
-position:absolute;
-right:18px;
-top:12px;
-font-size:30px;
-font-weight:bold;
-color:rgba(0,234,255,.15);
+border-color:rgba(123,0,255,.4);
 }
 
 .python-card h3{
-color:#00eaff;
-margin-bottom:12px;
-font-size:21px;
+color:#9d5cff;
 }
 
-.python-card p{
-color:#c5cbd5;
-line-height:1.7;
-}
-
-.code-box{
-margin-top:18px;
+code{
+display:block;
+margin-top:15px;
 padding:15px;
-border-radius:12px;
-background:#02050b;
-border:1px solid rgba(0,234,255,.25);
-color:#7ff6ff;
-font-family:monospace;
-line-height:1.7;
-overflow-x:auto;
-}
-
-.python-card ul{
-padding-left:20px;
-color:#c5cbd5;
-line-height:2;
-}
-
-.python-footer{
-max-width:700px;
-margin:55px auto 0;
-text-align:center;
-padding:35px;
-border:1px solid #00eaff;
-border-radius:22px;
-background:rgba(0,234,255,.05);
-}
-
-.python-footer h3{
+background:#010207;
+border-radius:10px;
+border:1px solid rgba(0,234,255,.2);
 color:#00eaff;
-font-size:28px;
+font-family:Consolas,monospace;
+white-space:pre-wrap;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+max-width:1100px;
+margin:auto;
+}
+
+.gallery-item{
+height:220px;
+border-radius:18px;
+overflow:hidden;
+border:1px solid rgba(0,234,255,.35);
+background:#080b13;
+position:relative;
+box-shadow:0 0 15px rgba(0,234,255,.08);
+transition:.3s;
+}
+
+.gallery-item:hover{
+transform:scale(1.03);
+border-color:#00eaff;
+box-shadow:0 0 25px rgba(0,234,255,.35);
+}
+
+.gallery-item img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.gallery-title{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:15px;
+background:linear-gradient(transparent,rgba(0,0,0,.9));
+font-weight:bold;
+font-size:18px;
 }
 
 /* ABOUT */
 
 .about{
-max-width:900px;
-margin:auto;
 text-align:center;
+max-width:850px;
+margin:auto;
 }
 
 .about-photo{
-width:190px;
-height:190px;
+width:180px;
+height:180px;
 margin:0 auto 25px;
-padding:5px;
 border-radius:50%;
-border:2px solid #00eaff;
-box-shadow:
-0 0 18px #00eaff,
-0 0 35px rgba(0,234,255,.4);
+padding:5px;
+border:3px solid #00eaff;
+box-shadow:0 0 20px #00eaff,0 0 50px #7b00ff;
 }
 
 .about-photo img{
@@ -375,55 +329,14 @@ object-fit:cover;
 border-radius:50%;
 }
 
-.about h3{
-font-size:30px;
+.about h2{
 color:#00eaff;
 margin-bottom:15px;
 }
 
 .about p{
-color:#b9c0cc;
-line-height:1.9;
-font-size:17px;
-}
-
-/* GALLERY */
-
-.gallery-box{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.gallery-item{
-height:180px;
-border:1px solid rgba(0,234,255,.3);
-border-radius:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-background:
-linear-gradient(
-145deg,
-rgba(0,234,255,.08),
-rgba(10,10,25,.8)
-);
-transition:.35s;
-}
-
-.gallery-item:hover{
-transform:scale(1.04);
-border-color:#00eaff;
-box-shadow:0 0 20px rgba(0,234,255,.3);
-}
-
-.gallery-item span{
-font-size:50px;
-margin-bottom:10px;
+color:#aaa;
+line-height:1.8;
 }
 
 /* CONTACT */
@@ -433,21 +346,32 @@ text-align:center;
 }
 
 .contact p{
-color:#aeb8c8;
-margin-bottom:20px;
+color:#aaa;
+margin:15px 0 25px;
 }
 
 /* FOOTER */
 
 footer{
-padding:35px;
 text-align:center;
+padding:30px 20px;
 border-top:1px solid rgba(0,234,255,.2);
-color:#7f8999;
+color:#777;
 }
 
 footer span{
 color:#00eaff;
+}
+
+/* ANIMATION */
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
 }
 
 /* MOBILE */
@@ -455,20 +379,30 @@ color:#00eaff;
 @media(max-width:700px){
 
 nav{
+height:auto;
+min-height:65px;
+padding:12px 4%;
 flex-direction:column;
-gap:12px;
+gap:10px;
 }
 
 nav ul{
 gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+font-size:13px;
 }
 
 .hero{
-padding-top:170px;
+padding-top:150px;
 }
 
-.hero h1{
-font-size:48px;
+section{
+padding:80px 5%;
+}
+
+.section-title{
+font-size:32px;
 }
 
 .top-photo{
@@ -476,16 +410,8 @@ width:145px;
 height:145px;
 }
 
-section{
-padding:70px 5%;
-}
-
-.section-title{
-font-size:32px;
-}
-
-.python-card{
-padding:23px;
+.gallery-item{
+height:200px;
 }
 
 }
@@ -495,29 +421,19 @@ padding:23px;
 
 <body>
 
-
 <!-- NAVBAR -->
 
 <nav>
 
-<div class="logo">
-🎮 JAITISH GAMING
-</div>
+<div class="logo">🎮 JAITISH GAMING</div>
 
 <ul>
-
 <li><a href="#home">Home</a></li>
-
 <li><a href="#games">Games</a></li>
-
 <li><a href="#python">🐍 Python</a></li>
-
 <li><a href="#gallery">Gallery</a></li>
-
 <li><a href="#about">About</a></li>
-
 <li><a href="#contact">Contact</a></li>
-
 </ul>
 
 </nav>
@@ -527,34 +443,26 @@ padding:23px;
 
 <section class="hero" id="home">
 
-<div class="hero-content">
+<div class="top-photo">
+<img src="jaitish.jpg" alt="Jaitish">
+</div>
 
 <div class="badge">
 ⚡ OFFICIAL GAMING WEBSITE
 </div>
 
+<h1>JAITISH GAMING</h1>
 
-<!-- TOP PHOTO -->
+<p>Gaming • Coding • Creativity • Fun</p>
 
-<div class="top-photo">
-
-<img
-src="jaitish.jpg"
-alt="Jaitish">
-
-</div>
-
-
-<h1>
-JAITISH GAMING
-</h1>
-
-<p>
-Gaming • Coding • Creativity • Fun
-</p>
+<div class="buttons">
 
 <a href="#games" class="btn">
 🎮 EXPLORE GAMES
+</a>
+
+<a href="#about" class="btn">
+👑 ABOUT ME
 </a>
 
 <a href="#python" class="btn">
@@ -570,9 +478,7 @@ Gaming • Coding • Creativity • Fun
 
 <section id="games">
 
-<h2 class="section-title">
-🔥 MY GAMES
-</h2>
+<h2 class="section-title">🔥 MY GAMES</h2>
 
 <p class="section-subtitle">
 Explore my gaming projects
@@ -580,24 +486,19 @@ Explore my gaming projects
 
 <div class="cards">
 
-
 <div class="card">
 
-<div class="card-icon">
-🏎️
-</div>
-
-<h3>
-JAITISH NEON RACING
-</h3>
+<h3>🏎️ JAITISH NEON RACING</h3>
 
 <p>
-A fast neon racing game with cars,
-speed, coins and nitro.
+High speed neon racing game with cars,
+road, enemies, score and mobile controls.
 </p>
 
-<a href="racing.html" class="btn">
-▶ PLAY GAME
+<br>
+
+<a href="racing.html">
+▶ CLICK TO PLAY
 </a>
 
 </div>
@@ -605,17 +506,11 @@ speed, coins and nitro.
 
 <div class="card">
 
-<div class="card-icon">
-👑
-</div>
-
-<h3>
-JAITISH
-</h3>
+<h3>👑 JAITISH</h3>
 
 <p>
 Founder of Jaitish Gaming.
-Gaming and coding enthusiast.
+Gaming • Coding • Creativity.
 </p>
 
 </div>
@@ -623,17 +518,11 @@ Gaming and coding enthusiast.
 
 <div class="card">
 
-<div class="card-icon">
-🤝
-</div>
-
-<h3>
-PRINCE
-</h3>
+<h3>🤝 PRINCE</h3>
 
 <p>
-Friend and part of the
-Jaitish Gaming journey.
+Jaitish Gaming friend and gaming partner.
+More projects coming soon.
 </p>
 
 </div>
@@ -643,308 +532,157 @@ Jaitish Gaming journey.
 </section>
 
 
-<!-- PYTHON LEARNING -->
+<!-- PYTHON -->
 
 <section id="python" class="python-section">
 
-<div class="python-header">
+<h2 class="section-title">🐍 PYTHON LEARNING</h2>
 
-<div class="python-badge">
-🐍 PYTHON LEARNING
-</div>
+<p class="section-subtitle">
+Learn Python step by step — from beginner to projects
+</p>
 
-<h2>
-Learn Python Step by Step
-</h2>
+<div class="cards">
+
+
+<div class="card python-card">
+
+<h3>1️⃣ Python Kya Hai?</h3>
 
 <p>
-Beginner se coding start karo aur
-step-by-step Python programming seekho.
+Python ek easy programming language hai.
+Isse apps, games, websites aur AI projects banaye ja sakte hain.
 </p>
 
 </div>
 
 
-<div class="python-roadmap">
+<div class="card python-card">
 
+<h3>2️⃣ First Program</h3>
 
-<!-- 01 -->
+<p>Python ka sabse basic program:</p>
 
-<div class="python-card">
-
-<div class="python-number">
-01
-</div>
-
-<h3>
-🐍 Python Kya Hai?
-</h3>
-
-<p>
-Python ek easy aur powerful programming
-language hai. Isse games, apps,
-automation aur AI projects banaye
-ja sakte hain.
-</p>
+<code>print("Hello Jaitish!")</code>
 
 </div>
 
 
-<!-- 02 -->
+<div class="card python-card">
 
-<div class="python-card">
+<h3>3️⃣ Variables</h3>
 
-<div class="python-number">
-02
-</div>
+<p>Data store karne ke liye variables use hote hain.</p>
 
-<h3>
-💻 First Program
-</h3>
+<code>name = "Jaitish"
+age = 13
 
-<p>
-Apna first Python program run karo.
-</p>
-
-<div class="code-box">
-print("Hello Jaitish!")
-</div>
+print(name)</code>
 
 </div>
 
 
-<!-- 03 -->
+<div class="card python-card">
 
-<div class="python-card">
+<h3>4️⃣ Calculations</h3>
 
-<div class="python-number">
-03
-</div>
+<p>Python calculator ki tarah bhi kaam karta hai.</p>
 
-<h3>
-📦 Variables
-</h3>
+<code>a = 10
+b = 5
 
-<p>
-Variables information store karne
-ke liye use hote hain.
-</p>
-
-<div class="code-box">
-name = "Jaitish"<br>
-age = 13<br>
-print(name)
-</div>
-
-</div>
-
-
-<!-- 04 -->
-
-<div class="python-card">
-
-<div class="python-number">
-04
-</div>
-
-<h3>
-➕ Calculations
-</h3>
-
-<p>
-Python se mathematical calculations
-easily kar sakte ho.
-</p>
-
-<div class="code-box">
-a = 10<br>
-b = 5<br>
 print(a + b)
-</div>
+print(a - b)
+print(a * b)
+print(a / b)</code>
 
 </div>
 
 
-<!-- 05 -->
+<div class="card python-card">
 
-<div class="python-card">
+<h3>5️⃣ User Input</h3>
 
-<div class="python-number">
-05
+<p>User se information lene ke liye input use karte hain.</p>
+
+<code>name = input("Your name: ")
+
+print("Hello", name)</code>
+
 </div>
 
-<h3>
-⌨️ User Input
-</h3>
+
+<div class="card python-card">
+
+<h3>6️⃣ If / Else</h3>
+
+<p>Condition check karne ke liye if aur else use hote hain.</p>
+
+<code>age = 13
+
+if age >= 13:
+    print("Welcome")
+else:
+    print("Keep learning")</code>
+
+</div>
+
+
+<div class="card python-card">
+
+<h3>7️⃣ Loops</h3>
+
+<p>Ek kaam ko baar-baar karne ke liye loop use hota hai.</p>
+
+<code>for i in range(5):
+    print(i)</code>
+
+</div>
+
+
+<div class="card python-card">
+
+<h3>8️⃣ Functions</h3>
+
+<p>Code ko reusable banane ke liye functions use hote hain.</p>
+
+<code>def hello():
+    print("Hello Jaitish!")
+
+hello()</code>
+
+</div>
+
+
+<div class="card python-card">
+
+<h3>9️⃣ Python Projects</h3>
 
 <p>
-User se information lene ke liye
-input() ka use hota hai.
+Python seekhne ke baad calculator,
+games, automation aur AI projects bana sakte ho.
 </p>
 
-<div class="code-box">
-name = input("Your name: ")<br>
-print("Hello", name)
-</div>
-
 </div>
 
 
-<!-- 06 -->
+<div class="card python-card">
 
-<div class="python-card">
-
-<div class="python-number">
-06
-</div>
-
-<h3>
-🔀 If / Else
-</h3>
+<h3>🔟 Advanced Python</h3>
 
 <p>
-Conditions ke according program
-different decisions le sakta hai.
+Next level par Python libraries,
+OOP, AI, OpenCV aur game development seekho.
 </p>
 
-<div class="code-box">
-age = 13<br><br>
-if age &gt;= 13:<br>
-&nbsp;&nbsp;print("Welcome")<br>
-else:<br>
-&nbsp;&nbsp;print("Keep learning")
 </div>
 
 </div>
 
+<br>
 
-<!-- 07 -->
-
-<div class="python-card">
-
-<div class="python-number">
-07
-</div>
-
-<h3>
-🔁 Loops
-</h3>
-
-<p>
-Ek kaam ko baar-baar karne ke liye
-loops use hote hain.
-</p>
-
-<div class="code-box">
-for i in range(5):<br>
-&nbsp;&nbsp;print(i)
-</div>
-
-</div>
-
-
-<!-- 08 -->
-
-<div class="python-card">
-
-<div class="python-number">
-08
-</div>
-
-<h3>
-⚙️ Functions
-</h3>
-
-<p>
-Functions code ko reusable aur
-organized banate hain.
-</p>
-
-<div class="code-box">
-def hello():<br>
-&nbsp;&nbsp;print("Hello Jaitish!")<br><br>
-hello()
-</div>
-
-</div>
-
-
-<!-- 09 -->
-
-<div class="python-card">
-
-<div class="python-number">
-09
-</div>
-
-<h3>
-🎮 Python Projects
-</h3>
-
-<p>
-Practice ke liye small projects banao.
-</p>
-
-<ul>
-
-<li>🧮 Calculator</li>
-
-<li>🎯 Number Guessing Game</li>
-
-<li>✊ Rock Paper Scissors</li>
-
-<li>🏎️ Simple Car Game</li>
-
-</ul>
-
-</div>
-
-
-<!-- 10 -->
-
-<div class="python-card">
-
-<div class="python-number">
-10
-</div>
-
-<h3>
-🚀 Advanced Python
-</h3>
-
-<p>
-Basics ke baad advanced topics seekho.
-</p>
-
-<ul>
-
-<li>📁 File Handling</li>
-
-<li>📦 Modules</li>
-
-<li>🧱 OOP</li>
-
-<li>🌐 APIs</li>
-
-<li>🤖 AI & Automation</li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-<div class="python-footer">
-
-<h3>
+<div style="text-align:center;color:#00eaff;font-size:20px;">
 🚀 Start Your Coding Journey
-</h3>
-
-<p>
-Learn • Practice • Build • Create
-</p>
-
 </div>
 
 </section>
@@ -954,52 +692,43 @@ Learn • Practice • Build • Create
 
 <section id="gallery">
 
-<h2 class="section-title">
-📸 GALLERY
-</h2>
+<h2 class="section-title">📸 GALLERY</h2>
 
 <p class="section-subtitle">
-Gaming • Coding • Creativity
+JAITISH GAMING memories & creations
 </p>
 
-<div class="gallery-box">
-
-
-<div class="gallery-item">
-
-<span>🏎️</span>
-
-<h3>Racing</h3>
-
-</div>
-
+<div class="gallery">
 
 <div class="gallery-item">
-
-<span>🎮</span>
-
-<h3>Gaming</h3>
-
+<img src="photo2.jpg" alt="Jaitish Gaming Photo 2">
+<div class="gallery-title">🏎️ Racing</div>
 </div>
-
 
 <div class="gallery-item">
-
-<span>⚡</span>
-
-<h3>Action</h3>
-
+<img src="photo3.jpg" alt="Jaitish Gaming Photo 3">
+<div class="gallery-title">🎮 Gaming</div>
 </div>
-
 
 <div class="gallery-item">
-
-<span>💻</span>
-
-<h3>Coding</h3>
-
+<img src="photo4.jpg" alt="Jaitish Gaming Photo 4">
+<div class="gallery-title">⚡ Action</div>
 </div>
 
+<div class="gallery-item">
+<img src="photo5.jpg" alt="Jaitish Gaming Photo 5">
+<div class="gallery-title">💻 Coding</div>
+</div>
+
+<div class="gallery-item">
+<img src="photo6.jpg" alt="Jaitish Gaming Photo 6">
+<div class="gallery-title">🔥 Jaitish</div>
+</div>
+
+<div class="gallery-item">
+<img src="photo7.jpg" alt="Jaitish Gaming Photo 7">
+<div class="gallery-title">🚀 Future Projects</div>
+</div>
 
 </div>
 
@@ -1010,40 +739,31 @@ Gaming • Coding • Creativity
 
 <section id="about">
 
-<h2 class="section-title">
-👑 ABOUT JAITISH
-</h2>
-
-
 <div class="about">
-
-
-<!-- BOTTOM PHOTO -->
 
 <div class="about-photo">
 
-<img
-src="jaitish.jpg"
-alt="Jaitish">
+<img src="jaitish.jpg" alt="Jaitish">
 
 </div>
 
+<h2>👑 ABOUT JAITISH</h2>
 
-<h3>
-Jaitish Gaming
+<h3 style="color:white;margin-bottom:15px;">
+JAITISH GAMING
 </h3>
 
 <p>
-
 Welcome to JAITISH GAMING!
+This is my personal gaming and coding website
+where I share my games, Python learning journey,
+projects, ideas and future creations.
+</p>
 
-This is my personal gaming and coding
-website where I share my games,
-Python learning journey, projects,
-ideas and future creations.
+<br>
 
-Gaming • Coding • Creativity • Fun
-
+<p>
+🎮 Gaming • 💻 Coding • ⚡ Creativity • 🚀 Fun
 </p>
 
 </div>
@@ -1055,12 +775,14 @@ Gaming • Coding • Creativity • Fun
 
 <section id="contact" class="contact">
 
-<h2 class="section-title">
-📞 CONTACT
-</h2>
+<h2 class="section-title">📩 CONTACT</h2>
 
 <p>
 Gaming • Coding • Creativity
+</p>
+
+<p>
+More exciting projects coming soon!
 </p>
 
 <a href="#home" class="btn">
@@ -1074,15 +796,15 @@ Gaming • Coding • Creativity
 
 <footer>
 
-© 2026
-<span>JAITISH GAMING</span>
+<p>
+© 2026 <span>JAITISH GAMING</span>
+</p>
 
-<br><br>
-
+<p>
 Made with ❤️ & Code
+</p>
 
 </footer>
-
 
 </body>
 </html>
