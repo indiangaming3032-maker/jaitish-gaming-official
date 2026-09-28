@@ -9,10 +9,6 @@
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 *{
 margin:0;
 padding:0;
@@ -32,10 +28,6 @@ color:white;
 overflow-x:hidden;
 transition:.4s;
 }
-
-/* =========================
-   BACKGROUND
-========================= */
 
 body::before{
 content:"";
@@ -65,9 +57,7 @@ z-index:-2;
 transition:.5s;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* NAVBAR */
 
 nav{
 position:fixed;
@@ -95,7 +85,6 @@ box-shadow:0 0 15px rgba(0,234,255,.08);
 .logo{
 font-size:20px;
 font-weight:bold;
-
 color:var(--theme);
 
 text-shadow:
@@ -126,9 +115,7 @@ text-shadow:
 0 0 20px var(--theme);
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -244,8 +231,72 @@ transform:translateY(-4px) scale(1.04);
 }
 
 /* =========================
-   SECTIONS
+   JAITISH AI BUTTON
 ========================= */
+
+.ai-btn{
+display:inline-block;
+
+padding:13px 24px;
+
+border-radius:30px;
+
+border:2px solid #00eaff;
+
+background:
+linear-gradient(
+135deg,
+#001923,
+#07102b
+);
+
+color:#00eaff;
+
+text-decoration:none;
+
+font-weight:bold;
+
+box-shadow:
+0 0 10px #00eaff,
+0 0 25px #00eaff55;
+
+animation:aiPulse 1.8s infinite;
+
+transition:.3s;
+}
+
+.ai-btn:hover{
+background:#00eaff;
+color:#03040b;
+
+transform:
+translateY(-4px)
+scale(1.06);
+
+box-shadow:
+0 0 20px #00eaff,
+0 0 50px #00eaff,
+0 0 80px #7b00ff;
+}
+
+@keyframes aiPulse{
+
+0%,100%{
+box-shadow:
+0 0 8px #00eaff,
+0 0 20px #00eaff44;
+}
+
+50%{
+box-shadow:
+0 0 18px #00eaff,
+0 0 40px #00eaff,
+0 0 60px #7b00ff55;
+}
+
+}
+
+/* SECTIONS */
 
 section{
 padding:100px 7%;
@@ -273,9 +324,7 @@ color:#999;
 margin-bottom:45px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .cards{
 display:grid;
@@ -370,9 +419,7 @@ color:var(--theme);
 text-decoration:none;
 }
 
-/* =========================
-   RACING GAME CARD
-========================= */
+/* RACING */
 
 .game-card{
 border:1px solid var(--theme);
@@ -411,8 +458,7 @@ background:#ffe600;
 
 color:#111;
 
-transform:
-scale(1.1);
+transform:scale(1.1);
 
 box-shadow:
 0 0 15px #ffe600,
@@ -424,9 +470,7 @@ box-shadow:
 transform:scale(.9);
 }
 
-/* =========================
-   PYTHON
-========================= */
+/* PYTHON */
 
 .python-section{
 background:rgba(0,234,255,.025);
@@ -462,9 +506,7 @@ white-space:pre-wrap;
 line-height:1.5;
 }
 
-/* =========================
-   GALLERY
-========================= */
+/* GALLERY */
 
 .gallery{
 display:grid;
@@ -538,9 +580,7 @@ font-weight:bold;
 font-size:18px;
 }
 
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about{
 text-align:center;
@@ -590,9 +630,7 @@ color:#aaa;
 line-height:1.8;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact{
 text-align:center;
@@ -604,9 +642,7 @@ color:#aaa;
 margin:15px 0 25px;
 }
 
-/* =========================
-   THEME BUTTON
-========================= */
+/* THEME */
 
 .theme-box{
 position:fixed;
@@ -708,9 +744,7 @@ color:#03040b;
 transform:translateX(-4px);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -728,9 +762,7 @@ color:var(--theme);
 text-shadow:0 0 8px var(--theme);
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* ANIMATIONS */
 
 @keyframes float{
 
@@ -777,9 +809,7 @@ box-shadow:
 
 }
 
-/* =========================
-   20 THEMES
-========================= */
+/* 20 THEMES */
 
 body.red{
 --theme:#ff1744;
@@ -876,9 +906,7 @@ body.midnight{
 --theme2:#304ffe;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -942,10 +970,6 @@ max-height:350px;
 
 }
 
-/* =========================
-   SMALL PHONES
-========================= */
-
 @media(max-width:400px){
 
 .logo{
@@ -973,9 +997,7 @@ padding:22px;
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+<!-- NAVBAR -->
 
 <nav>
 
@@ -985,45 +1007,29 @@ padding:22px;
 
 <ul>
 
-<li>
-<a href="#home">Home</a>
-</li>
+<li><a href="#home">Home</a></li>
 
-<li>
-<a href="#games">Games</a>
-</li>
+<li><a href="#games">Games</a></li>
 
-<li>
-<a href="#python">🐍 Python</a>
-</li>
+<li><a href="#python">🐍 Python</a></li>
 
-<li>
-<a href="#gallery">Gallery</a>
-</li>
+<li><a href="#gallery">Gallery</a></li>
 
-<li>
-<a href="#about">About</a>
-</li>
+<li><a href="#about">About</a></li>
 
-<li>
-<a href="#contact">Contact</a>
-</li>
+<li><a href="#contact">Contact</a></li>
 
 </ul>
 
 </nav>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- HOME -->
 
 <section class="hero" id="home">
 
 <div class="top-photo">
-
 <img src="jaitish.jpg" alt="Jaitish">
-
 </div>
 
 <div class="badge">
@@ -1052,14 +1058,18 @@ Gaming • Coding • Creativity • Fun
 🐍 LEARN PYTHON
 </a>
 
+<!-- JAITISH AI BUTTON -->
+
+<a href="ai.html" class="ai-btn">
+🤖 JAITISH AI
+</a>
+
 </div>
 
 </section>
 
 
-<!-- =========================
-     GAMES
-========================= -->
+<!-- GAMES -->
 
 <section id="games">
 
@@ -1072,9 +1082,6 @@ Explore my gaming projects
 </p>
 
 <div class="cards">
-
-
-<!-- RACING -->
 
 <div class="card game-card">
 
@@ -1093,9 +1100,6 @@ road, enemies, score and mobile controls.
 
 </div>
 
-
-<!-- JAItISH -->
-
 <div class="card">
 
 <h3>
@@ -1108,9 +1112,6 @@ Gaming • Coding • Creativity.
 </p>
 
 </div>
-
-
-<!-- PRINCE -->
 
 <div class="card">
 
@@ -1130,9 +1131,7 @@ More projects coming soon.
 </section>
 
 
-<!-- =========================
-     PYTHON
-========================= -->
+<!-- PYTHON -->
 
 <section id="python" class="python-section">
 
@@ -1146,12 +1145,9 @@ Learn Python step by step — from beginner to projects
 
 <div class="cards">
 
-
 <div class="card python-card">
 
-<h3>
-1️⃣ Python Kya Hai?
-</h3>
+<h3>1️⃣ Python Kya Hai?</h3>
 
 <p>
 Python ek easy programming language hai.
@@ -1160,27 +1156,19 @@ Isse apps, games, websites aur AI projects banaye ja sakte hain.
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-2️⃣ First Program
-</h3>
+<h3>2️⃣ First Program</h3>
 
-<p>
-Python ka sabse basic program:
-</p>
+<p>Python ka sabse basic program:</p>
 
 <code>print("Hello Jaitish!")</code>
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-3️⃣ Variables
-</h3>
+<h3>3️⃣ Variables</h3>
 
 <p>
 Data store karne ke liye variables use hote hain.
@@ -1193,12 +1181,9 @@ print(name)</code>
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-4️⃣ Calculations
-</h3>
+<h3>4️⃣ Calculations</h3>
 
 <p>
 Python calculator ki tarah bhi kaam karta hai.
@@ -1214,12 +1199,9 @@ print(a / b)</code>
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-5️⃣ User Input
-</h3>
+<h3>5️⃣ User Input</h3>
 
 <p>
 User se information lene ke liye input use karte hain.
@@ -1231,12 +1213,9 @@ print("Hello", name)</code>
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-6️⃣ If / Else
-</h3>
+<h3>6️⃣ If / Else</h3>
 
 <p>
 Condition check karne ke liye if aur else use hote hain.
@@ -1251,12 +1230,9 @@ else:
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-7️⃣ Loops
-</h3>
+<h3>7️⃣ Loops</h3>
 
 <p>
 Ek kaam ko baar-baar karne ke liye loop use hota hai.
@@ -1267,12 +1243,9 @@ Ek kaam ko baar-baar karne ke liye loop use hota hai.
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-8️⃣ Functions
-</h3>
+<h3>8️⃣ Functions</h3>
 
 <p>
 Code ko reusable banane ke liye functions use hote hain.
@@ -1285,12 +1258,9 @@ hello()</code>
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-9️⃣ Python Projects
-</h3>
+<h3>9️⃣ Python Projects</h3>
 
 <p>
 Python seekhne ke baad calculator,
@@ -1299,12 +1269,9 @@ games, automation aur AI projects bana sakte ho.
 
 </div>
 
-
 <div class="card python-card">
 
-<h3>
-🔟 Advanced Python
-</h3>
+<h3>🔟 Advanced Python</h3>
 
 <p>
 Next level par Python libraries,
@@ -1331,9 +1298,7 @@ text-shadow:0 0 10px var(--theme);
 </section>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- GALLERY -->
 
 <section id="gallery">
 
@@ -1347,7 +1312,6 @@ JAITISH GAMING memories & creations
 
 <div class="gallery">
 
-
 <div class="gallery-item">
 
 <img src="photo2.jpg"
@@ -1358,7 +1322,6 @@ alt="Jaitish Gaming Photo 2">
 </div>
 
 </div>
-
 
 <div class="gallery-item">
 
@@ -1371,7 +1334,6 @@ alt="Jaitish Gaming Photo 3">
 
 </div>
 
-
 <div class="gallery-item">
 
 <img src="photo4.jpg"
@@ -1382,7 +1344,6 @@ alt="Jaitish Gaming Photo 4">
 </div>
 
 </div>
-
 
 <div class="gallery-item">
 
@@ -1395,7 +1356,6 @@ alt="Jaitish Gaming Photo 5">
 
 </div>
 
-
 <div class="gallery-item">
 
 <img src="photo6.jpg"
@@ -1406,7 +1366,6 @@ alt="Jaitish Gaming Photo 6">
 </div>
 
 </div>
-
 
 <div class="gallery-item">
 
@@ -1424,9 +1383,7 @@ alt="Jaitish Gaming Photo 7">
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -1474,9 +1431,7 @@ projects, ideas and future creations.
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- CONTACT -->
 
 <section id="contact" class="contact">
 
@@ -1499,9 +1454,7 @@ More exciting projects coming soon!
 </section>
 
 
-<!-- =========================
-     THEME SYSTEM
-========================= -->
+<!-- THEME SYSTEM -->
 
 <div class="theme-box">
 
@@ -1511,95 +1464,33 @@ More exciting projects coming soon!
 
 <div id="themeMenu" class="theme-menu">
 
-
-<button data-theme="default">
-🔵 Neon Blue
-</button>
-
-<button data-theme="red">
-🔴 Neon Red
-</button>
-
-<button data-theme="taxigreen">
-🟢 Taxi Green
-</button>
-
-<button data-theme="maxigreen">
-🟢 Maxi Green
-</button>
-
-<button data-theme="taxiyellow">
-🟡 Taxi Yellow
-</button>
-
-<button data-theme="maxiyellow">
-🟡 Maxi Yellow
-</button>
-
-<button data-theme="skyblue">
-☁️ Sky Blue
-</button>
-
-<button data-theme="purple">
-🟣 Neon Purple
-</button>
-
-<button data-theme="pink">
-🩷 Neon Pink
-</button>
-
-<button data-theme="orange">
-🟠 Neon Orange
-</button>
-
-<button data-theme="cyan">
-💎 Cyan
-</button>
-
-<button data-theme="lime">
-🟢 Lime
-</button>
-
-<button data-theme="gold">
-🟨 Gold
-</button>
-
-<button data-theme="ice">
-❄️ Ice
-</button>
-
-<button data-theme="fire">
-🔥 Fire
-</button>
-
-<button data-theme="violet">
-💜 Violet
-</button>
-
-<button data-theme="aqua">
-🌊 Aqua
-</button>
-
-<button data-theme="electric">
-⚡ Electric
-</button>
-
-<button data-theme="rose">
-🌹 Rose
-</button>
-
-<button data-theme="midnight">
-🌌 Midnight
-</button>
+<button data-theme="default">🔵 Neon Blue</button>
+<button data-theme="red">🔴 Neon Red</button>
+<button data-theme="taxigreen">🟢 Taxi Green</button>
+<button data-theme="maxigreen">🟢 Maxi Green</button>
+<button data-theme="taxiyellow">🟡 Taxi Yellow</button>
+<button data-theme="maxiyellow">🟡 Maxi Yellow</button>
+<button data-theme="skyblue">☁️ Sky Blue</button>
+<button data-theme="purple">🟣 Neon Purple</button>
+<button data-theme="pink">🩷 Neon Pink</button>
+<button data-theme="orange">🟠 Neon Orange</button>
+<button data-theme="cyan">💎 Cyan</button>
+<button data-theme="lime">🟢 Lime</button>
+<button data-theme="gold">🟨 Gold</button>
+<button data-theme="ice">❄️ Ice</button>
+<button data-theme="fire">🔥 Fire</button>
+<button data-theme="violet">💜 Violet</button>
+<button data-theme="aqua">🌊 Aqua</button>
+<button data-theme="electric">⚡ Electric</button>
+<button data-theme="rose">🌹 Rose</button>
+<button data-theme="midnight">🌌 Midnight</button>
 
 </div>
 
 </div>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1614,22 +1505,15 @@ Made with ❤️ & Code
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- JAVASCRIPT -->
 
 <script>
-
-/* =========================
-   THEME BUTTON
-========================= */
 
 const themeButton =
 document.getElementById("themeButton");
 
 const themeMenu =
 document.getElementById("themeMenu");
-
 
 themeButton.addEventListener(
 "click",
@@ -1638,11 +1522,6 @@ function(){
 themeMenu.classList.toggle("show");
 
 });
-
-
-/* =========================
-   CHANGE THEME
-========================= */
 
 document
 .querySelectorAll(".theme-menu button")
@@ -1669,11 +1548,6 @@ themeMenu.classList.remove("show");
 
 });
 
-
-/* =========================
-   CLOSE THEME MENU
-========================= */
-
 document.addEventListener(
 "click",
 function(event){
@@ -1690,7 +1564,6 @@ themeMenu.classList.remove("show");
 });
 
 </script>
-
 
 </body>
 </html>
