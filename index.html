@@ -1,572 +1,851 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JAITISH GAMING | Official Website</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
 
-:root{
-    --bg:#03040b;
-    --card:#0b1020;
-    --text:#ffffff;
-    --muted:#aab3c5;
-    --accent:#00eaff;
-    --accent2:#7b00ff;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:.5s;
+font-family:Arial, sans-serif;
+background:#03040b;
+color:white;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
+
 nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 6%;
-    background:rgba(3,4,11,.88);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--accent);
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:999;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+background:rgba(3,4,11,.85);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(0,234,255,.2);
 }
 
 .logo{
-    font-size:22px;
-    font-weight:bold;
-    color:var(--accent);
+font-size:22px;
+font-weight:bold;
+color:#00eaff;
+text-shadow:0 0 12px #00eaff;
 }
 
-.nav-links{
-    display:flex;
-    gap:20px;
-    align-items:center;
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
 }
 
-.theme-btn{
-    border:1px solid var(--accent);
-    background:transparent;
-    color:var(--accent);
-    padding:10px 15px;
-    border-radius:20px;
-    cursor:pointer;
+nav a:hover{
+color:#00eaff;
+text-shadow:0 0 10px #00eaff;
 }
 
 /* HERO */
+
 .hero{
-    min-height:90vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:50px 20px;
-    background:
-      radial-gradient(circle at 50% 30%,var(--accent2),transparent 30%),
-      var(--bg);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px 60px;
+position:relative;
+overflow:hidden;
 }
 
-.hero-profile{
-    width:145px;
-    height:145px;
-    object-fit:cover;
-    border-radius:50%;
-    border:4px solid var(--accent);
-    box-shadow:0 0 35px var(--accent);
-    margin-bottom:25px;
+.hero::before{
+content:"";
+position:absolute;
+width:450px;
+height:450px;
+background:#7b00ff;
+filter:blur(160px);
+opacity:.25;
+border-radius:50%;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
 }
 
 .badge{
-    color:var(--accent);
-    border:1px solid var(--accent);
-    padding:8px 16px;
-    border-radius:30px;
-    margin-bottom:20px;
+display:inline-block;
+padding:9px 18px;
+border:1px solid #00eaff;
+border-radius:30px;
+color:#00eaff;
+font-size:13px;
+letter-spacing:2px;
+box-shadow:0 0 15px rgba(0,234,255,.3);
 }
 
-h1{
-    font-size:clamp(45px,9vw,90px);
-    text-shadow:0 0 25px var(--accent);
+.hero h1{
+font-size:clamp(45px,9vw,90px);
+margin:25px 0 10px;
+color:white;
+text-shadow:
+0 0 10px #00eaff,
+0 0 30px #00eaff;
 }
 
 .hero p{
-    color:var(--muted);
-    font-size:20px;
-    margin:15px 0 30px;
+font-size:18px;
+color:#aeb8c8;
+margin-bottom:30px;
 }
 
 .btn{
-    display:inline-block;
-    text-decoration:none;
-    color:#000;
-    background:var(--accent);
-    padding:14px 24px;
-    border-radius:30px;
-    font-weight:bold;
-    margin:7px;
-    box-shadow:0 0 20px var(--accent);
+display:inline-block;
+padding:14px 25px;
+margin:7px;
+border-radius:30px;
+border:1px solid #00eaff;
+color:#00eaff;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+background:#00eaff;
+color:#03040b;
+box-shadow:0 0 25px #00eaff;
 }
 
 /* SECTIONS */
+
 section{
-    padding:80px 7%;
+padding:90px 7%;
 }
 
-.title{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:12px;
-    color:var(--accent);
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:15px;
+color:#00eaff;
+text-shadow:0 0 15px rgba(0,234,255,.5);
 }
 
-.subtitle{
-    text-align:center;
-    color:var(--muted);
-    margin-bottom:40px;
+.section-subtitle{
+text-align:center;
+color:#9da7b8;
+margin-bottom:45px;
 }
 
-/* CARDS */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
+/* GAMES */
+
+.cards{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
-    background:var(--card);
-    border:1px solid var(--accent);
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    transition:.3s;
+padding:30px;
+border:1px solid rgba(0,234,255,.25);
+border-radius:22px;
+background:linear-gradient(
+145deg,
+rgba(0,234,255,.08),
+rgba(10,10,25,.8)
+);
+transition:.35s;
+text-align:center;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px var(--accent);
+transform:translateY(-8px);
+border-color:#00eaff;
+box-shadow:0 0 25px rgba(0,234,255,.25);
 }
 
-.icon{
-    font-size:50px;
-    margin-bottom:15px;
+.card-icon{
+font-size:55px;
+margin-bottom:15px;
 }
 
 .card h3{
-    margin-bottom:10px;
+color:#00eaff;
+margin-bottom:10px;
 }
 
 .card p{
-    color:var(--muted);
-    line-height:1.6;
+color:#b9c0cc;
+line-height:1.6;
+margin-bottom:20px;
 }
 
-/* GALLERY */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+/* PYTHON */
+
+.python-section{
+background:
+radial-gradient(
+circle at center,
+rgba(0,234,255,.08),
+transparent 55%
+);
 }
 
-.gallery img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    border-radius:18px;
-    border:2px solid var(--accent);
-    transition:.3s;
+.python-header{
+text-align:center;
+margin-bottom:50px;
 }
 
-.gallery img:hover{
-    transform:scale(1.04);
-    box-shadow:0 0 25px var(--accent);
+.python-badge{
+display:inline-block;
+padding:8px 18px;
+border:1px solid #00eaff;
+border-radius:30px;
+color:#00eaff;
+font-size:13px;
+letter-spacing:2px;
+}
+
+.python-header h2{
+font-size:clamp(32px,6vw,55px);
+margin:18px 0 10px;
+text-shadow:0 0 20px rgba(0,234,255,.5);
+}
+
+.python-header p{
+color:#aeb8c8;
+max-width:650px;
+margin:auto;
+line-height:1.7;
+}
+
+.python-roadmap{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.python-card{
+position:relative;
+padding:28px;
+border:1px solid rgba(0,234,255,.25);
+border-radius:20px;
+background:linear-gradient(
+145deg,
+rgba(0,234,255,.07),
+rgba(8,9,20,.9)
+);
+transition:.35s;
+}
+
+.python-card:hover{
+transform:translateY(-8px);
+border-color:#00eaff;
+box-shadow:0 0 25px rgba(0,234,255,.25);
+}
+
+.python-number{
+position:absolute;
+right:18px;
+top:12px;
+font-size:30px;
+font-weight:bold;
+color:rgba(0,234,255,.15);
+}
+
+.python-card h3{
+color:#00eaff;
+margin-bottom:12px;
+font-size:21px;
+}
+
+.python-card p{
+color:#c5cbd5;
+line-height:1.7;
+}
+
+.code-box{
+margin-top:18px;
+padding:15px;
+border-radius:12px;
+background:#02050b;
+border:1px solid rgba(0,234,255,.25);
+color:#7ff6ff;
+font-family:monospace;
+line-height:1.7;
+overflow-x:auto;
+}
+
+.python-card ul{
+padding-left:20px;
+color:#c5cbd5;
+line-height:2;
+}
+
+.python-footer{
+max-width:700px;
+margin:55px auto 0;
+text-align:center;
+padding:35px;
+border:1px solid #00eaff;
+border-radius:22px;
+background:rgba(0,234,255,.05);
+}
+
+.python-footer h3{
+color:#00eaff;
+font-size:28px;
 }
 
 /* ABOUT */
-.about{
-    max-width:850px;
-    margin:auto;
-    text-align:center;
-}
 
-.about img{
-    width:130px;
-    height:130px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid var(--accent);
-    box-shadow:0 0 25px var(--accent);
-    margin-bottom:20px;
+.about{
+max-width:850px;
+margin:auto;
+text-align:center;
 }
 
 .about p{
-    color:var(--muted);
-    line-height:1.8;
+color:#b9c0cc;
+line-height:1.9;
+font-size:17px;
 }
 
-/* THEME PANEL */
-.theme-panel{
-    position:fixed;
-    right:20px;
-    top:75px;
-    z-index:2000;
-    width:220px;
-    padding:20px;
-    background:#080b15;
-    border:1px solid var(--accent);
-    border-radius:18px;
-    box-shadow:0 0 30px var(--accent);
-    display:none;
+/* CONTACT */
+
+.contact{
+text-align:center;
 }
 
-.theme-panel.show{
-    display:block;
-}
-
-.theme-panel h3{
-    margin-bottom:15px;
-    color:var(--accent);
-}
-
-.theme-option{
-    width:100%;
-    padding:12px;
-    margin:6px 0;
-    border-radius:12px;
-    border:1px solid #555;
-    background:#111;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.theme-option:hover{
-    border-color:var(--accent);
+.contact p{
+color:#aeb8c8;
+margin-bottom:20px;
 }
 
 /* FOOTER */
+
 footer{
-    text-align:center;
-    padding:30px;
-    border-top:1px solid var(--accent);
-    color:var(--muted);
+padding:30px;
+text-align:center;
+border-top:1px solid rgba(0,234,255,.2);
+color:#7f8999;
+}
+
+footer span{
+color:#00eaff;
 }
 
 /* MOBILE */
+
 @media(max-width:700px){
-    nav{
-        flex-direction:column;
-        gap:12px;
-    }
 
-    .nav-links{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:12px;
-    }
-
-    section{
-        padding:60px 5%;
-    }
+nav{
+height:auto;
+padding:18px 5%;
+flex-direction:column;
+gap:12px;
 }
+
+nav ul{
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero{
+padding-top:150px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+section{
+padding:70px 5%;
+}
+
+.section-title{
+font-size:32px;
+}
+
+.python-card{
+padding:23px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
-    <div class="logo">🎮 JAITISH GAMING</div>
 
-    <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-
-        <button class="theme-btn" id="themeBtn">🎨 THEME</button>
-    </div>
-</nav>
-
-<!-- THEME PANEL -->
-<div class="theme-panel" id="themePanel">
-    <h3>🎨 Choose Theme</h3>
-
-    <button class="theme-option" onclick="setTheme('neon')">
-        🩵 Neon Blue
-    </button>
-
-    <button class="theme-option" onclick="setTheme('purple')">
-        💜 Purple
-    </button>
-
-    <button class="theme-option" onclick="setTheme('red')">
-        ❤️ Red
-    </button>
-
-    <button class="theme-option" onclick="setTheme('green')">
-        💚 Matrix Green
-    </button>
-
-    <button class="theme-option" onclick="setTheme('gold')">
-        💛 Golden
-    </button>
-
-    <button class="theme-option" onclick="setTheme('pink')">
-        💗 Pink
-    </button>
+<div class="logo">
+🎮 JAITISH GAMING
 </div>
 
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#games">Games</a></li>
+
+<li><a href="#python">🐍 Python</a></li>
+
+<li><a href="#gallery">Gallery</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
 <!-- HOME -->
+
 <section class="hero" id="home">
 
-    <img src="jaitish.jpg"
-         class="hero-profile"
-         alt="Jaitish Profile">
+<div class="hero-content">
 
-    <div class="badge">⚡ OFFICIAL GAMING WEBSITE</div>
+<div class="badge">
+⚡ OFFICIAL GAMING WEBSITE
+</div>
 
-    <h1>JAITISH GAMING</h1>
+<h1>JAITISH GAMING</h1>
 
-    <p>🎮 Gaming • 💻 Coding • 🎨 Creativity • 🚀 Future</p>
+<p>
+Gaming • Coding • Creativity • Fun
+</p>
 
-    <div>
-        <a href="#games" class="btn">EXPLORE GAMES 🚀</a>
-        <a href="#about" class="btn">ABOUT ME</a>
-    </div>
+<a href="#games" class="btn">
+🎮 EXPLORE GAMES
+</a>
+
+<a href="#python" class="btn">
+🐍 LEARN PYTHON
+</a>
+
+</div>
 
 </section>
+
 
 <!-- GAMES -->
+
 <section id="games">
 
-    <h2 class="title">🔥 MY GAMES</h2>
-    <p class="subtitle">Explore my gaming projects</p>
+<h2 class="section-title">
+🔥 MY GAMES
+</h2>
 
-    <div class="grid">
+<p class="section-subtitle">
+Explore my gaming projects
+</p>
 
-        <div class="card">
-            <div class="icon">🏎️</div>
-            <h3>JAITISH RACING</h3>
-            <p>Neon racing game with speed, coins, nitro and score.</p>
-            <br>
-            <a href="racing.html" class="btn">PLAY NOW 🎮</a>
-        </div>
+<div class="cards">
 
-        <div class="card">
-            <div class="icon">🎮</div>
-            <h3>JAITISH GAME</h3>
-            <p>New game coming soon.</p>
-        </div>
+<div class="card">
 
-        <div class="card">
-            <div class="icon">👑</div>
-            <h3>PRINCE GAME</h3>
-            <p>Prince's gaming project coming soon.</p>
-        </div>
+<div class="card-icon">🏎️</div>
 
-    </div>
+<h3>JAITISH NEON RACING</h3>
+
+<p>
+A fast neon racing game with cars,
+speed, coins and nitro.
+</p>
+
+<a href="racing.html" class="btn">
+▶ PLAY GAME
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">👑</div>
+
+<h3>JAITISH</h3>
+
+<p>
+Founder of Jaitish Gaming.
+Gaming and coding enthusiast.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🤝</div>
+
+<h3>PRINCE</h3>
+
+<p>
+Friend and part of the Jaitish Gaming journey.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PYTHON LEARNING -->
+
+<section id="python" class="python-section">
+
+<div class="python-header">
+
+<div class="python-badge">
+🐍 PYTHON LEARNING
+</div>
+
+<h2>
+Learn Python Step by Step
+</h2>
+
+<p>
+Beginner se coding start karo aur step-by-step
+Python programming seekho.
+</p>
+
+</div>
+
+
+<div class="python-roadmap">
+
+
+<div class="python-card">
+
+<div class="python-number">01</div>
+
+<h3>🐍 Python Kya Hai?</h3>
+
+<p>
+Python ek easy aur powerful programming language hai.
+Isse games, apps, automation aur AI projects banaye
+ja sakte hain.
+</p>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">02</div>
+
+<h3>💻 First Program</h3>
+
+<p>
+Apna first Python program run karo.
+</p>
+
+<div class="code-box">
+print("Hello Jaitish!")
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">03</div>
+
+<h3>📦 Variables</h3>
+
+<p>
+Variables information store karne ke liye use hote hain.
+</p>
+
+<div class="code-box">
+name = "Jaitish"<br>
+age = 19<br>
+print(name)
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">04</div>
+
+<h3>➕ Calculations</h3>
+
+<p>
+Python se mathematical calculations easily kar sakte ho.
+</p>
+
+<div class="code-box">
+a = 10<br>
+b = 5<br>
+print(a + b)
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">05</div>
+
+<h3>⌨️ User Input</h3>
+
+<p>
+User se information lene ke liye input() ka use hota hai.
+</p>
+
+<div class="code-box">
+name = input("Your name: ")<br>
+print("Hello", name)
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">06</div>
+
+<h3>🔀 If / Else</h3>
+
+<p>
+Conditions ke according program decisions le sakta hai.
+</p>
+
+<div class="code-box">
+age = 18<br><br>
+if age &gt;= 18:<br>
+&nbsp;&nbsp;print("Adult")<br>
+else:<br>
+&nbsp;&nbsp;print("Under 18")
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">07</div>
+
+<h3>🔁 Loops</h3>
+
+<p>
+Ek kaam ko baar-baar karne ke liye loops use hote hain.
+</p>
+
+<div class="code-box">
+for i in range(5):<br>
+&nbsp;&nbsp;print(i)
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">08</div>
+
+<h3>⚙️ Functions</h3>
+
+<p>
+Functions code ko reusable aur organized banate hain.
+</p>
+
+<div class="code-box">
+def hello():<br>
+&nbsp;&nbsp;print("Hello Jaitish!")<br><br>
+hello()
+</div>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">09</div>
+
+<h3>🎮 Python Projects</h3>
+
+<p>
+Practice ke liye small projects banao.
+</p>
+
+<ul>
+<li>🧮 Calculator</li>
+<li>🎯 Number Guessing Game</li>
+<li>✊ Rock Paper Scissors</li>
+<li>🏎️ Simple Car Game</li>
+</ul>
+
+</div>
+
+
+<div class="python-card">
+
+<div class="python-number">10</div>
+
+<h3>🚀 Advanced Python</h3>
+
+<p>
+Basics ke baad advanced topics seekho.
+</p>
+
+<ul>
+<li>📁 File Handling</li>
+<li>📦 Modules</li>
+<li>🧱 OOP</li>
+<li>🌐 APIs</li>
+<li>🤖 AI & Automation</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="python-footer">
+
+<h3>
+🚀 Start Your Coding Journey
+</h3>
+
+<p>
+Learn • Practice • Build • Create
+</p>
+
+</div>
 
 </section>
 
-<!-- FEATURES -->
-<section>
-
-    <h2 class="title">⚡ GAMING ZONE</h2>
-    <p class="subtitle">What's inside Jaitish Gaming?</p>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="icon">🏎️</div>
-            <h3>Racing</h3>
-            <p>Fast cars and exciting racing action.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">💻</div>
-            <h3>Coding</h3>
-            <p>Learning Python and creating games.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h3>Aesthetic</h3>
-            <p>Neon designs and creative visuals.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚀</div>
-            <h3>Future</h3>
-            <p>More exciting projects coming soon.</p>
-        </div>
-
-    </div>
-
-</section>
 
 <!-- GALLERY -->
+
 <section id="gallery">
 
-    <h2 class="title">📸 GALLERY</h2>
-    <p class="subtitle">JAITISH GAMING visuals</p>
+<h2 class="section-title">
+📸 GALLERY
+</h2>
 
-    <div class="gallery">
+<p class="section-subtitle">
+Gaming • Coding • Creativity
+</p>
 
-        <img src="photo2.jpg" alt="Gaming Photo">
-        <img src="photo3.jpg" alt="Gaming Photo">
-        <img src="photo4.jpg" alt="Gaming Photo">
-        <img src="photo5.jpg" alt="Gaming Photo">
-        <img src="photo6.jpg" alt="Gaming Photo">
-        <img src="photo7.jpg" alt="Gaming Photo">
+<div class="cards">
 
-    </div>
+<div class="card">
+<div class="card-icon">🏎️</div>
+<h3>Racing</h3>
+<p>High speed racing projects.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🎮</div>
+<h3>Gaming</h3>
+<p>My gaming projects.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">⚡</div>
+<h3>Action</h3>
+<p>Fast and exciting ideas.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">💻</div>
+<h3>Coding</h3>
+<p>Learning and building with code.</p>
+</div>
+
+</div>
 
 </section>
+
 
 <!-- ABOUT -->
+
 <section id="about">
 
-    <h2 class="title">👑 ABOUT ME</h2>
+<h2 class="section-title">
+👑 ABOUT ME
+</h2>
 
-    <div class="about">
+<div class="about">
 
-        <img src="jaitish.jpg" alt="Jaitish">
+<p>
+Welcome to JAITISH GAMING!
+This is my personal gaming and coding website
+where I share my games, Python learning journey,
+projects, ideas and future creations.
+</p>
 
-        <h2>JAITISH</h2>
-
-        <p>
-            🎮 Gamer • 💻 Coder • 🎨 Creator
-        </p>
-
-        <br>
-
-        <p>
-            Welcome to JAITISH GAMING — my personal gaming and
-            coding website where I share games, projects, ideas
-            and future creations.
-        </p>
-
-        <br>
-
-        <h2>🌿 BHUMIHAR HERITAGE 🌿</h2>
-
-        <br>
-
-        <p>
-            Our History • Heritage • Identity • Respect
-        </p>
-
-        <br>
-
-        <p>
-            The Bhumihar community is an Indian community with
-            a long and diverse historical and social background.
-            Its historical presence has been particularly associated
-            with regions of Bihar and eastern Uttar Pradesh.
-        </p>
-
-    </div>
+</div>
 
 </section>
+
 
 <!-- CONTACT -->
-<section id="contact">
 
-    <h2 class="title">📩 CONTACT</h2>
+<section id="contact" class="contact">
 
-    <p class="subtitle">
-        Gaming • Coding • Creativity
-    </p>
+<h2 class="section-title">
+📞 CONTACT
+</h2>
 
-    <div class="card">
+<p>
+Gaming • Coding • Creativity
+</p>
 
-        <div class="icon">🎮</div>
-
-        <h3>JAITISH GAMING</h3>
-
-        <p>
-            More exciting projects coming soon!
-        </p>
-
-    </div>
+<a href="#home" class="btn">
+⬆ BACK TO TOP
+</a>
 
 </section>
 
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 JAITISH GAMING
-    <br><br>
-    Made with ❤️ & Code
+
+© 2026 <span>JAITISH GAMING</span>
+<br><br>
+Made with ❤️ & Code
+
 </footer>
-
-<script>
-
-const themeBtn = document.getElementById("themeBtn");
-const themePanel = document.getElementById("themePanel");
-
-themeBtn.addEventListener("click", function(){
-
-    themePanel.classList.toggle("show");
-
-});
-
-function setTheme(theme){
-
-    const root = document.documentElement;
-
-    if(theme === "neon"){
-        root.style.setProperty("--accent","#00eaff");
-        root.style.setProperty("--accent2","#7b00ff");
-    }
-
-    if(theme === "purple"){
-        root.style.setProperty("--accent","#b400ff");
-        root.style.setProperty("--accent2","#ff00d4");
-    }
-
-    if(theme === "red"){
-        root.style.setProperty("--accent","#ff1744");
-        root.style.setProperty("--accent2","#ff0055");
-    }
-
-    if(theme === "green"){
-        root.style.setProperty("--accent","#00ff66");
-        root.style.setProperty("--accent2","#003b20");
-    }
-
-    if(theme === "gold"){
-        root.style.setProperty("--accent","#ffd700");
-        root.style.setProperty("--accent2","#ff8c00");
-    }
-
-    if(theme === "pink"){
-        root.style.setProperty("--accent","#ff4fd8");
-        root.style.setProperty("--accent2","#8b00ff");
-    }
-
-    themePanel.classList.remove("show");
-}
-
-</script>
 
 </body>
 </html>
-```
