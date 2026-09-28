@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Jaitish AI Assistant</title>
 
@@ -13,335 +16,702 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
+
 font-family:Arial,sans-serif;
-background:#02040a;
+
+background:
+radial-gradient(circle at top,#071b2b,#03040b 55%);
+
 color:white;
+
 min-height:100vh;
+
 overflow-x:hidden;
+
 }
 
+/* BACKGROUND GLOW */
+
 body::before{
+
 content:"";
+
 position:fixed;
-width:500px;
-height:500px;
-background:#7b00ff;
-filter:blur(180px);
-opacity:.18;
-top:-200px;
-left:-200px;
-z-index:-2;
+
+width:350px;
+height:350px;
+
+background:#00eaff;
+
+filter:blur(130px);
+
+opacity:.12;
+
+top:-100px;
+left:-100px;
+
+pointer-events:none;
+
 }
 
 body::after{
+
 content:"";
+
 position:fixed;
-width:450px;
-height:450px;
-background:#00eaff;
-filter:blur(180px);
-opacity:.14;
-bottom:-200px;
-right:-150px;
-z-index:-2;
+
+width:350px;
+height:350px;
+
+background:#7b00ff;
+
+filter:blur(130px);
+
+opacity:.12;
+
+bottom:-100px;
+right:-100px;
+
+pointer-events:none;
+
 }
 
-/* TOP */
 
-.top{
-text-align:center;
-padding:35px 20px 15px;
+/* TOP BAR */
+
+.topbar{
+
+height:65px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 20px;
+
+border-bottom:1px solid #00eaff55;
+
+background:rgba(0,5,15,.88);
+
+backdrop-filter:blur(15px);
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+}
+
+.logo{
+
+color:#00eaff;
+
+font-size:20px;
+
+font-weight:bold;
+
+text-shadow:
+0 0 10px #00eaff,
+0 0 25px #00eaff;
+
 }
 
 .back{
-display:inline-block;
-color:#00eaff;
+
+color:white;
+
 text-decoration:none;
-font-weight:bold;
-margin-bottom:20px;
+
+border:1px solid #00eaff;
+
+padding:9px 15px;
+
+border-radius:20px;
+
+font-size:14px;
+
+transition:.3s;
+
 }
 
-.title{
-font-size:32px;
-color:#00eaff;
-text-shadow:
-0 0 10px #00eaff,
-0 0 30px #7b00ff;
-}
+.back:hover{
 
-/* AI BOX */
+background:#00eaff;
 
-.ai-box{
-width:min(92%,700px);
-margin:20px auto;
-
-padding:30px 20px;
-
-border:2px solid #00eaff;
-border-radius:28px;
-
-background:
-linear-gradient(
-145deg,
-rgba(0,20,30,.95),
-rgba(15,5,35,.95)
-);
+color:#03040b;
 
 box-shadow:
-0 0 20px #00eaff,
-0 0 60px rgba(123,0,255,.4);
+0 0 15px #00eaff;
 
-text-align:center;
 }
 
-.ai-icon{
-width:125px;
-height:125px;
 
-margin:0 auto 20px;
+/* MAIN */
+
+.main{
+
+width:100%;
+
+max-width:850px;
+
+margin:auto;
+
+padding:35px 15px 60px;
+
+}
+
+
+/* AI HEADER */
+
+.ai-header{
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+
+/* BIG AI ICON */
+
+.ai-icon{
+
+width:115px;
+height:115px;
+
+margin:auto;
 
 border-radius:50%;
 
 display:flex;
+
 align-items:center;
 justify-content:center;
 
-font-size:65px;
+font-size:60px;
+
+background:
+radial-gradient(circle,#071f32,#03040b);
 
 border:3px solid #00eaff;
 
-background:
-radial-gradient(
-circle,
-#082c38,
-#05000e
-);
-
-box-shadow:
-0 0 20px #00eaff,
-0 0 50px #7b00ff;
-
-animation:aiGlow 2s infinite alternate;
-}
-
-@keyframes aiGlow{
-
-from{
-transform:scale(1);
 box-shadow:
 0 0 15px #00eaff,
-0 0 30px #7b00ff;
-}
-
-to{
-transform:scale(1.06);
-box-shadow:
-0 0 30px #00eaff,
+0 0 35px #00eaff,
 0 0 70px #7b00ff;
-}
+
+animation:aiFloat 2.5s ease-in-out infinite;
 
 }
 
-.ai-name{
-font-size:25px;
-font-weight:bold;
+@keyframes aiFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+
+.ai-title{
+
+margin-top:18px;
+
+font-size:34px;
+
 color:#00eaff;
 
 text-shadow:
-0 0 10px #00eaff;
+0 0 10px #00eaff,
+0 0 25px #00eaff;
+
 }
 
-.ai-status{
+.ai-subtitle{
+
 margin-top:8px;
-color:#70ffea;
-font-size:14px;
+
+color:#b9c8d6;
+
+font-size:15px;
+
 }
 
-/* CHAT */
 
-.chat{
-height:330px;
+/* MAIN AI BOX */
 
-margin:25px auto;
+.ai-box{
 
-padding:15px;
+background:
+linear-gradient(
+145deg,
+rgba(0,20,35,.96),
+rgba(8,5,25,.96)
+);
+
+border:2px solid #00eaff;
+
+border-radius:25px;
+
+padding:20px;
+
+box-shadow:
+0 0 20px #00eaff55,
+0 0 50px #7b00ff22;
+
+}
+
+
+/* STATUS */
+
+.status{
+
+text-align:center;
+
+color:#39ff88;
+
+font-size:13px;
+
+margin-bottom:15px;
+
+text-shadow:
+0 0 8px #39ff88;
+
+}
+
+
+/* CHAT BOX */
+
+.chat-box{
+
+height:360px;
 
 overflow-y:auto;
 
-border:1px solid rgba(0,234,255,.35);
+padding:15px;
+
 border-radius:18px;
 
-background:rgba(0,0,0,.35);
+background:#02060d;
 
-text-align:left;
+border:1px solid #00eaff55;
+
+box-shadow:
+inset 0 0 20px #00eaff11;
+
 }
 
+
+/* MESSAGE */
+
 .message{
+
+max-width:85%;
+
 padding:12px 15px;
 
-margin:10px 0;
+margin-bottom:12px;
 
 border-radius:15px;
 
 line-height:1.5;
 
-max-width:85%;
+font-size:15px;
+
+animation:messageIn .25s ease;
+
 }
 
-.ai{
-background:#061b25;
-border-left:3px solid #00eaff;
-color:#dffcff;
+@keyframes messageIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(8px);
+
 }
 
-.user{
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+.ai-message{
+
+background:#071a27;
+
+border:1px solid #00eaff55;
+
+color:#dffaff;
+
+margin-right:auto;
+
+}
+
+.user-message{
+
+background:#17102b;
+
+border:1px solid #7b00ff66;
+
+color:#fff;
+
 margin-left:auto;
 
-background:#1b0730;
-border-right:3px solid #9d5cff;
-
-color:white;
-text-align:right;
 }
+
 
 /* QUICK BUTTONS */
 
-.quick{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
+.quick-title{
 
-margin-bottom:20px;
-}
+margin-top:20px;
 
-.quick button{
-padding:11px 15px;
-
-border-radius:20px;
-
-border:1px solid #00eaff;
-
-background:#06141b;
+margin-bottom:10px;
 
 color:#00eaff;
 
+font-size:14px;
+
 font-weight:bold;
+
+}
+
+.quick-buttons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:8px;
+
+}
+
+.quick{
+
+background:#06131f;
+
+color:white;
+
+border:1px solid #00eaff88;
+
+border-radius:20px;
+
+padding:9px 12px;
+
+font-size:13px;
 
 cursor:pointer;
 
 transition:.25s;
+
 }
 
-.quick button:hover{
+.quick:hover{
+
 background:#00eaff;
-color:#02040a;
 
-transform:scale(1.05);
+color:#03040b;
+
+box-shadow:
+0 0 15px #00eaff;
+
+transform:translateY(-2px);
+
 }
 
-/* INPUT */
+
+/* INPUT AREA */
 
 .input-area{
+
 display:flex;
-gap:10px;
+
+gap:8px;
+
+margin-top:18px;
+
 }
 
-#userInput{
+#input{
+
 flex:1;
 
-padding:15px;
+min-width:0;
+
+height:52px;
+
+padding:0 16px;
+
+border-radius:15px;
+
+border:1px solid #00eaff88;
+
+outline:none;
+
+background:#02070e;
+
+color:white;
+
+font-size:15px;
+
+}
+
+#input:focus{
+
+border-color:#00eaff;
+
+box-shadow:
+0 0 15px #00eaff44;
+
+}
+
+
+.action-btn{
+
+width:52px;
+
+height:52px;
 
 border-radius:15px;
 
 border:1px solid #00eaff;
 
-outline:none;
+background:#06131f;
 
-background:#050b13;
-
-color:white;
-
-font-size:16px;
-}
-
-.action{
-width:52px;
-
-border:none;
-
-border-radius:15px;
-
-background:#00eaff;
-
-color:#02040a;
+color:#00eaff;
 
 font-size:21px;
 
-font-weight:bold;
-
 cursor:pointer;
 
-box-shadow:0 0 15px #00eaff;
+transition:.25s;
+
 }
 
-.action:hover{
-transform:scale(1.06);
+.action-btn:hover{
+
+background:#00eaff;
+
+color:#03040b;
+
+box-shadow:
+0 0 18px #00eaff;
+
 }
 
-/* INFO */
 
-.info{
-width:min(92%,700px);
+/* VOICE BOX */
 
-margin:20px auto 40px;
+.voice-box{
 
-padding:18px;
+margin-top:20px;
 
-border:1px solid rgba(0,234,255,.3);
+padding:16px;
 
 border-radius:18px;
 
-background:rgba(5,10,20,.7);
+background:
+linear-gradient(
+135deg,
+#061522,
+#0d0820
+);
 
-color:#aaa;
+border:1px solid #7b00ff88;
+
+box-shadow:
+0 0 20px #7b00ff22;
+
+}
+
+.voice-title{
+
+color:#b026ff;
+
+font-weight:bold;
+
+margin-bottom:8px;
+
+}
+
+.voice-text{
+
+color:#b9c8d6;
+
+font-size:13px;
+
+line-height:1.6;
+
+}
+
+
+/* COMMAND BOX */
+
+.command-box{
+
+margin-top:15px;
+
+padding:15px;
+
+border-radius:18px;
+
+background:#02060d;
+
+border:1px solid #00eaff44;
+
+}
+
+.command-title{
+
+color:#00eaff;
+
+font-weight:bold;
+
+margin-bottom:8px;
+
+}
+
+.command{
+
+color:#c9d5df;
+
+font-size:13px;
+
+line-height:1.8;
+
+}
+
+
+/* FOOTER */
+
+.footer{
 
 text-align:center;
 
-line-height:1.6;
+margin-top:30px;
+
+color:#667785;
+
+font-size:12px;
+
 }
 
-.info strong{
-color:#00eaff;
-}
 
 /* MOBILE */
 
 @media(max-width:600px){
 
-.title{
-font-size:25px;
+.topbar{
+
+padding:0 12px;
+
 }
 
-.ai-box{
-padding:25px 14px;
+.logo{
+
+font-size:16px;
+
+}
+
+.back{
+
+padding:8px 11px;
+
+font-size:12px;
+
+}
+
+.main{
+
+padding:25px 10px 40px;
+
 }
 
 .ai-icon{
-width:105px;
-height:105px;
-font-size:52px;
+
+width:95px;
+height:95px;
+
+font-size:50px;
+
 }
 
-.chat{
-height:300px;
+.ai-title{
+
+font-size:28px;
+
 }
 
-.quick button{
-font-size:12px;
+.chat-box{
+
+height:330px;
+
+}
+
+.message{
+
+max-width:92%;
+
+}
+
+.input-area{
+
+gap:6px;
+
+}
+
+.action-btn{
+
+width:48px;
+
+height:48px;
+
+}
+
+#input{
+
+height:48px;
+
+font-size:14px;
+
+}
+
+}
+
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+
+animation:none !important;
+
+transition:none !important;
+
 }
 
 }
@@ -350,138 +720,503 @@ font-size:12px;
 
 </head>
 
+
 <body>
 
-<div class="top">
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+<div class="logo">
+
+🤖 JAITISH AI
+
+</div>
 
 <a href="index.html" class="back">
-⬅ BACK TO JAITISH GAMING
+
+← Back
+
 </a>
 
-<div class="title">
-🤖 JAITISH AI
 </div>
+
+
+
+<main class="main">
+
+
+<!-- AI HEADER -->
+
+<div class="ai-header">
+
+<div class="ai-icon">
+
+🤖
 
 </div>
 
+<h1 class="ai-title">
+
+JAITISH AI
+
+</h1>
+
+<p class="ai-subtitle">
+
+Your Personal Gaming & Website Assistant
+
+</p>
+
+</div>
+
+
+
+<!-- MAIN AI BOX -->
 
 <div class="ai-box">
 
-<div class="ai-icon">
-🤖
-</div>
 
-<div class="ai-name">
-JAITISH AI ASSISTANT
-</div>
+<div class="status" id="statusText">
 
-<div class="ai-status" id="status">
 🟢 Ready to talk
-</div>
-
-
-<div class="chat" id="chat">
-
-<div class="message ai">
-🙏 नमस्ते भैया जी! मैं Jaitish AI हूँ।<br>
-आप मुझसे बात कर सकते हैं।
-</div>
 
 </div>
 
 
-<div class="quick">
+<!-- CHAT -->
 
-<button onclick="quickAsk('Jaitish Bhaiya')">
+<div class="chat-box" id="chatBox">
+
+<div class="message ai-message">
+
+🤖 नमस्ते! मैं <b>Jaitish AI</b> हूँ।<br><br>
+
+आप मुझसे बोलकर या लिखकर बात कर सकते हैं।
+
+</div>
+
+</div>
+
+
+
+<!-- QUICK -->
+
+<div class="quick-title">
+
+⚡ Quick Commands
+
+</div>
+
+
+<div class="quick-buttons">
+
+<button class="quick"
+data-text="Jaitish Bhaiya">
+
 🙏 Jaitish Bhaiya
+
 </button>
 
-<button onclick="quickAsk('tumhe kisne banaya')">
+<button class="quick"
+data-text="Tumhe kisne banaya">
+
 👑 किसने बनाया?
+
 </button>
 
-<button onclick="quickAsk('aap kon ho')">
+<button class="quick"
+data-text="Aap kaun ho">
+
 🤖 आप कौन हो?
+
 </button>
 
-<button onclick="quickAsk('racing kholo')">
+<button class="quick"
+data-text="Racing game kholo">
+
 🏎️ Racing
+
 </button>
 
-<button onclick="quickAsk('website kholo')">
+<button class="quick"
+data-text="Website kholo">
+
 🌐 Website
+
 </button>
 
-<button onclick="quickAsk('gallery kholo')">
+<button class="quick"
+data-text="Gallery kholo">
+
 📸 Gallery
+
+</button>
+
+<button class="quick"
+data-text="About kholo">
+
+👤 About
+
+</button>
+
+<button class="quick"
+data-text="Python kholo">
+
+🐍 Python
+
 </button>
 
 </div>
 
+
+
+<!-- INPUT -->
 
 <div class="input-area">
 
 <input
-id="userInput"
+id="input"
 type="text"
-placeholder="Bolo ya type karo..."
-autocomplete="off"
->
+placeholder="Type your message..."
+autocomplete="off">
 
 <button
-class="action"
-onclick="startVoice()"
-title="Voice"
->
+class="action-btn"
+id="micBtn"
+type="button">
+
 🎤
+
 </button>
 
 <button
-class="action"
-onclick="sendMessage()"
-title="Send"
->
+class="action-btn"
+id="sendBtn"
+type="button">
+
 ➤
+
 </button>
 
 </div>
 
+
+
+<!-- VOICE BOX -->
+
+<div class="voice-box">
+
+<div class="voice-title">
+
+🔊 AI Voice
+
+</div>
+
+<div class="voice-text">
+
+Jaitish AI uses a clear, slower and confident voice.
+The available female voice depends on the voices installed
+on your device and browser.
+
+</div>
+
 </div>
 
 
-<div class="info">
 
-<strong>🎤 Voice Commands</strong><br>
+<!-- COMMANDS -->
 
-"Jaitish Bhaiya" → प्रणाम भैया जी 🙏<br>
+<div class="command-box">
 
-"Racing खोलो" → Racing Game<br>
+<div class="command-title">
 
-"Website खोलो" → Main Website<br>
-
-"Gallery खोलो" → Gallery<br>
-
-"About खोलो" → About Section<br>
-
-"Contact खोलो" → Contact Section
+🎤 Voice Commands
 
 </div>
+
+<div class="command">
+
+• “Jaitish Bhaiya” → प्रणाम भैया जी<br>
+
+• “तुम्हें किसने बनाया?” → Jaitish Bhaiya ने<br>
+
+• “आप कौन हो?” → Jaitish Bhai हूँ<br>
+
+• “हाँ” → समय के हिसाब से greeting<br>
+
+• “Racing खोलो” → Racing Game<br>
+
+• “Website खोलो” → Website<br>
+
+• “Gallery खोलो” → Gallery<br>
+
+• “About खोलो” → About<br>
+
+• “Python खोलो” → Python
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+© 2026 JAITISH GAMING • JAITISH AI
+
+</div>
+
+
+</main>
+
 
 
 <script>
+
+
+/* =========================
+   VOICES
+========================= */
+
+let voices = [];
+
+
+function loadVoices(){
+
+if(!("speechSynthesis" in window)){
+
+voices = [];
+
+return;
+
+}
+
+voices =
+window.speechSynthesis.getVoices();
+
+}
+
+
+loadVoices();
+
+
+if("speechSynthesis" in window){
+
+window.speechSynthesis.onvoiceschanged =
+loadVoices;
+
+}
+
+
+
+/* =========================
+   SELECT BEST FEMALE VOICE
+========================= */
+
+function getBestFemaleVoice(){
+
+if(!voices.length){
+
+return null;
+
+}
+
+
+/* First preference */
+
+let voice =
+voices.find(function(v){
+
+const name =
+v.name.toLowerCase();
+
+const lang =
+v.lang.toLowerCase();
+
+return (
+
+(
+name.includes("zira") ||
+name.includes("aria") ||
+name.includes("samantha") ||
+name.includes("susan") ||
+name.includes("heera") ||
+name.includes("female")
+)
+
+&&
+(
+lang.includes("en-in") ||
+lang.includes("en-us") ||
+lang.includes("en-gb")
+)
+
+);
+
+});
+
+
+/* Second preference */
+
+if(!voice){
+
+voice =
+voices.find(function(v){
+
+const name =
+v.name.toLowerCase();
+
+return (
+
+name.includes("zira") ||
+name.includes("aria") ||
+name.includes("samantha") ||
+name.includes("susan") ||
+name.includes("heera") ||
+name.includes("female")
+
+);
+
+});
+
+}
+
+
+/* Third preference */
+
+if(!voice){
+
+voice =
+voices.find(function(v){
+
+return v.lang
+.toLowerCase()
+.startsWith("en");
+
+});
+
+}
+
+
+return voice || null;
+
+}
+
+
+
+/* =========================
+   CLEAR FEMALE VOICE
+========================= */
+
+function speak(text){
+
+if(!("speechSynthesis" in window)){
+
+return;
+
+}
+
+
+window.speechSynthesis.cancel();
+
+
+const clean =
+text
+
+.replace(/<[^>]*>/g,"")
+
+.replace(
+/[🤖🙏👑🏎️🌐📸🎤➤🌅☀️🌆🟢🔊]/g,
+""
+)
+
+.trim();
+
+
+if(!clean){
+
+return;
+
+}
+
+
+const utterance =
+new SpeechSynthesisUtterance(clean);
+
+
+const femaleVoice =
+getBestFemaleVoice();
+
+
+if(femaleVoice){
+
+utterance.voice =
+femaleVoice;
+
+utterance.lang =
+femaleVoice.lang;
+
+}else{
+
+utterance.lang =
+"en-IN";
+
+}
+
+
+/*
+CLEAR + CONFIDENT SETTINGS
+*/
+
+utterance.rate =
+0.78;
+
+utterance.pitch =
+1.02;
+
+utterance.volume =
+1.0;
+
+
+/*
+SMALL PAUSE BEFORE SPEAKING
+*/
+
+setTimeout(function(){
+
+window.speechSynthesis.speak(
+utterance
+);
+
+},80);
+
+}
+
+
 
 /* =========================
    CHAT
 ========================= */
 
-const chat =
-document.getElementById("chat");
+const chatBox =
+document.getElementById("chatBox");
 
 const input =
-document.getElementById("userInput");
+document.getElementById("input");
+
+const sendBtn =
+document.getElementById("sendBtn");
+
+const micBtn =
+document.getElementById("micBtn");
 
 const statusText =
-document.getElementById("status");
+document.getElementById("statusText");
+
 
 
 function addMessage(text,type){
@@ -490,21 +1225,25 @@ const div =
 document.createElement("div");
 
 div.className =
-"message " + type;
+"message " +
+(type === "user"
+? "user-message"
+: "ai-message");
 
 div.innerHTML =
 text;
 
-chat.appendChild(div);
+chatBox.appendChild(div);
 
-chat.scrollTop =
-chat.scrollHeight;
+chatBox.scrollTop =
+chatBox.scrollHeight;
 
 }
 
 
+
 /* =========================
-   TIME GREETING
+   GREETING
 ========================= */
 
 function getGreeting(){
@@ -512,11 +1251,13 @@ function getGreeting(){
 const hour =
 new Date().getHours();
 
+
 if(hour >= 5 && hour < 12){
 
 return "🌅 Good Morning, Jaitish Bhaiya! 🙏";
 
 }
+
 
 if(hour >= 12 && hour < 17){
 
@@ -524,135 +1265,11 @@ return "☀️ Good Afternoon, Jaitish Bhaiya! 🙏";
 
 }
 
+
 return "🌆 Good Evening, Jaitish Bhaiya! 🙏";
 
 }
 
-
-/* =========================
-   VOICE
-========================= */
-
-let voices = [];
-
-function loadVoices(){
-
-voices =
-window.speechSynthesis.getVoices();
-
-}
-
-loadVoices();
-
-if(
-"speechSynthesis" in window
-){
-
-window.speechSynthesis.onvoiceschanged =
-loadVoices;
-
-}
-
-
-function speak(text){
-
-if(
-!("speechSynthesis" in window)
-){
-
-return;
-
-}
-
-window.speechSynthesis.cancel();
-
-
-const clean =
-text
-.replace(/<[^>]*>/g,"")
-.replace(/[🤖🙏👑🏎️🌐📸🎤➤🌅☀️🌆🟢]/g,"");
-
-
-const utterance =
-new SpeechSynthesisUtterance(clean);
-
-
-/* FEMALE VOICE */
-
-const femaleVoice =
-voices.find(function(voice){
-
-const name =
-voice.name.toLowerCase();
-
-return (
-name.includes("female") ||
-name.includes("zira") ||
-name.includes("samantha") ||
-name.includes("aria") ||
-name.includes("susan") ||
-name.includes("heera")
-);
-
-});
-
-
-if(femaleVoice){
-
-utterance.voice =
-femaleVoice;
-
-}
-
-
-/* CLEAR + CONFIDENT */
-
-utterance.lang =
-"en-IN";
-
-utterance.rate =
-0.88;
-
-utterance.pitch =
-1.08;
-
-utterance.volume =
-1.0;
-
-
-window.speechSynthesis.speak(
-utterance
-);
-
-}
-
-
-/* =========================
-   WEBSITE OPENING
-========================= */
-
-function openPage(page){
-
-setTimeout(function(){
-
-window.location.href =
-page;
-
-},700);
-
-}
-
-
-function openSection(section){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html" + section;
-
-},700);
-
-}
 
 
 /* =========================
@@ -661,32 +1278,23 @@ window.location.href =
 
 function getResponse(message){
 
-const text =
+const m =
 message
 .toLowerCase()
 .trim();
 
 
-/* WAKE WORD */
-
-if(
-text.includes("jaitish bhaiya") ||
-text.includes("jaitish bhai")
-){
-
-return "🙏 प्रणाम भैया जी।";
-
-}
-
 
 /* CREATOR */
 
 if(
-text.includes("kisne banaya") ||
-text.includes("tumhe kisne banaya") ||
-text.includes("aapko kisne banaya") ||
-text.includes("who made you") ||
-text.includes("who created you")
+
+m.includes("kisne banaya") ||
+m.includes("tumhe kisne banaya") ||
+m.includes("aapko kisne banaya") ||
+m.includes("who made you") ||
+m.includes("who created you")
+
 ){
 
 return "🙏 मुझे Jaitish Bhaiya ने बनाया है।";
@@ -694,14 +1302,16 @@ return "🙏 मुझे Jaitish Bhaiya ने बनाया है।";
 }
 
 
+
 /* IDENTITY */
 
 if(
-text.includes("aap kon ho") ||
-text.includes("aap kaun ho") ||
-text.includes("tum kon ho") ||
-text.includes("tum kaun ho") ||
-text.includes("who are you")
+
+m.includes("aap kaun ho") ||
+m.includes("tum kaun ho") ||
+m.includes("aap kon ho") ||
+m.includes("who are you")
+
 ){
 
 return "🤖 मैं Jaitish Bhai हूँ।";
@@ -709,13 +1319,33 @@ return "🤖 मैं Jaitish Bhai हूँ।";
 }
 
 
-/* YES AFTER IDENTITY */
+
+/* WAKE WORD */
 
 if(
-text === "haan" ||
-text === "ha" ||
-text === "yes" ||
-text === "haan ji"
+
+m.includes("jaitish bhaiya") ||
+m.includes("jaitish bhai")
+
+){
+
+return "🙏 प्रणाम भैया जी।";
+
+}
+
+
+
+/* YES */
+
+if(
+
+m === "haan" ||
+m === "ha" ||
+m === "yes" ||
+m === "haan ji" ||
+m === "हाँ" ||
+m === "हां"
+
 ){
 
 return getGreeting();
@@ -723,12 +1353,15 @@ return getGreeting();
 }
 
 
+
 /* NAMASTE */
 
 if(
-text === "namaste" ||
-text === "namaskar" ||
-text.includes("pranam")
+
+m.includes("namaste") ||
+m.includes("namaskar") ||
+m.includes("pranam")
+
 ){
 
 return "🙏 नमस्ते भैया जी।";
@@ -736,103 +1369,151 @@ return "🙏 नमस्ते भैया जी।";
 }
 
 
+
 /* RACING */
 
 if(
-text.includes("racing") ||
-text.includes("race") ||
-text.includes("racing kholo") ||
-text.includes("racing game")
+
+m.includes("racing") ||
+m.includes("race") ||
+m.includes("racing game")
+
 ){
 
-openPage("racing.html");
+setTimeout(function(){
 
-return "🏎️ Racing Game खोल रहा हूँ, Jaitish Bhaiya।";
+window.location.href =
+"racing.html";
+
+},900);
+
+return "🏎️ Racing Game खोल रहा हूँ।";
 
 }
+
 
 
 /* WEBSITE */
 
 if(
-text.includes("website kholo") ||
-text.includes("website open") ||
-text.includes("main website") ||
-text.includes("home kholo")
+
+m.includes("website") ||
+m.includes("home page") ||
+m.includes("homepage")
+
 ){
 
-openPage("index.html");
+setTimeout(function(){
 
-return "🌐 JAITISH GAMING website खोल रहा हूँ।";
+window.location.href =
+"index.html";
+
+},900);
+
+return "🌐 Website खोल रहा हूँ।";
 
 }
+
 
 
 /* GALLERY */
 
 if(
-text.includes("gallery kholo") ||
-text.includes("gallery open") ||
-text.includes("gallery dikhao")
+
+m.includes("gallery") ||
+m.includes("photo") ||
+m.includes("photos")
+
 ){
 
-openSection("#gallery");
+setTimeout(function(){
+
+window.location.href =
+"index.html#gallery";
+
+},900);
 
 return "📸 Gallery खोल रहा हूँ।";
 
 }
 
 
+
 /* ABOUT */
 
 if(
-text.includes("about kholo") ||
-text.includes("about open") ||
-text.includes("mere bare me")
+
+m.includes("about") ||
+m.includes("mere bare") ||
+m.includes("jaitish ke bare")
+
 ){
 
-openSection("#about");
+setTimeout(function(){
 
-return "👑 About section खोल रहा हूँ।";
+window.location.href =
+"index.html#about";
+
+},900);
+
+return "👤 About section खोल रहा हूँ।";
 
 }
+
 
 
 /* CONTACT */
 
 if(
-text.includes("contact kholo") ||
-text.includes("contact open")
+
+m.includes("contact") ||
+m.includes("sampark")
+
 ){
 
-openSection("#contact");
+setTimeout(function(){
 
-return "📩 Contact section खोल रहा हूँ।";
+window.location.href =
+"index.html#contact";
+
+},900);
+
+return "📞 Contact section खोल रहा हूँ।";
 
 }
+
 
 
 /* PYTHON */
 
 if(
-text.includes("python kholo") ||
-text.includes("python open") ||
-text.includes("python")
+
+m.includes("python") ||
+m.includes("coding")
+
 ){
 
-openSection("#python");
+setTimeout(function(){
+
+window.location.href =
+"index.html#python";
+
+},900);
 
 return "🐍 Python section खोल रहा हूँ।";
 
 }
 
 
+
 /* THANKS */
 
 if(
-text.includes("thank you") ||
-text.includes("thanks") ||
-text.includes("dhanyawad")
+
+m.includes("thank you") ||
+m.includes("thanks") ||
+m.includes("dhanyavad")
+
 ){
 
 return "🙏 आपका स्वागत है, Jaitish Bhaiya।";
@@ -840,24 +1521,29 @@ return "🙏 आपका स्वागत है, Jaitish Bhaiya।";
 }
 
 
+
 /* HELLO */
 
 if(
-text === "hello" ||
-text === "hi" ||
-text === "hey"
+
+m === "hi" ||
+m === "hello" ||
+m === "hey"
+
 ){
 
-return "🙏 नमस्ते भैया जी! मैं Jaitish AI हूँ।";
+return "🙏 नमस्ते Jaitish Bhaiya। मैं Jaitish AI हूँ।";
 
 }
+
 
 
 /* DEFAULT */
 
-return "🙏 नमस्ते भैया जी। मैं आपकी बात समझने की कोशिश कर रहा हूँ। आप website, Racing, Gallery, About या Python खोलने के लिए बोल सकते हैं।";
+return "🤖 मैं Jaitish Gaming की Website, Racing Game, Gallery, About और Python section खोल सकता हूँ।";
 
 }
+
 
 
 /* =========================
@@ -869,19 +1555,26 @@ function sendMessage(){
 const text =
 input.value.trim();
 
+
 if(!text){
+
 return;
+
 }
+
 
 addMessage(
 text,
 "user"
 );
 
+
 input.value = "";
+
 
 const response =
 getResponse(text);
+
 
 setTimeout(function(){
 
@@ -897,29 +1590,25 @@ speak(response);
 }
 
 
-/* =========================
-   QUICK
-========================= */
-
-function quickAsk(text){
-
-input.value =
-text;
-
-sendMessage();
-
-}
-
 
 /* =========================
-   ENTER
+   SEND BUTTON
 ========================= */
+
+sendBtn.addEventListener(
+"click",
+sendMessage
+);
+
+
+
+/* ENTER KEY */
 
 input.addEventListener(
 "keydown",
-function(event){
+function(e){
 
-if(event.key === "Enter"){
+if(e.key === "Enter"){
 
 sendMessage();
 
@@ -928,8 +1617,32 @@ sendMessage();
 });
 
 
+
 /* =========================
-   MICROPHONE
+   QUICK BUTTONS
+========================= */
+
+document
+.querySelectorAll(".quick")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+input.value =
+button.dataset.text;
+
+sendMessage();
+
+});
+
+});
+
+
+
+/* =========================
+   VOICE RECOGNITION
 ========================= */
 
 const SpeechRecognition =
@@ -961,6 +1674,9 @@ function(){
 statusText.innerHTML =
 "🔴 Listening...";
 
+micBtn.innerHTML =
+"🔴";
+
 };
 
 
@@ -968,7 +1684,9 @@ recognition.onresult =
 function(event){
 
 const spoken =
-event.results[0][0].transcript;
+event
+.results[0][0]
+.transcript;
 
 input.value =
 spoken;
@@ -976,10 +1694,8 @@ spoken;
 statusText.innerHTML =
 "🟢 Ready to talk";
 
-
-/*
-Automatically send voice command
-*/
+micBtn.innerHTML =
+"🎤";
 
 sendMessage();
 
@@ -992,6 +1708,9 @@ function(){
 statusText.innerHTML =
 "🟢 Ready to talk";
 
+micBtn.innerHTML =
+"🎤";
+
 };
 
 
@@ -1001,12 +1720,22 @@ function(){
 statusText.innerHTML =
 "🟢 Ready to talk";
 
+micBtn.innerHTML =
+"🎤";
+
 };
 
 }
 
 
-function startVoice(){
+
+/* =========================
+   MIC BUTTON
+========================= */
+
+micBtn.addEventListener(
+"click",
+function(){
 
 if(!recognition){
 
@@ -1018,11 +1747,24 @@ return;
 
 }
 
+
+try{
+
 recognition.start();
+
+}catch(error){
+
+console.log(error);
 
 }
 
+});
+
+
+
 </script>
 
+
 </body>
+
 </html>
