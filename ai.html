@@ -1,1770 +1,804 @@
 <!DOCTYPE html>
-<html lang="hi">
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Jaitish AI Assistant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAITISH AI | Official AI</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-font-family:Arial,sans-serif;
-
-background:
-radial-gradient(circle at top,#071b2b,#03040b 55%);
-
-color:white;
-
-min-height:100vh;
-
-overflow-x:hidden;
-
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 20%,#17104d 0%,transparent 35%),
+    radial-gradient(circle at 80% 80%,#062d45 0%,transparent 35%),
+    #03040b;
+  color:white;
+  overflow-x:hidden;
 }
-
-/* BACKGROUND GLOW */
 
 body::before{
-
-content:"";
-
-position:fixed;
-
-width:350px;
-height:350px;
-
-background:#00eaff;
-
-filter:blur(130px);
-
-opacity:.12;
-
-top:-100px;
-left:-100px;
-
-pointer-events:none;
-
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,transparent 40%,rgba(0,234,255,.04),transparent 60%);
+  animation:bgMove 8s linear infinite;
 }
 
-body::after{
-
-content:"";
-
-position:fixed;
-
-width:350px;
-height:350px;
-
-background:#7b00ff;
-
-filter:blur(130px);
-
-opacity:.12;
-
-bottom:-100px;
-right:-100px;
-
-pointer-events:none;
-
+@keyframes bgMove{
+  0%{transform:translateX(-30%)}
+  100%{transform:translateX(30%)}
 }
 
-
-/* TOP BAR */
-
-.topbar{
-
-height:65px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 20px;
-
-border-bottom:1px solid #00eaff55;
-
-background:rgba(0,5,15,.88);
-
-backdrop-filter:blur(15px);
-
-position:sticky;
-
-top:0;
-
-z-index:1000;
-
+.nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 6%;
+  background:rgba(3,4,11,.82);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(0,234,255,.25);
 }
 
 .logo{
-
-color:#00eaff;
-
-font-size:20px;
-
-font-weight:bold;
-
-text-shadow:
-0 0 10px #00eaff,
-0 0 25px #00eaff;
-
+  color:#00eaff;
+  font-size:20px;
+  font-weight:bold;
+  text-shadow:0 0 15px #00eaff;
 }
 
 .back{
-
-color:white;
-
-text-decoration:none;
-
-border:1px solid #00eaff;
-
-padding:9px 15px;
-
-border-radius:20px;
-
-font-size:14px;
-
-transition:.3s;
-
+  color:white;
+  text-decoration:none;
+  padding:9px 15px;
+  border:1px solid #00eaff;
+  border-radius:20px;
+  transition:.25s;
 }
 
 .back:hover{
-
-background:#00eaff;
-
-color:#03040b;
-
-box-shadow:
-0 0 15px #00eaff;
-
+  background:#00eaff;
+  color:#02030a;
+  box-shadow:0 0 20px #00eaff;
 }
 
-
-/* MAIN */
-
-.main{
-
-width:100%;
-
-max-width:850px;
-
-margin:auto;
-
-padding:35px 15px 60px;
-
+.container{
+  width:min(950px,94%);
+  margin:35px auto;
 }
 
-
-/* AI HEADER */
-
-.ai-header{
-
-text-align:center;
-
-margin-bottom:25px;
-
+.hero{
+  text-align:center;
+  padding:25px 10px;
 }
-
-
-/* BIG AI ICON */
 
 .ai-icon{
-
-width:115px;
-height:115px;
-
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-
-align-items:center;
-justify-content:center;
-
-font-size:60px;
-
-background:
-radial-gradient(circle,#071f32,#03040b);
-
-border:3px solid #00eaff;
-
-box-shadow:
-0 0 15px #00eaff,
-0 0 35px #00eaff,
-0 0 70px #7b00ff;
-
-animation:aiFloat 2.5s ease-in-out infinite;
-
+  width:100px;
+  height:100px;
+  margin:auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  background:rgba(0,234,255,.08);
+  border:2px solid #00eaff;
+  box-shadow:
+    0 0 20px #00eaff,
+    inset 0 0 25px rgba(0,234,255,.2);
+  animation:pulse 2.5s infinite;
 }
 
-@keyframes aiFloat{
-
-0%,100%{
-
-transform:translateY(0);
-
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.07)}
 }
 
-50%{
-
-transform:translateY(-8px);
-
+h1{
+  margin-top:18px;
+  font-size:clamp(30px,7vw,58px);
+  color:#00eaff;
+  text-shadow:0 0 25px #00eaff;
 }
 
+.subtitle{
+  color:#aeb7c7;
+  margin-top:8px;
 }
 
-
-.ai-title{
-
-margin-top:18px;
-
-font-size:34px;
-
-color:#00eaff;
-
-text-shadow:
-0 0 10px #00eaff,
-0 0 25px #00eaff;
-
+.chat-card{
+  margin-top:20px;
+  background:rgba(8,11,25,.82);
+  border:1px solid rgba(0,234,255,.35);
+  border-radius:24px;
+  padding:18px;
+  box-shadow:0 0 35px rgba(0,234,255,.08);
 }
 
-.ai-subtitle{
-
-margin-top:8px;
-
-color:#b9c8d6;
-
-font-size:15px;
-
+.chat{
+  height:430px;
+  overflow-y:auto;
+  padding:8px;
+  scroll-behavior:smooth;
 }
-
-
-/* MAIN AI BOX */
-
-.ai-box{
-
-background:
-linear-gradient(
-145deg,
-rgba(0,20,35,.96),
-rgba(8,5,25,.96)
-);
-
-border:2px solid #00eaff;
-
-border-radius:25px;
-
-padding:20px;
-
-box-shadow:
-0 0 20px #00eaff55,
-0 0 50px #7b00ff22;
-
-}
-
-
-/* STATUS */
-
-.status{
-
-text-align:center;
-
-color:#39ff88;
-
-font-size:13px;
-
-margin-bottom:15px;
-
-text-shadow:
-0 0 8px #39ff88;
-
-}
-
-
-/* CHAT BOX */
-
-.chat-box{
-
-height:360px;
-
-overflow-y:auto;
-
-padding:15px;
-
-border-radius:18px;
-
-background:#02060d;
-
-border:1px solid #00eaff55;
-
-box-shadow:
-inset 0 0 20px #00eaff11;
-
-}
-
-
-/* MESSAGE */
 
 .message{
-
-max-width:85%;
-
-padding:12px 15px;
-
-margin-bottom:12px;
-
-border-radius:15px;
-
-line-height:1.5;
-
-font-size:15px;
-
-animation:messageIn .25s ease;
-
+  display:flex;
+  margin:12px 0;
 }
 
-@keyframes messageIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(8px);
-
+.message.user{
+  justify-content:flex-end;
 }
 
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
+.bubble{
+  max-width:82%;
+  padding:12px 15px;
+  border-radius:17px;
+  line-height:1.5;
+  white-space:pre-wrap;
 }
 
+.ai .bubble{
+  background:rgba(0,234,255,.09);
+  border:1px solid rgba(0,234,255,.28);
 }
 
-
-.ai-message{
-
-background:#071a27;
-
-border:1px solid #00eaff55;
-
-color:#dffaff;
-
-margin-right:auto;
-
+.user .bubble{
+  background:linear-gradient(135deg,#00bcd4,#007bff);
+  color:white;
 }
 
-.user-message{
-
-background:#17102b;
-
-border:1px solid #7b00ff66;
-
-color:#fff;
-
-margin-left:auto;
-
+.typing{
+  color:#8defff;
+  font-size:14px;
+  padding:8px;
 }
-
-
-/* QUICK BUTTONS */
 
 .quick-title{
-
-margin-top:20px;
-
-margin-bottom:10px;
-
-color:#00eaff;
-
-font-size:14px;
-
-font-weight:bold;
-
-}
-
-.quick-buttons{
-
-display:flex;
-
-flex-wrap:wrap;
-
-gap:8px;
-
+  margin:18px 0 10px;
+  color:#00eaff;
 }
 
 .quick{
-
-background:#06131f;
-
-color:white;
-
-border:1px solid #00eaff88;
-
-border-radius:20px;
-
-padding:9px 12px;
-
-font-size:13px;
-
-cursor:pointer;
-
-transition:.25s;
-
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
-.quick:hover{
-
-background:#00eaff;
-
-color:#03040b;
-
-box-shadow:
-0 0 15px #00eaff;
-
-transform:translateY(-2px);
-
+.quick button{
+  border:1px solid rgba(0,234,255,.45);
+  background:rgba(0,234,255,.06);
+  color:white;
+  border-radius:18px;
+  padding:9px 13px;
+  cursor:pointer;
+  transition:.2s;
 }
 
-
-/* INPUT AREA */
-
-.input-area{
-
-display:flex;
-
-gap:8px;
-
-margin-top:18px;
-
+.quick button:hover{
+  background:#00eaff;
+  color:#02030a;
+  box-shadow:0 0 15px #00eaff;
 }
 
-#input{
-
-flex:1;
-
-min-width:0;
-
-height:52px;
-
-padding:0 16px;
-
-border-radius:15px;
-
-border:1px solid #00eaff88;
-
-outline:none;
-
-background:#02070e;
-
-color:white;
-
-font-size:15px;
-
+.input-row{
+  display:flex;
+  gap:8px;
+  margin-top:16px;
 }
 
-#input:focus{
-
-border-color:#00eaff;
-
-box-shadow:
-0 0 15px #00eaff44;
-
+#messageInput{
+  flex:1;
+  min-width:0;
+  padding:14px 16px;
+  border-radius:25px;
+  border:1px solid #00eaff;
+  outline:none;
+  background:#050817;
+  color:white;
+  font-size:16px;
 }
 
-
-.action-btn{
-
-width:52px;
-
-height:52px;
-
-border-radius:15px;
-
-border:1px solid #00eaff;
-
-background:#06131f;
-
-color:#00eaff;
-
-font-size:21px;
-
-cursor:pointer;
-
-transition:.25s;
-
+.action{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #00eaff;
+  background:#07111c;
+  color:white;
+  cursor:pointer;
+  font-size:20px;
 }
 
-.action-btn:hover{
-
-background:#00eaff;
-
-color:#03040b;
-
-box-shadow:
-0 0 18px #00eaff;
-
+.action:hover{
+  background:#00eaff;
+  color:#02030a;
+  box-shadow:0 0 18px #00eaff;
 }
 
+.send{
+  width:auto;
+  padding:0 18px;
+  border-radius:25px;
+  font-size:15px;
+}
 
-/* VOICE BOX */
+.status{
+  margin-top:12px;
+  text-align:center;
+  color:#9ca8b8;
+  font-size:13px;
+}
 
 .voice-box{
-
-margin-top:20px;
-
-padding:16px;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#061522,
-#0d0820
-);
-
-border:1px solid #7b00ff88;
-
-box-shadow:
-0 0 20px #7b00ff22;
-
+  margin-top:15px;
+  padding:14px;
+  border-radius:17px;
+  background:rgba(123,0,255,.08);
+  border:1px solid rgba(123,0,255,.3);
 }
 
-.voice-title{
-
-color:#b026ff;
-
-font-weight:bold;
-
-margin-bottom:8px;
-
+.voice-box label{
+  display:block;
+  margin-bottom:8px;
+  color:#d7c4ff;
 }
 
-.voice-text{
-
-color:#b9c8d6;
-
-font-size:13px;
-
-line-height:1.6;
-
+#voiceSelect{
+  width:100%;
+  padding:10px;
+  border-radius:12px;
+  background:#080916;
+  color:white;
+  border:1px solid #7b00ff;
 }
 
-
-/* COMMAND BOX */
-
-.command-box{
-
-margin-top:15px;
-
-padding:15px;
-
-border-radius:18px;
-
-background:#02060d;
-
-border:1px solid #00eaff44;
-
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+  margin-top:18px;
 }
 
-.command-title{
-
-color:#00eaff;
-
-font-weight:bold;
-
-margin-bottom:8px;
-
+.links a{
+  text-decoration:none;
+  color:white;
+  text-align:center;
+  padding:13px 8px;
+  border-radius:15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  transition:.2s;
 }
 
-.command{
-
-color:#c9d5df;
-
-font-size:13px;
-
-line-height:1.8;
-
+.links a:hover{
+  border-color:#00eaff;
+  box-shadow:0 0 15px rgba(0,234,255,.25);
+  transform:translateY(-2px);
 }
 
-
-/* FOOTER */
-
-.footer{
-
-text-align:center;
-
-margin-top:30px;
-
-color:#667785;
-
-font-size:12px;
-
+footer{
+  text-align:center;
+  color:#687385;
+  padding:30px 10px;
+  font-size:13px;
 }
-
-
-/* MOBILE */
 
 @media(max-width:600px){
+  .chat{
+    height:390px;
+  }
 
-.topbar{
+  .input-row{
+    flex-wrap:wrap;
+  }
 
-padding:0 12px;
+  #messageInput{
+    width:100%;
+    flex-basis:100%;
+  }
 
+  .send{
+    flex:1;
+  }
+
+  .bubble{
+    max-width:90%;
+  }
 }
-
-.logo{
-
-font-size:16px;
-
-}
-
-.back{
-
-padding:8px 11px;
-
-font-size:12px;
-
-}
-
-.main{
-
-padding:25px 10px 40px;
-
-}
-
-.ai-icon{
-
-width:95px;
-height:95px;
-
-font-size:50px;
-
-}
-
-.ai-title{
-
-font-size:28px;
-
-}
-
-.chat-box{
-
-height:330px;
-
-}
-
-.message{
-
-max-width:92%;
-
-}
-
-.input-area{
-
-gap:6px;
-
-}
-
-.action-btn{
-
-width:48px;
-
-height:48px;
-
-}
-
-#input{
-
-height:48px;
-
-font-size:14px;
-
-}
-
-}
-
-
-/* REDUCED MOTION */
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-
-animation:none !important;
-
-transition:none !important;
-
-}
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<nav class="nav">
+  <div class="logo">🤖 JAITISH AI</div>
+  <a class="back" href="index.html">← Website</a>
+</nav>
 
-<!-- TOP BAR -->
+<main class="container">
 
-<div class="topbar">
+  <section class="hero">
+    <div class="ai-icon">🤖</div>
+    <h1>JAITISH AI</h1>
+    <p class="subtitle">Gaming • Coding • Knowledge • Creativity</p>
+  </section>
 
-<div class="logo">
+  <section class="chat-card">
 
-🤖 JAITISH AI
+    <div id="chat" class="chat">
 
-</div>
+      <div class="message ai">
+        <div class="bubble">
+प्रणाम भैया जी 🙏
 
-<a href="index.html" class="back">
+मैं JAITISH AI हूँ।
+आप Hindi, Hinglish या English में मुझसे बात कर सकते हैं।
+      </div>
+      </div>
 
-← Back
+    </div>
 
-</a>
+    <div id="typing" class="typing" style="display:none;">
+      JAITISH AI सोच रहा है...
+    </div>
 
-</div>
+    <div class="quick-title">⚡ Quick Commands</div>
 
+    <div class="quick">
+      <button type="button" data-msg="Jaitish Bhaiya">👑 Jaitish Bhaiya</button>
+      <button type="button" data-msg="Open Racing">🏎️ Racing</button>
+      <button type="button" data-msg="Open Website">🌐 Website</button>
+      <button type="button" data-msg="Open Gallery">🖼️ Gallery</button>
+      <button type="button" data-msg="Open About">👤 About</button>
+      <button type="button" data-msg="Open Python">🐍 Python</button>
+      <button type="button" data-msg="Open Contact">📞 Contact</button>
+    </div>
 
+    <div class="input-row">
 
-<main class="main">
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Type your message..."
+        autocomplete="off"
+      >
 
+      <button
+        id="micBtn"
+        class="action"
+        type="button"
+        title="Voice input"
+      >🎤</button>
 
-<!-- AI HEADER -->
+      <button
+        id="sendBtn"
+        class="action send"
+        type="button"
+      >Send 🚀</button>
 
-<div class="ai-header">
+    </div>
 
-<div class="ai-icon">
+    <div class="status" id="status">
+      AI backend: checking...
+    </div>
 
-🤖
+    <div class="voice-box">
 
-</div>
+      <label for="voiceSelect">🔊 AI Voice</label>
 
-<h1 class="ai-title">
+      <select id="voiceSelect">
+        <option value="">Default browser voice</option>
+      </select>
 
-JAITISH AI
+    </div>
 
-</h1>
+    <div class="links">
 
-<p class="ai-subtitle">
+      <a href="racing.html">🏎️ Racing</a>
+      <a href="index.html">🌐 Website</a>
+      <a href="index.html#gallery">🖼️ Gallery</a>
+      <a href="index.html#about">👤 About</a>
+      <a href="index.html#contact">📞 Contact</a>
+      <a href="python.html">🐍 Python</a>
 
-Your Personal Gaming & Website Assistant
+    </div>
 
-</p>
-
-</div>
-
-
-
-<!-- MAIN AI BOX -->
-
-<div class="ai-box">
-
-
-<div class="status" id="statusText">
-
-🟢 Ready to talk
-
-</div>
-
-
-<!-- CHAT -->
-
-<div class="chat-box" id="chatBox">
-
-<div class="message ai-message">
-
-🤖 नमस्ते! मैं <b>Jaitish AI</b> हूँ।<br><br>
-
-आप मुझसे बोलकर या लिखकर बात कर सकते हैं।
-
-</div>
-
-</div>
-
-
-
-<!-- QUICK -->
-
-<div class="quick-title">
-
-⚡ Quick Commands
-
-</div>
-
-
-<div class="quick-buttons">
-
-<button class="quick"
-data-text="Jaitish Bhaiya">
-
-🙏 Jaitish Bhaiya
-
-</button>
-
-<button class="quick"
-data-text="Tumhe kisne banaya">
-
-👑 किसने बनाया?
-
-</button>
-
-<button class="quick"
-data-text="Aap kaun ho">
-
-🤖 आप कौन हो?
-
-</button>
-
-<button class="quick"
-data-text="Racing game kholo">
-
-🏎️ Racing
-
-</button>
-
-<button class="quick"
-data-text="Website kholo">
-
-🌐 Website
-
-</button>
-
-<button class="quick"
-data-text="Gallery kholo">
-
-📸 Gallery
-
-</button>
-
-<button class="quick"
-data-text="About kholo">
-
-👤 About
-
-</button>
-
-<button class="quick"
-data-text="Python kholo">
-
-🐍 Python
-
-</button>
-
-</div>
-
-
-
-<!-- INPUT -->
-
-<div class="input-area">
-
-<input
-id="input"
-type="text"
-placeholder="Type your message..."
-autocomplete="off">
-
-<button
-class="action-btn"
-id="micBtn"
-type="button">
-
-🎤
-
-</button>
-
-<button
-class="action-btn"
-id="sendBtn"
-type="button">
-
-➤
-
-</button>
-
-</div>
-
-
-
-<!-- VOICE BOX -->
-
-<div class="voice-box">
-
-<div class="voice-title">
-
-🔊 AI Voice
-
-</div>
-
-<div class="voice-text">
-
-Jaitish AI uses a clear, slower and confident voice.
-The available female voice depends on the voices installed
-on your device and browser.
-
-</div>
-
-</div>
-
-
-
-<!-- COMMANDS -->
-
-<div class="command-box">
-
-<div class="command-title">
-
-🎤 Voice Commands
-
-</div>
-
-<div class="command">
-
-• “Jaitish Bhaiya” → प्रणाम भैया जी<br>
-
-• “तुम्हें किसने बनाया?” → Jaitish Bhaiya ने<br>
-
-• “आप कौन हो?” → Jaitish Bhai हूँ<br>
-
-• “हाँ” → समय के हिसाब से greeting<br>
-
-• “Racing खोलो” → Racing Game<br>
-
-• “Website खोलो” → Website<br>
-
-• “Gallery खोलो” → Gallery<br>
-
-• “About खोलो” → About<br>
-
-• “Python खोलो” → Python
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="footer">
-
-© 2026 JAITISH GAMING • JAITISH AI
-
-</div>
-
+  </section>
 
 </main>
 
-
+<footer>
+  © 2026 JAITISH GAMING • JAITISH AI
+</footer>
 
 <script>
 
+const API_URL = "http://localhost:3000/chat";
 
-/* =========================
-   VOICES
-========================= */
+const chat = document.getElementById("chat");
+const input = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const micBtn = document.getElementById("micBtn");
+const typing = document.getElementById("typing");
+const status = document.getElementById("status");
+const voiceSelect = document.getElementById("voiceSelect");
 
 let voices = [];
+let recognition = null;
 
+function addMessage(text, type){
 
-function loadVoices(){
+  const row = document.createElement("div");
+  row.className = "message " + type;
 
-if(!("speechSynthesis" in window)){
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.textContent = text;
 
-voices = [];
+  row.appendChild(bubble);
+  chat.appendChild(row);
 
-return;
-
+  chat.scrollTop = chat.scrollHeight;
 }
-
-voices =
-window.speechSynthesis.getVoices();
-
-}
-
-
-loadVoices();
-
-
-if("speechSynthesis" in window){
-
-window.speechSynthesis.onvoiceschanged =
-loadVoices;
-
-}
-
-
-
-/* =========================
-   SELECT BEST FEMALE VOICE
-========================= */
-
-function getBestFemaleVoice(){
-
-if(!voices.length){
-
-return null;
-
-}
-
-
-/* First preference */
-
-let voice =
-voices.find(function(v){
-
-const name =
-v.name.toLowerCase();
-
-const lang =
-v.lang.toLowerCase();
-
-return (
-
-(
-name.includes("zira") ||
-name.includes("aria") ||
-name.includes("samantha") ||
-name.includes("susan") ||
-name.includes("heera") ||
-name.includes("female")
-)
-
-&&
-(
-lang.includes("en-in") ||
-lang.includes("en-us") ||
-lang.includes("en-gb")
-)
-
-);
-
-});
-
-
-/* Second preference */
-
-if(!voice){
-
-voice =
-voices.find(function(v){
-
-const name =
-v.name.toLowerCase();
-
-return (
-
-name.includes("zira") ||
-name.includes("aria") ||
-name.includes("samantha") ||
-name.includes("susan") ||
-name.includes("heera") ||
-name.includes("female")
-
-);
-
-});
-
-}
-
-
-/* Third preference */
-
-if(!voice){
-
-voice =
-voices.find(function(v){
-
-return v.lang
-.toLowerCase()
-.startsWith("en");
-
-});
-
-}
-
-
-return voice || null;
-
-}
-
-
-
-/* =========================
-   CLEAR FEMALE VOICE
-========================= */
 
 function speak(text){
 
-if(!("speechSynthesis" in window)){
+  if(!("speechSynthesis" in window)){
+    return;
+  }
 
-return;
+  window.speechSynthesis.cancel();
 
+  const cleanText = text
+    .replace(/[*#_`]/g,"")
+    .slice(0,3000);
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+
+  const selectedName = voiceSelect.value;
+
+  const selectedVoice =
+    voices.find(v => v.name === selectedName);
+
+  if(selectedVoice){
+    utterance.voice = selectedVoice;
+    utterance.lang = selectedVoice.lang;
+  }else{
+    utterance.lang = "en-US";
+  }
+
+  utterance.rate = 0.88;
+  utterance.pitch = 1.08;
+  utterance.volume = 1;
+
+  window.speechSynthesis.speak(utterance);
 }
 
+function loadVoices(){
 
-window.speechSynthesis.cancel();
+  if(!("speechSynthesis" in window)){
+    return;
+  }
 
+  voices = window.speechSynthesis.getVoices();
 
-const clean =
-text
+  voiceSelect.innerHTML =
+    '<option value="">Default browser voice</option>';
 
-.replace(/<[^>]*>/g,"")
+  voices
+    .filter(v =>
+      v.lang.toLowerCase().startsWith("en") ||
+      v.lang.toLowerCase().startsWith("hi")
+    )
+    .forEach(v => {
 
-.replace(
-/[🤖🙏👑🏎️🌐📸🎤➤🌅☀️🌆🟢🔊]/g,
-""
-)
+      const option = document.createElement("option");
 
-.trim();
+      option.value = v.name;
+      option.textContent = `${v.name} (${v.lang})`;
 
+      voiceSelect.appendChild(option);
 
-if(!clean){
-
-return;
-
+    });
 }
 
+loadVoices();
 
-const utterance =
-new SpeechSynthesisUtterance(clean);
+if("speechSynthesis" in window){
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
 
+function openCommand(message){
 
-const femaleVoice =
-getBestFemaleVoice();
+  const text = message.toLowerCase();
 
+  if(
+    text.includes("open racing") ||
+    text.includes("racing game") ||
+    text === "racing"
+  ){
+    window.location.href = "racing.html";
+    return true;
+  }
 
-if(femaleVoice){
+  if(
+    text.includes("open website") ||
+    text === "website"
+  ){
+    window.location.href = "index.html";
+    return true;
+  }
 
-utterance.voice =
-femaleVoice;
+  if(
+    text.includes("open gallery") ||
+    text === "gallery"
+  ){
+    window.location.href = "index.html#gallery";
+    return true;
+  }
 
-utterance.lang =
-femaleVoice.lang;
+  if(
+    text.includes("open about") ||
+    text === "about"
+  ){
+    window.location.href = "index.html#about";
+    return true;
+  }
+
+  if(
+    text.includes("open contact") ||
+    text === "contact"
+  ){
+    window.location.href = "index.html#contact";
+    return true;
+  }
+
+  if(
+    text.includes("open python") ||
+    text === "python"
+  ){
+    window.location.href = "python.html";
+    return true;
+  }
+
+  return false;
+}
+
+function specialReply(message){
+
+  const text = message.toLowerCase().trim();
+
+  if(
+    text.includes("jaitish bhaiya") ||
+    text.includes("jaitish bhai")
+  ){
+    return "प्रणाम भैया जी 🙏";
+  }
+
+  if(
+    text.includes("who made you") ||
+    text.includes("who created you") ||
+    text.includes("kisne banaya") ||
+    text.includes("tumhe kisne banaya")
+  ){
+    return "मुझे Jaitish Bhaiya ने बनाया है। ❤️";
+  }
+
+  if(
+    text === "who are you" ||
+    text.includes("tum kaun ho")
+  ){
+    return "मैं Jaitish AI हूँ। मैं JAITISH GAMING का AI assistant हूँ।";
+  }
+
+  return null;
+}
+
+async function sendMessage(){
+
+  const message = input.value.trim();
+
+  if(!message){
+    return;
+  }
+
+  addMessage(message,"user");
+
+  input.value = "";
+
+  const special = specialReply(message);
+
+  if(special){
+
+    addMessage(special,"ai");
+    speak(special);
+
+    return;
+  }
+
+  if(openCommand(message)){
+    return;
+  }
+
+  typing.style.display = "block";
+  status.textContent = "AI से connection हो रहा है...";
+
+  try{
+
+    const response = await fetch(API_URL,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        message:message
+      })
+    });
+
+    if(!response.ok){
+      throw new Error("Server error");
+    }
+
+    const data = await response.json();
+
+    if(!data.answer){
+      throw new Error("No answer received");
+    }
+
+    addMessage(data.answer,"ai");
+    speak(data.answer);
+
+    status.textContent = "JAITISH AI online ✅";
+
+  }catch(error){
+
+    console.error(error);
+
+    const errorText =
+      "AI server से connection नहीं हो पाया। सुनिश्चित करो कि server.mjs चल रहा है।";
+
+    addMessage(errorText,"ai");
+
+    status.textContent =
+      "AI backend offline ❌";
+
+  }finally{
+
+    typing.style.display = "none";
+
+  }
+}
+
+sendBtn.addEventListener("click",sendMessage);
+
+input.addEventListener("keydown",(event)=>{
+
+  if(event.key === "Enter"){
+    sendMessage();
+  }
+
+});
+
+document.querySelectorAll(".quick button")
+.forEach(button => {
+
+  button.addEventListener("click",()=>{
+
+    input.value = button.dataset.msg;
+    sendMessage();
+
+  });
+
+});
+
+if(
+  "webkitSpeechRecognition" in window ||
+  "SpeechRecognition" in window
+){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  recognition = new SpeechRecognition();
+
+  recognition.lang = "hi-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  recognition.onstart = ()=>{
+
+    micBtn.textContent = "🔴";
+    status.textContent = "सुन रहा हूँ...";
+
+  };
+
+  recognition.onresult = (event)=>{
+
+    const text =
+      event.results[0][0].transcript;
+
+    input.value = text;
+
+    sendMessage();
+
+  };
+
+  recognition.onerror = ()=>{
+
+    micBtn.textContent = "🎤";
+    status.textContent =
+      "Voice input available नहीं है।";
+
+  };
+
+  recognition.onend = ()=>{
+
+    micBtn.textContent = "🎤";
+
+  };
+
+  micBtn.addEventListener("click",()=>{
+
+    try{
+      recognition.start();
+    }catch(error){
+      console.log(error);
+    }
+
+  });
 
 }else{
 
-utterance.lang =
-"en-IN";
+  micBtn.disabled = true;
+  micBtn.title = "Voice recognition is not supported";
 
 }
 
+async function checkServer(){
 
-/*
-CLEAR + CONFIDENT SETTINGS
-*/
+  try{
 
-utterance.rate =
-0.78;
+    const response =
+      await fetch("http://localhost:3000/");
 
-utterance.pitch =
-1.02;
+    if(response.ok){
 
-utterance.volume =
-1.0;
+      status.textContent =
+        "JAITISH AI online ✅";
 
+    }else{
 
-/*
-SMALL PAUSE BEFORE SPEAKING
-*/
+      status.textContent =
+        "AI backend offline ❌";
 
-setTimeout(function(){
+    }
 
-window.speechSynthesis.speak(
-utterance
-);
+  }catch(error){
 
-},80);
+    status.textContent =
+      "AI backend offline ❌";
 
-}
-
-
-
-/* =========================
-   CHAT
-========================= */
-
-const chatBox =
-document.getElementById("chatBox");
-
-const input =
-document.getElementById("input");
-
-const sendBtn =
-document.getElementById("sendBtn");
-
-const micBtn =
-document.getElementById("micBtn");
-
-const statusText =
-document.getElementById("statusText");
-
-
-
-function addMessage(text,type){
-
-const div =
-document.createElement("div");
-
-div.className =
-"message " +
-(type === "user"
-? "user-message"
-: "ai-message");
-
-div.innerHTML =
-text;
-
-chatBox.appendChild(div);
-
-chatBox.scrollTop =
-chatBox.scrollHeight;
+  }
 
 }
 
-
-
-/* =========================
-   GREETING
-========================= */
-
-function getGreeting(){
-
-const hour =
-new Date().getHours();
-
-
-if(hour >= 5 && hour < 12){
-
-return "🌅 Good Morning, Jaitish Bhaiya! 🙏";
-
-}
-
-
-if(hour >= 12 && hour < 17){
-
-return "☀️ Good Afternoon, Jaitish Bhaiya! 🙏";
-
-}
-
-
-return "🌆 Good Evening, Jaitish Bhaiya! 🙏";
-
-}
-
-
-
-/* =========================
-   AI RESPONSE
-========================= */
-
-function getResponse(message){
-
-const m =
-message
-.toLowerCase()
-.trim();
-
-
-
-/* CREATOR */
-
-if(
-
-m.includes("kisne banaya") ||
-m.includes("tumhe kisne banaya") ||
-m.includes("aapko kisne banaya") ||
-m.includes("who made you") ||
-m.includes("who created you")
-
-){
-
-return "🙏 मुझे Jaitish Bhaiya ने बनाया है।";
-
-}
-
-
-
-/* IDENTITY */
-
-if(
-
-m.includes("aap kaun ho") ||
-m.includes("tum kaun ho") ||
-m.includes("aap kon ho") ||
-m.includes("who are you")
-
-){
-
-return "🤖 मैं Jaitish Bhai हूँ।";
-
-}
-
-
-
-/* WAKE WORD */
-
-if(
-
-m.includes("jaitish bhaiya") ||
-m.includes("jaitish bhai")
-
-){
-
-return "🙏 प्रणाम भैया जी।";
-
-}
-
-
-
-/* YES */
-
-if(
-
-m === "haan" ||
-m === "ha" ||
-m === "yes" ||
-m === "haan ji" ||
-m === "हाँ" ||
-m === "हां"
-
-){
-
-return getGreeting();
-
-}
-
-
-
-/* NAMASTE */
-
-if(
-
-m.includes("namaste") ||
-m.includes("namaskar") ||
-m.includes("pranam")
-
-){
-
-return "🙏 नमस्ते भैया जी।";
-
-}
-
-
-
-/* RACING */
-
-if(
-
-m.includes("racing") ||
-m.includes("race") ||
-m.includes("racing game")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"racing.html";
-
-},900);
-
-return "🏎️ Racing Game खोल रहा हूँ।";
-
-}
-
-
-
-/* WEBSITE */
-
-if(
-
-m.includes("website") ||
-m.includes("home page") ||
-m.includes("homepage")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html";
-
-},900);
-
-return "🌐 Website खोल रहा हूँ।";
-
-}
-
-
-
-/* GALLERY */
-
-if(
-
-m.includes("gallery") ||
-m.includes("photo") ||
-m.includes("photos")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html#gallery";
-
-},900);
-
-return "📸 Gallery खोल रहा हूँ।";
-
-}
-
-
-
-/* ABOUT */
-
-if(
-
-m.includes("about") ||
-m.includes("mere bare") ||
-m.includes("jaitish ke bare")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html#about";
-
-},900);
-
-return "👤 About section खोल रहा हूँ।";
-
-}
-
-
-
-/* CONTACT */
-
-if(
-
-m.includes("contact") ||
-m.includes("sampark")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html#contact";
-
-},900);
-
-return "📞 Contact section खोल रहा हूँ।";
-
-}
-
-
-
-/* PYTHON */
-
-if(
-
-m.includes("python") ||
-m.includes("coding")
-
-){
-
-setTimeout(function(){
-
-window.location.href =
-"index.html#python";
-
-},900);
-
-return "🐍 Python section खोल रहा हूँ।";
-
-}
-
-
-
-/* THANKS */
-
-if(
-
-m.includes("thank you") ||
-m.includes("thanks") ||
-m.includes("dhanyavad")
-
-){
-
-return "🙏 आपका स्वागत है, Jaitish Bhaiya।";
-
-}
-
-
-
-/* HELLO */
-
-if(
-
-m === "hi" ||
-m === "hello" ||
-m === "hey"
-
-){
-
-return "🙏 नमस्ते Jaitish Bhaiya। मैं Jaitish AI हूँ।";
-
-}
-
-
-
-/* DEFAULT */
-
-return "🤖 मैं Jaitish Gaming की Website, Racing Game, Gallery, About और Python section खोल सकता हूँ।";
-
-}
-
-
-
-/* =========================
-   SEND
-========================= */
-
-function sendMessage(){
-
-const text =
-input.value.trim();
-
-
-if(!text){
-
-return;
-
-}
-
-
-addMessage(
-text,
-"user"
-);
-
-
-input.value = "";
-
-
-const response =
-getResponse(text);
-
-
-setTimeout(function(){
-
-addMessage(
-response,
-"ai"
-);
-
-speak(response);
-
-},350);
-
-}
-
-
-
-/* =========================
-   SEND BUTTON
-========================= */
-
-sendBtn.addEventListener(
-"click",
-sendMessage
-);
-
-
-
-/* ENTER KEY */
-
-input.addEventListener(
-"keydown",
-function(e){
-
-if(e.key === "Enter"){
-
-sendMessage();
-
-}
-
-});
-
-
-
-/* =========================
-   QUICK BUTTONS
-========================= */
-
-document
-.querySelectorAll(".quick")
-.forEach(function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-input.value =
-button.dataset.text;
-
-sendMessage();
-
-});
-
-});
-
-
-
-/* =========================
-   VOICE RECOGNITION
-========================= */
-
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-
-let recognition = null;
-
-
-if(SpeechRecognition){
-
-recognition =
-new SpeechRecognition();
-
-recognition.lang =
-"en-IN";
-
-recognition.continuous =
-false;
-
-recognition.interimResults =
-false;
-
-
-recognition.onstart =
-function(){
-
-statusText.innerHTML =
-"🔴 Listening...";
-
-micBtn.innerHTML =
-"🔴";
-
-};
-
-
-recognition.onresult =
-function(event){
-
-const spoken =
-event
-.results[0][0]
-.transcript;
-
-input.value =
-spoken;
-
-statusText.innerHTML =
-"🟢 Ready to talk";
-
-micBtn.innerHTML =
-"🎤";
-
-sendMessage();
-
-};
-
-
-recognition.onerror =
-function(){
-
-statusText.innerHTML =
-"🟢 Ready to talk";
-
-micBtn.innerHTML =
-"🎤";
-
-};
-
-
-recognition.onend =
-function(){
-
-statusText.innerHTML =
-"🟢 Ready to talk";
-
-micBtn.innerHTML =
-"🎤";
-
-};
-
-}
-
-
-
-/* =========================
-   MIC BUTTON
-========================= */
-
-micBtn.addEventListener(
-"click",
-function(){
-
-if(!recognition){
-
-alert(
-"Voice recognition is not supported in this browser."
-);
-
-return;
-
-}
-
-
-try{
-
-recognition.start();
-
-}catch(error){
-
-console.log(error);
-
-}
-
-});
-
-
+checkServer();
 
 </script>
 
-
 </body>
-
 </html>
