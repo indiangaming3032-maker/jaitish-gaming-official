@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JAITISH ADDITION MASTER</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    background:
+    radial-gradient(circle at 20% 20%,#123b70,transparent 30%),
+    radial-gradient(circle at 80% 80%,#45006b,transparent 30%),
+    #02030a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+}
+
+.game{
+    width:100%;
+    max-width:720px;
+    background:rgba(5,8,20,.96);
+    border:1px solid #00eaff;
+    border-radius:25px;
+    padding:22px;
+    box-shadow:0 0 18px #00eaff,0 0 55px #7b00ff66;
+}
+
+.logo{
+    text-align:center;
+    color:#00eaff;
+    letter-spacing:4px;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+h1{
+    text-align:center;
+    font-size:32px;
+    text-shadow:0 0 10px #00eaff,0 0 25px #7b00ff;
+}
+
+.subtitle{
+    text-align:center;
+    color:#999;
+    margin:8px 0 20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-bottom:15px;
+}
+
+.stat{
+    background:#090d20;
+    border:1px solid #283259;
+    border-radius:12px;
+    padding:9px 3px;
+    text-align:center;
+}
+
+.stat span{
+    display:block;
+    color:#777;
+    font-size:9px;
+}
+
+.stat b{
+    display:block;
+    color:#00eaff;
+    font-size:17px;
+    margin-top:4px;
+}
+
+.progress{
+    height:7px;
+    background:#171a2c;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:18px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#00eaff,#7b00ff);
+    transition:.3s;
+}
+
+.question-box{
+    text-align:center;
+    background:#080c1d;
+    border:1px solid #2c345d;
+    border-radius:22px;
+    padding:25px 15px;
+}
+
+.level{
+    color:#b98cff;
+    letter-spacing:2px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.problem{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin:10px 0 25px;
+}
+
+.number{
+    min-width:120px;
+    padding:15px 10px;
+    border-radius:16px;
+    background:#0d1430;
+    border:1px solid #00eaff;
+    color:#fff;
+    font-size:38px;
+    font-weight:bold;
+    text-shadow:0 0 12px #00eaff;
+}
+
+.plus{
+    font-size:48px;
+    font-weight:bold;
+    color:#00ffb3;
+    text-shadow:0 0 15px #00ffb3;
+}
+
+.equals{
+    font-size:42px;
+    color:#aaa;
+}
+
+.question-mark{
+    font-size:42px;
+    color:#ffd700;
+    text-shadow:0 0 12px #ffd700;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.answer{
+    min-height:62px;
+    border-radius:15px;
+    border:1px solid #35406e;
+    background:#0b1026;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.answer:hover:not(:disabled){
+    border-color:#00eaff;
+    transform:translateY(-2px);
+    box-shadow:0 0 18px #00eaff66;
+}
+
+.correct{
+    background:#064d42!important;
+    border-color:#00ffb3!important;
+    box-shadow:0 0 18px #00ffb388;
+}
+
+.wrong{
+    background:#571c2b!important;
+    border-color:#ff416c!important;
+    box-shadow:0 0 18px #ff416c88;
+}
+
+.timer{
+    height:7px;
+    background:#191c2d;
+    border-radius:20px;
+    margin-top:18px;
+    overflow:hidden;
+}
+
+.timer-bar{
+    width:100%;
+    height:100%;
+    background:#00eaff;
+}
+
+.message{
+    min-height:28px;
+    margin-top:12px;
+    color:#bbb;
+}
+
+.main-btn{
+    border:0;
+    padding:14px 28px;
+    border-radius:15px;
+    background:linear-gradient(90deg,#00eaff,#7b00ff);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 20px #00eaff55;
+}
+
+#nextBtn{
+    display:none;
+    margin-top:12px;
+}
+
+.start-screen,.result{
+    text-align:center;
+    padding:25px 5px;
+}
+
+.start-screen h2{
+    font-size:25px;
+}
+
+.info{
+    color:#aaa;
+    line-height:1.8;
+    margin:18px 0 25px;
+}
+
+.result{
+    display:none;
+}
+
+.final-score{
+    color:#ffd700;
+    font-size:42px;
+    margin:15px;
+    text-shadow:0 0 18px #ffd700;
+}
+
+.final-info{
+    color:#aaa;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+@media(max-width:550px){
+    .game{padding:16px}
+
+    h1{font-size:27px}
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .problem{
+        gap:8px;
+    }
+
+    .number{
+        min-width:90px;
+        font-size:29px;
+    }
+
+    .plus{
+        font-size:38px;
+    }
+
+    .equals{
+        font-size:32px;
+    }
+
+    .question-mark{
+        font-size:34px;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+<div class="logo">🎮 JAITISH GAMING</div>
+
+<h1>➕ ADDITION MASTER</h1>
+
+<div class="subtitle">
+RANDOM NUMBERS • 100 LEVELS • BEAT YOUR SCORE
+</div>
+
+
+<!-- START -->
+
+<div id="startScreen" class="start-screen">
+
+<h2>🔥 READY?</h2>
+
+<p class="info">
+Every level gets a new random addition.<br>
+Numbers become harder as you level up.<br>
+❤️ 3 Lives • 💎 Coins • ⚡ Combo • ⏱️ Timer
+</p>
+
+<button id="startBtn" class="main-btn">
+START GAME 🚀
+</button>
+
+</div>
+
+
+<!-- GAME -->
+
+<div id="gameScreen" style="display:none">
+
+<div class="stats">
+
+<div class="stat">
+<span>LEVEL</span>
+<b id="level">1</b>
+</div>
+
+<div class="stat">
+<span>SCORE</span>
+<b id="score">0</b>
+</div>
+
+<div class="stat">
+<span>COINS</span>
+<b id="coins">0</b>
+</div>
+
+<div class="stat">
+<span>LIVES</span>
+<b id="lives">❤️❤️❤️</b>
+</div>
+
+<div class="stat">
+<span>COMBO</span>
+<b id="combo">x0</b>
+</div>
+
+</div>
+
+
+<div class="progress">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+
+<div class="question-box">
+
+<div id="levelText" class="level">
+LEVEL 1
+</div>
+
+
+<div class="problem">
+
+<div id="num1" class="number">12</div>
+
+<div class="plus">＋</div>
+
+<div id="num2" class="number">8</div>
+
+<div class="equals">=</div>
+
+<div class="question-mark">?</div>
+
+</div>
+
+
+<div id="answers" class="answers"></div>
+
+
+<div class="timer">
+<div id="timerBar" class="timer-bar"></div>
+</div>
+
+
+<div id="message" class="message"></div>
+
+
+<button id="nextBtn" class="main-btn">
+NEXT LEVEL ➜
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div id="resultScreen" class="result">
+
+<h2>🏆 GAME OVER</h2>
+
+<div id="finalScore" class="final-score">
+0
+</div>
+
+<p id="finalInfo" class="final-info"></p>
+
+<button id="restartBtn" class="main-btn">
+PLAY AGAIN 🔄
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/*
+========================================
+JAITISH ADDITION MASTER
+100 RANDOM LEVELS
+========================================
+*/
+
+const TOTAL_LEVELS = 100;
+
+let currentLevel = 0;
+let score = 0;
+let coins = 0;
+let lives = 3;
+let combo = 0;
+let bestCombo = 0;
+
+let timer;
+let timeLeft;
+
+let currentAnswer;
+
+
+/* ELEMENTS */
+
+const startScreen =
+document.getElementById("startScreen");
+
+const gameScreen =
+document.getElementById("gameScreen");
+
+const resultScreen =
+document.getElementById("resultScreen");
+
+const levelEl =
+document.getElementById("level");
+
+const scoreEl =
+document.getElementById("score");
+
+const coinsEl =
+document.getElementById("coins");
+
+const livesEl =
+document.getElementById("lives");
+
+const comboEl =
+document.getElementById("combo");
+
+const num1El =
+document.getElementById("num1");
+
+const num2El =
+document.getElementById("num2");
+
+const answersEl =
+document.getElementById("answers");
+
+const messageEl =
+document.getElementById("message");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const timerBar =
+document.getElementById("timerBar");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const startBtn =
+document.getElementById("startBtn");
+
+const restartBtn =
+document.getElementById("restartBtn");
+
+
+/*
+========================================
+RANDOM NUMBER
+========================================
+*/
+
+function randomNumber(min,max){
+
+    return Math.floor(
+        Math.random()*(max-min+1)
+    )+min;
+
+}
+
+
+/*
+========================================
+DIFFICULTY
+========================================
+*/
+
+function getMaxNumber(){
+
+    /*
+    Level 1-10:
+    1 to 20
+
+    Level 11-20:
+    1 to 50
+
+    Level 21-40:
+    1 to 100
+
+    Level 41-60:
+    1 to 250
+
+    Level 61-80:
+    1 to 500
+
+    Level 81-100:
+    1 to 1000
+    */
+
+    if(currentLevel < 10){
+        return 20;
+    }
+
+    if(currentLevel < 20){
+        return 50;
+    }
+
+    if(currentLevel < 40){
+        return 100;
+    }
+
+    if(currentLevel < 60){
+        return 250;
+    }
+
+    if(currentLevel < 80){
+        return 500;
+    }
+
+    return 1000;
+
+}
+
+
+/*
+========================================
+GENERATE RANDOM ADDITION
+========================================
+*/
+
+function generateQuestion(){
+
+    const max =
+    getMaxNumber();
+
+
+    const number1 =
+    randomNumber(1,max);
+
+
+    const number2 =
+    randomNumber(1,max);
+
+
+    currentAnswer =
+    number1 + number2;
+
+
+    num1El.textContent =
+    number1;
+
+
+    num2El.textContent =
+    number2;
+
+
+    createOptions(currentAnswer);
+
+}
+
+
+/*
+========================================
+CREATE 4 RANDOM ANSWERS
+========================================
+*/
+
+function createOptions(correct){
+
+    answersEl.innerHTML="";
+
+
+    const options =
+    new Set();
+
+
+    options.add(correct);
+
+
+    while(options.size < 4){
+
+        const difference =
+        randomNumber(
+            1,
+            Math.max(10,
+            Math.floor(correct*0.25))
+        );
+
+
+        let wrong;
+
+
+        if(Math.random() < 0.5){
+
+            wrong =
+            correct + difference;
+
+        }else{
+
+            wrong =
+            correct - difference;
+
+        }
+
+
+        if(wrong > 0){
+
+            options.add(wrong);
+
+        }
+
+    }
+
+
+    const shuffled =
+    Array.from(options);
+
+
+    /*
+    SHUFFLE
+    */
+
+    for(
+        let i=shuffled.length-1;
+        i>0;
+        i--
+    ){
+
+        const j =
+        Math.floor(
+            Math.random()*(i+1)
+        );
+
+
+        [
+            shuffled[i],
+            shuffled[j]
+        ] =
+        [
+            shuffled[j],
+            shuffled[i]
+        ];
+
+    }
+
+
+    shuffled.forEach(answer=>{
+
+        const button =
+        document.createElement("button");
+
+
+        button.className =
+        "answer";
+
+
+        button.textContent =
+        answer;
+
+
+        button.addEventListener(
+            "click",
+            ()=>{
+                checkAnswer(answer,button);
+            }
+        );
+
+
+        answersEl.appendChild(button);
+
+    });
+
+}
+
+
+/*
+========================================
+START GAME
+========================================
+*/
+
+function startGame(){
+
+    clearInterval(timer);
+
+    currentLevel=0;
+    score=0;
+    coins=0;
+    lives=3;
+    combo=0;
+    bestCombo=0;
+
+
+    startScreen.style.display="none";
+
+    resultScreen.style.display="none";
+
+    gameScreen.style.display="block";
+
+
+    loadLevel();
+
+}
+
+
+/*
+========================================
+LOAD LEVEL
+========================================
+*/
+
+function loadLevel(){
+
+    clearInterval(timer);
+
+    nextBtn.style.display="none";
+
+    messageEl.textContent="";
+
+
+    document.getElementById(
+        "levelText"
+    ).textContent =
+    "LEVEL "+(currentLevel+1);
+
+
+    generateQuestion();
+
+    updateStats();
+
+    startTimer();
+
+}
+
+
+/*
+========================================
+STATS
+========================================
+*/
+
+function updateStats(){
+
+    levelEl.textContent =
+    currentLevel+1;
+
+    scoreEl.textContent =
+    score;
+
+    coinsEl.textContent =
+    coins;
+
+    livesEl.textContent =
+    "❤️".repeat(lives)+
+    "🖤".repeat(3-lives);
+
+    comboEl.textContent =
+    "x"+combo;
+
+
+    progressBar.style.width =
+    ((currentLevel+1)/
+    TOTAL_LEVELS*100)+"%";
+
+}
+
+
+/*
+========================================
+TIMER
+========================================
+*/
+
+function startTimer(){
+
+    /*
+    Later levels get less time.
+    */
+
+    timeLeft =
+    Math.max(
+        4,
+        12 -
+        Math.floor(currentLevel/15)
+    );
+
+
+    const total =
+    timeLeft;
+
+
+    timerBar.style.width="100%";
+
+
+    timer =
+    setInterval(()=>{
+
+        timeLeft -= 0.1;
+
+
+        let percent =
+        (timeLeft/total)*100;
+
+
+        if(percent < 0){
+            percent=0;
+        }
+
+
+        timerBar.style.width =
+        percent+"%";
+
+
+        if(timeLeft <= 0){
+
+            clearInterval(timer);
+
+            disableAnswers();
+
+            lives--;
+
+            combo=0;
+
+
+            messageEl.textContent =
+            "⏰ TIME UP! -1 LIFE";
+
+
+            updateStats();
+
+
+            if(lives <= 0){
+
+                setTimeout(
+                    endGame,
+                    600
+                );
+
+            }else{
+
+                nextBtn.style.display =
+                "inline-block";
+
+            }
+
+        }
+
+    },100);
+
+}
+
+
+/*
+========================================
+CHECK ANSWER
+========================================
+*/
+
+function checkAnswer(answer,button){
+
+    clearInterval(timer);
+
+    disableAnswers();
+
+
+    if(answer === currentAnswer){
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        combo++;
+
+
+        if(combo > bestCombo){
+            bestCombo=combo;
+        }
+
+
+        const base =
+        100 +
+        currentLevel*10;
+
+
+        const comboBonus =
+        combo*25;
+
+
+        const timeBonus =
+        Math.floor(timeLeft)*10;
+
+
+        const earned =
+        base+
+        comboBonus+
+        timeBonus;
+
+
+        score += earned;
+
+
+        coins += 2;
+
+
+        messageEl.textContent =
+        "🔥 CORRECT! +"+
+        earned+
+        " POINTS  💎 +2 COINS";
+
+
+    }else{
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        lives--;
+
+        combo=0;
+
+
+        /*
+        Only reveal correct answer
+        after a wrong click.
+        */
+
+        document
+        .querySelectorAll(".answer")
+        .forEach(btn=>{
+
+            if(
+                Number(btn.textContent) ===
+                currentAnswer
+            ){
+
+                btn.classList.add(
+                    "correct"
+                );
+
+            }
+
+        });
+
+
+        messageEl.textContent =
+        "❌ WRONG! -1 LIFE";
+
+
+        if(lives <= 0){
+
+            updateStats();
+
+            setTimeout(
+                endGame,
+                600
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    updateStats();
+
+    nextBtn.style.display =
+    "inline-block";
+
+}
+
+
+/*
+========================================
+DISABLE BUTTONS
+========================================
+*/
+
+function disableAnswers(){
+
+    document
+    .querySelectorAll(".answer")
+    .forEach(btn=>{
+        btn.disabled=true;
+    });
+
+}
+
+
+/*
+========================================
+NEXT LEVEL
+========================================
+*/
+
+function nextLevel(){
+
+    currentLevel++;
+
+
+    if(currentLevel >= TOTAL_LEVELS){
+
+        endGame();
+
+    }else{
+
+        loadLevel();
+
+    }
+
+}
+
+
+/*
+========================================
+END GAME
+========================================
+*/
+
+function endGame(){
+
+    clearInterval(timer);
+
+
+    gameScreen.style.display="none";
+
+    resultScreen.style.display="block";
+
+
+    const oldHigh =
+    Number(
+        localStorage.getItem(
+            "jaitishAdditionHighScore"
+        ) || 0
+    );
+
+
+    const newRecord =
+    score > oldHigh;
+
+
+    if(newRecord){
+
+        localStorage.setItem(
+            "jaitishAdditionHighScore",
+            score
+        );
+
+    }
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+    score+" POINTS";
+
+
+    document.getElementById(
+        "finalInfo"
+    ).innerHTML =
+
+    "💎 Coins: "+coins+
+    "<br>⚡ Best Combo: x"+bestCombo+
+    "<br>🏆 High Score: "+
+    Math.max(score,oldHigh)+
+    "<br><br>"+
+    (
+        newRecord
+        ?
+        "👑 NEW HIGH SCORE!"
+        :
+        "🔥 TRY AGAIN AND BEAT IT!"
+    );
+
+}
+
+
+/*
+========================================
+BUTTONS
+========================================
+*/
+
+startBtn.addEventListener(
+    "click",
+    startGame
+);
+
+
+nextBtn.addEventListener(
+    "click",
+    nextLevel
+);
+
+
+restartBtn.addEventListener(
+    "click",
+    startGame
+);
+
+
+/*
+========================================
+KEYBOARD
+1 / 2 / 3 / 4
+========================================
+*/
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            gameScreen.style.display !==
+            "block"
+        ){
+            return;
+        }
+
+
+        if(e.key==="1"){
+            chooseAnswer(0);
+        }
+
+        if(e.key==="2"){
+            chooseAnswer(1);
+        }
+
+        if(e.key==="3"){
+            chooseAnswer(2);
+        }
+
+        if(e.key==="4"){
+            chooseAnswer(3);
+        }
+
+
+        if(
+            e.code==="Space" &&
+            nextBtn.style.display !==
+            "none"
+        ){
+
+            nextLevel();
+
+        }
+
+    }
+);
+
+
+function chooseAnswer(index){
+
+    const buttons =
+    document.querySelectorAll(
+        ".answer"
+    );
+
+
+    if(
+        buttons[index] &&
+        !buttons[index].disabled
+    ){
+
+        buttons[index].click();
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
