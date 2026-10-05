@@ -278,6 +278,28 @@ section{
 
 .game-card{
     border:1px solid var(--theme);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,234,255,.08),
+            rgba(123,0,255,.08)
+        ),
+        rgba(10,15,25,.82);
+
+    box-shadow:
+        0 0 15px rgba(0,234,255,.12),
+        inset 0 0 20px rgba(123,0,255,.05);
+}
+
+.game-card:hover{
+    transform:translateY(-12px) scale(1.03);
+
+    border-color:var(--theme);
+
+    box-shadow:
+        0 0 20px var(--theme),
+        0 0 45px rgba(123,0,255,.25),
+        inset 0 0 25px rgba(0,234,255,.08);
 }
 
 .play-button{
@@ -389,7 +411,9 @@ code{
     text-align:center;
     max-width:850px;
     margin:auto;
-}.struggle-bio{
+}
+
+.struggle-bio{
     margin-top:25px;
     font-size:14px;
     letter-spacing:2px;
@@ -865,6 +889,24 @@ how fast you can react to the signal.
 </div>
 
 
+<div class="card game-card">
+
+<h3>
+🧩 JAITISH ADDITION MASTER
+</h3>
+
+<p>
+100 levels of challenging addition.
+New numbers every time you play.
+</p>
+
+<a href="./puzzle.html" class="play-button">
+▶ PLAY PUZZLE
+</a>
+
+</div>
+
+
 <div class="card">
 
 <h3>
@@ -953,7 +995,7 @@ Data store karne ke liye variables use hote hain.
 </p>
 
 <code>name = "Jaitish"
-age = 19
+age = 14
 
 print(name)
 print(age)</code>
@@ -1225,10 +1267,12 @@ Gaming • Coding • Creativity • Learning • Fun
 The goal is to keep learning, creating new projects
 and building better games step by step.
 </p>
+
 <p class="struggle-bio">
 started with nothing, learned through struggle,
 and kept building — one dream at a time.
 </p>
+
 </div>
 
 </section>
