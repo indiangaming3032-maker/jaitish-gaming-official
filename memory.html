@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JAITISH MEMORY MASTER</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    background:#03040b;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.game{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+}
+
+h1{
+    color:#00eaff;
+    font-size:clamp(32px,8vw,60px);
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 30px #7b00ff;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.stat{
+    padding:10px 16px;
+    border:1px solid #00eaff;
+    border-radius:15px;
+    background:#080d18;
+    box-shadow:0 0 12px rgba(0,234,255,.2);
+}
+
+.board{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    max-width:520px;
+    margin:auto;
+}
+
+.card{
+    aspect-ratio:1;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#111827,#080d18);
+    border:2px solid #7b00ff;
+    color:transparent;
+    font-size:35px;
+    cursor:pointer;
+    box-shadow:0 0 12px rgba(123,0,255,.3);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:scale(1.04);
+    box-shadow:
+        0 0 15px #00eaff,
+        0 0 30px #7b00ff;
+}
+
+.card.flipped,
+.card.matched{
+    background:#071a22;
+    color:white;
+    border-color:#00eaff;
+}
+
+.card.matched{
+    box-shadow:0 0 20px #00eaff;
+}
+
+button.start{
+    margin-top:25px;
+    padding:13px 28px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(90deg,#00eaff,#7b00ff);
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(0,234,255,.35);
+}
+
+.message{
+    margin-top:18px;
+    color:#ffd700;
+    min-height:24px;
+}
+
+@media(max-width:500px){
+    .board{
+        gap:8px;
+    }
+
+    .card{
+        border-radius:12px;
+        font-size:27px;
+    }
+
+    .stat{
+        padding:8px 11px;
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>🧠 JAITISH MEMORY MASTER</h1>
+
+    <p class="subtitle">
+        Match the same cards and beat your high score!
+    </p>
+
+    <div class="stats">
+        <div class="stat">⭐ Score: <span id="score">0</span></div>
+        <div class="stat">❤️ Lives: <span id="lives">3</span></div>
+        <div class="stat">🔥 Combo: <span id="combo">0</span></div>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <button class="start" id="startBtn">
+        ▶ START GAME
+    </button>
+
+    <div class="message" id="message">
+        Press START GAME
+    </div>
+
+</div>
+
+<script>
+
+const board = document.getElementById("board");
+const scoreText = document.getElementById("score");
+const livesText = document.getElementById("lives");
+const comboText = document.getElementById("combo");
+const message = document.getElementById("message");
+const startBtn = document.getElementById("startBtn");
+
+const symbols = [
+    "🎮","🏎️","🏍️","🚀",
+    "⚡","👑","🔥","💎"
+];
+
+let cards = [];
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+
+let score = 0;
+let lives = 3;
+let combo = 0;
+let matched = 0;
+
+function shuffle(array){
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function startGame(){
+
+    board.innerHTML = "";
+
+    score = 0;
+    lives = 3;
+    combo = 0;
+    matched = 0;
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+
+    scoreText.textContent = score;
+    livesText.textContent = lives;
+    comboText.textContent = combo;
+
+    message.textContent = "Find all matching pairs!";
+
+    cards = shuffle([...symbols,...symbols]);
+
+    cards.forEach((symbol,index)=>{
+
+        const card = document.createElement("button");
+
+        card.className = "card";
+        card.textContent = symbol;
+        card.dataset.symbol = symbol;
+        card.dataset.index = index;
+
+        card.addEventListener("click",()=>{
+            flipCard(card);
+        });
+
+        board.appendChild(card);
+
+    });
+
+}
+
+function flipCard(card){
+
+    if(lockBoard) return;
+    if(card.classList.contains("flipped")) return;
+    if(card.classList.contains("matched")) return;
+
+    card.classList.add("flipped");
+
+    if(!firstCard){
+
+        firstCard = card;
+        return;
+    }
+
+    secondCard = card;
+
+    checkMatch();
+}
+
+function checkMatch(){
+
+    const match =
+        firstCard.dataset.symbol ===
+        secondCard.dataset.symbol;
+
+    if(match){
+
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+
+        score += 10;
+        combo++;
+        matched += 2;
+
+        scoreText.textContent = score;
+        comboText.textContent = combo;
+
+        message.textContent = "🔥 MATCH!";
+
+        resetTurn();
+
+        if(matched === cards.length){
+
+            message.textContent =
+                "🏆 YOU WON! Great Memory!";
+
+            startBtn.textContent = "🔄 PLAY AGAIN";
+        }
+
+    }else{
+
+        combo = 0;
+        lives--;
+
+        livesText.textContent = lives;
+        comboText.textContent = combo;
+
+        message.textContent = "❌ Not a match!";
+
+        lockBoard = true;
+
+        setTimeout(()=>{
+
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
+
+            resetTurn();
+
+            if(lives <= 0){
+
+                message.textContent =
+                    "💀 GAME OVER!";
+
+                lockBoard = true;
+            }
+
+        },700);
+    }
+}
+
+function resetTurn(){
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+}
+
+startBtn.addEventListener("click",startGame);
+
+</script>
+
+</body>
+</html>
