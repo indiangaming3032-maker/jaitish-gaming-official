@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JAITISH GAMING | Official Website</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 :root{--theme:#00eaff;--theme2:#7b00ff}
@@ -49,6 +48,50 @@ section{padding:95px 7%}
 .python-card h3{color:#b58aff;text-shadow:0 0 8px #7b00ff}
 .python-card p{margin-bottom:8px}
 code{display:block;position:relative;margin-top:15px;padding:15px;background:#010207;border-radius:10px;border:1px solid rgba(0,234,255,.2);color:#00eaff;font-family:Consolas,monospace;white-space:pre-wrap;line-height:1.6;overflow-wrap:anywhere}
+
+/* NEW: LEARN ABOUT CODING NEON SECTION */
+.coding-zone{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:radial-gradient(ellipse at 15% 20%,#00eaff16,transparent 45%),
+ radial-gradient(ellipse at 85% 80%,#7b00ff25,transparent 45%),#050611;
+ border-top:1px solid #00eaff55;
+ border-bottom:1px solid #7b00ff55;
+}
+.coding-zone:before{
+ content:"";position:absolute;inset:15px;
+ border:1px solid #00eaff20;border-radius:25px;
+ pointer-events:none;z-index:-1;
+}
+.coding-inner{max-width:1050px;margin:auto;text-align:center}
+.coding-label{
+ display:inline-block;padding:8px 16px;border:1px solid var(--theme);
+ border-radius:30px;color:var(--theme);letter-spacing:2px;
+ font-size:12px;box-shadow:0 0 15px #00eaff25;margin-bottom:20px;
+}
+.coding-heading{
+ font-size:clamp(32px,6vw,58px);line-height:1.15;
+ color:white;text-shadow:0 0 15px #00eaff70,0 0 35px #7b00ff70;
+ margin-bottom:18px;
+}
+.coding-heading span{color:var(--theme)}
+.coding-description{max-width:680px;margin:0 auto 25px;color:#b8c4df;line-height:1.9}
+.coding-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin:30px 0}
+.coding-mini{
+ padding:20px 12px;background:#0b1020;border:1px solid #25334e;
+ border-radius:15px;transition:.3s;
+}
+.coding-mini:hover{transform:translateY(-6px);border-color:var(--theme);box-shadow:0 0 20px #00eaff25}
+.coding-mini .icon{font-size:32px;margin-bottom:8px}
+.coding-mini h3{color:var(--theme);font-size:16px;margin-bottom:5px}
+.coding-mini p{font-size:12px;color:#9baac5;line-height:1.6}
+.coding-open{
+ display:inline-block;padding:15px 27px;border:1px solid #00eaff;
+ border-radius:12px;background:linear-gradient(100deg,#00eaff18,#7b00ff28);
+ color:white;font-weight:bold;text-decoration:none;letter-spacing:1px;
+ box-shadow:0 0 15px #00eaff30, inset 0 0 12px #7b00ff15;transition:.3s;
+}
+.coding-open:hover{background:#00eaff;color:#03040b;box-shadow:0 0 30px #00eaff90;transform:translateY(-4px)}
+.coding-note{font-size:12px;color:#7785a5;margin-top:16px}
 
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;max-width:1100px;margin:auto}
 .gallery-item{height:220px;border-radius:18px;overflow:hidden;border:1px solid var(--theme);background:#080b13;position:relative;box-shadow:0 0 15px rgba(0,234,255,.08);transition:.3s}
@@ -117,6 +160,7 @@ body.midnight{--theme:#536dfe;--theme2:#304ffe}
  .about-tags{justify-content:center}
  .about-quote{text-align:left}
  .gallery-item{height:200px}
+ .coding-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:400px){
  .logo{font-size:16px}
@@ -125,7 +169,6 @@ body.midnight{--theme:#536dfe;--theme2:#304ffe}
 }
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -133,6 +176,7 @@ body.midnight{--theme:#536dfe;--theme2:#304ffe}
  <ul>
   <li><a href="#home">Home</a></li>
   <li><a href="#games">Games</a></li>
+  <li><a href="coding.html">💻 Coding</a></li>
   <li><a href="#python">🐍 Python</a></li>
   <li><a href="#gallery">Gallery</a></li>
   <li><a href="#about">About</a></li>
@@ -149,6 +193,45 @@ body.midnight{--theme:#536dfe;--theme2:#304ffe}
   <a href="#games" class="btn">🎮 EXPLORE GAMES</a>
   <a href="#about" class="btn">👑 ABOUT ME</a>
   <a href="#python" class="btn">🐍 LEARN PYTHON</a>
+  <a href="coding.html" class="btn">💻 LEARN ABOUT CODING</a>
+ </div>
+</section>
+
+<!-- NEW CODING ZONE SECTION -->
+<section id="coding-zone" class="coding-zone">
+ <div class="coding-inner">
+  <div class="coding-label">⚡ JAITISH CODING ACADEMY</div>
+  <h2 class="coding-heading">LEARN ABOUT<br><span>CODING</span></h2>
+  <p class="coding-description">
+   Welcome to your own coding world! Learn programming step by step,
+   practise examples and create your own websites, games and projects.
+  </p>
+
+  <div class="coding-cards">
+   <div class="coding-mini">
+    <div class="icon">🌐</div>
+    <h3>HTML</h3>
+    <p>Build website structure</p>
+   </div>
+   <div class="coding-mini">
+    <div class="icon">🎨</div>
+    <h3>CSS</h3>
+    <p>Design neon websites</p>
+   </div>
+   <div class="coding-mini">
+    <div class="icon">⚡</div>
+    <h3>JavaScript</h3>
+    <p>Create interactive apps</p>
+   </div>
+   <div class="coding-mini">
+    <div class="icon">🐍</div>
+    <h3>Python</h3>
+    <p>Learn logic and games</p>
+   </div>
+  </div>
+
+  <a href="coding.html" class="coding-open">🚀 OPEN LEARN ABOUT CODING</a>
+  <p class="coding-note">LEARN • PRACTICE • CREATE • INNOVATE</p>
  </div>
 </section>
 
@@ -190,7 +273,6 @@ body.midnight{--theme:#536dfe;--theme2:#304ffe}
    <h3>🤝 PRINCE</h3>
    <p>Jaitish Gaming friend and gaming partner. More projects coming soon.</p>
   </div>
-
  </div>
 </section>
 
@@ -283,7 +365,6 @@ if guess == number:
 else:
     print("Try Again!")</code>
   </div>
-
  </div>
 </section>
 
@@ -383,6 +464,5 @@ document.addEventListener("click",function(event){
  if(!event.target.closest(".theme-box")){themeMenu.classList.remove("show");}
 });
 </script>
-
 </body>
 </html>
