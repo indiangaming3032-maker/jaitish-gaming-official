@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAITISH GAMING | Gamer ID Maker</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:22px;font-family:Arial,sans-serif;color:white;
+ background:radial-gradient(circle at top,#18264b,#050610 65%);
+ min-height:100vh
+}
+h1{text-align:center;color:#00eaff;text-shadow:0 0 15px #00eaff}
+.subtitle{text-align:center;color:#ccc}
+.container{max-width:950px;margin:25px auto;display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.panel,.preview{padding:20px;background:#111426;border:1px solid #343c60;
+ border-radius:18px;box-shadow:0 0 20px #00eaff18}
+label{display:block;margin-top:14px;color:#bcefff}
+input,select{
+ width:100%;padding:12px;margin-top:6px;border-radius:9px;
+ border:1px solid #3d4a70;background:#080b17;color:white
+}
+button{border:0;border-radius:10px;padding:12px 15px;margin-top:15px;
+ cursor:pointer;font-weight:bold;background:#00eaff;color:#06101a}
+button:hover{filter:brightness(1.15)}
+.card{
+ --glow:#00eaff;position:relative;overflow:hidden;
+ width:100%;max-width:440px;min-height:245px;margin:12px auto;
+ padding:20px;border:2px solid var(--glow);border-radius:20px;
+ background:linear-gradient(135deg,#10182e,#090b17);
+ box-shadow:0 0 22px color-mix(in srgb,var(--glow) 45%,transparent);
+}
+.card:before{content:"";position:absolute;width:180px;height:180px;
+ border-radius:50%;background:var(--glow);filter:blur(100px);
+ opacity:.2;right:-40px;top:-50px}
+.cardtop,.details{position:relative;display:flex;justify-content:space-between;gap:12px}
+.brand{font-size:13px;letter-spacing:2px;color:var(--glow);font-weight:bold}
+.badge{border:1px solid var(--glow);border-radius:20px;padding:6px 9px;font-size:11px}
+.profile{display:flex;gap:15px;align-items:center;margin-top:24px;position:relative}
+.avatar{width:82px;height:82px;flex-shrink:0;border-radius:15px;object-fit:cover;
+ border:2px solid var(--glow);background:#202941}
+.playername{font-size:23px;font-weight:bold;overflow-wrap:anywhere}
+.tag{color:var(--glow);margin-top:7px;font-size:13px}
+.details{margin-top:23px;border-top:1px solid #ffffff25;padding-top:14px}
+.detail small{display:block;color:#aab4d0;font-size:10px;margin-bottom:5px}
+.detail strong{font-size:13px;overflow-wrap:anywhere}
+.footer{margin-top:17px;font-size:10px;letter-spacing:2px;color:#aab4d0;position:relative}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions button{flex:1}
+.note{font-size:12px;color:#adb6d0;line-height:1.6}
+@media(max-width:400px){body{padding:10px}.card{padding:14px}.playername{font-size:18px}}
+</style>
+</head>
+<body>
+<h1>🎮 GAMER ID MAKER</h1>
+<p class="subtitle">Create your own gaming identity!</p>
+
+<div class="container">
+<section class="panel">
+<h2>🪪 अपनी ID बनाओ</h2>
+
+<label>अपना नाम</label>
+<input id="name" maxlength="28" placeholder="जैसे: Jaitish">
+
+<label>Gamer Tag</label>
+<input id="tag" maxlength="24" placeholder="जैसे: JAITISH_OP">
+
+<label>अपना गेम चुनो</label>
+<select id="game">
+<option>JAITISH RACING</option>
+<option>Free Fire</option>
+<option>Minecraft</option>
+<option>BGMI</option>
+<option>GTA V</option>
+<option>Valorant</option>
+<option>Other Gamer</option>
+</select>
+
+<label>गेमर लेवल</label>
+<select id="level">
+<option value="1">Level 1 — Beginner</option>
+<option value="5">Level 5 — Player</option>
+<option value="10">Level 10 — Pro</option>
+<option value="25">Level 25 — Expert</option>
+<option value="50">Level 50 — Legend</option>
+<option value="99">Level 99 — Champion</option>
+</select>
+
+<label>अपनी फोटो चुनो</label>
+<input id="photo" type="file" accept="image/*">
+
+<label>कार्ड का रंग</label>
+<select id="color">
+<option value="#00eaff">Neon Cyan</option>
+<option value="#a855f7">Purple</option>
+<option value="#ff3355">Red</option>
+<option value="#39ff88">Green</option>
+<option value="#ffcc33">Gold</option>
+<option value="#ff70c8">Pink</option>
+</select>
+
+<div class="actions">
+<button id="save">💾 ID सेव करो</button>
+<button id="download">📥 डाउनलोड</button>
+</div>
+<button id="reset" style="width:100%;background:#ffcc33">नया कार्ड बनाओ</button>
+<p class="note">सेव की गई ID इसी ब्राउज़र में दोबारा खोली जा सकती है। फोटो और कार्ड की
