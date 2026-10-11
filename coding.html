@@ -23,8 +23,8 @@ body{
 body:before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
   background:
-  radial-gradient(ellipse at 10% 10%,#00eaff12,transparent 40%),
-  radial-gradient(ellipse at 90% 30%,#8b5cff20,transparent 45%);
+  radial-gradient(ellipse at 10% 10%,#00eaff20,transparent 40%),
+  radial-gradient(ellipse at 90% 30%,#8b5cff25,transparent 45%);
 }
 a{color:inherit;text-decoration:none}
 button,textarea{font:inherit}
@@ -36,60 +36,124 @@ nav{
   background:#050711ee;border-bottom:1px solid #00eaff45;
   backdrop-filter:blur(15px);
 }
-.logo{font-weight:900;color:var(--cyan);font-size:19px;
-  text-shadow:0 0 15px #00eaff88}
+.logo{
+  font-weight:900;color:var(--cyan);font-size:19px;
+  text-shadow:0 0 15px #00eaff88;
+}
 .navlinks{display:flex;gap:17px;flex-wrap:wrap;font-size:13px}
-.navlinks a:hover{color:var(--cyan)}
+.navlinks a{transition:.25s}
+.navlinks a:hover{
+  color:var(--cyan);
+  text-shadow:0 0 12px var(--cyan);
+}
 .hero{text-align:center;padding:80px 18px 55px}
 .tag{
   display:inline-block;border:1px solid var(--cyan);
   color:var(--cyan);padding:6px 14px;border-radius:30px;
-  box-shadow:0 0 15px #00eaff22;font-size:12px;
+  box-shadow:0 0 15px #00eaff35;font-size:12px;
 }
-h1{font-size:clamp(34px,7vw,68px);line-height:1.1;
-  margin:22px 0;background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));
+h1{
+  font-size:clamp(34px,7vw,68px);line-height:1.1;
+  margin:22px 0;
+  background:linear-gradient(90deg,#fff,var(--cyan),var(--purple),#fff);
+  background-size:250% auto;
   color:transparent;background-clip:text;
-  filter:drop-shadow(0 0 18px #00eaff30)}
+  animation:titleShine 5s linear infinite;
+}
+@keyframes titleShine{
+  to{background-position:250% center}
+}
 h2{font-size:clamp(24px,4vw,34px);margin-top:0}
-h2 span{color:var(--cyan)}
+h2 span{color:var(--cyan);text-shadow:0 0 15px #00eaff50}
 p{color:var(--muted)}
 .hero p{max-width:650px;margin:0 auto 25px}
 .btn{
   display:inline-block;padding:11px 18px;border-radius:9px;
   border:1px solid var(--cyan);background:#00eaff12;
   color:white;font-weight:bold;margin:5px;
-  box-shadow:0 0 14px #00eaff18;transition:.2s;
+  box-shadow:0 0 14px #00eaff18;
+  transition:transform .25s,box-shadow .25s,background .25s;
+  position:relative;overflow:hidden;
 }
-.btn:hover{background:var(--cyan);color:#020611;
-  box-shadow:0 0 25px #00eaff80;transform:translateY(-2px)}
+.btn:before{
+  content:"";position:absolute;top:0;left:-130%;
+  width:65%;height:100%;
+  background:linear-gradient(100deg,transparent,#ffffff85,transparent);
+  transform:skewX(-22deg);
+  transition:left .6s;pointer-events:none;
+}
+.btn:hover:before{left:150%}
+.btn:hover{
+  background:var(--cyan);color:#020611;
+  box-shadow:0 0 12px var(--cyan),0 0 30px #00eaff80;
+  transform:translateY(-3px);
+}
 .btn.purple{border-color:var(--purple);background:#8b5cff18}
+.btn.purple:hover{
+  background:var(--purple);color:white;
+  box-shadow:0 0 25px #8b5cff90;
+}
 .wrap{width:min(1100px,90%);margin:auto}
 section{padding:52px 0;scroll-margin-top:85px}
 .center{text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
 .card{
   background:linear-gradient(145deg,#101a30,#090d19);
   border:1px solid #263550;border-radius:15px;padding:22px;
-  transition:.25s;position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+  position:relative;overflow:hidden;
 }
-.card:hover{transform:translateY(-5px);border-color:var(--cyan);
-  box-shadow:0 0 22px #00eaff20}
-.card h3{margin:8px 0;color:var(--cyan)}
+/* Moving shine across every card */
+.card:before{
+  content:"";position:absolute;top:-50%;left:-120%;
+  width:65%;height:200%;
+  background:linear-gradient(
+    110deg,transparent,#ffffff12,#00eaff70,#ffffff20,transparent
+  );
+  transform:rotate(18deg);
+  transition:left .75s ease;
+  pointer-events:none;
+}
+.card:hover:before{left:160%}
+.card:hover{
+  transform:translateY(-7px) scale(1.015);
+  border-color:var(--cyan);
+  box-shadow:0 0 12px #00eaff60,0 0 30px #00eaff25,
+  inset 0 0 15px #00eaff10;
+}
+.card h3{
+  margin:8px 0;color:var(--cyan);
+  text-shadow:0 0 12px #00eaff25;
+}
 .emoji{font-size:34px}
 .small{font-size:13px;color:var(--muted)}
-.pill{display:inline-block;border:1px solid #35445e;
-  padding:3px 9px;border-radius:20px;font-size:11px;margin:3px}
+.pill{
+  display:inline-block;border:1px solid #35445e;
+  padding:3px 9px;border-radius:20px;font-size:11px;margin:3px;
+}
 .panel{
   padding:23px;border:1px solid #263550;border-radius:16px;
   background:var(--panel);box-shadow:0 0 22px #8b5cff0b;
 }
+.panel:hover{border-color:#00eaff55}
 .editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 textarea{
   width:100%;min-height:260px;resize:vertical;
   color:#a8ffcf;background:#030711;border:1px solid #35445e;
   border-radius:10px;padding:14px;font:14px/1.6 Consolas,monospace;
 }
-iframe{width:100%;height:300px;background:white;border:0;border-radius:10px}
+textarea:focus{
+  outline:none;border-color:var(--cyan);
+  box-shadow:0 0 15px #00eaff30;
+}
+iframe{
+  width:100%;height:300px;background:white;
+  border:1px solid #35445e;border-radius:10px;
+}
 label{display:block;margin:8px 0;color:var(--cyan);font-weight:bold}
 input[type=radio]{accent-color:var(--cyan)}
 .quizq{border-bottom:1px solid #29364e;padding:12px 0}
@@ -97,12 +161,20 @@ input[type=radio]{accent-color:var(--cyan)}
 #quizResult{font-weight:bold;color:var(--cyan);margin-top:12px}
 footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
 #notice{color:var(--cyan);min-height:24px}
+#pythonMessage{color:var(--cyan)}
 @media(max-width:700px){
- nav{justify-content:center}
- .navlinks{justify-content:center;gap:12px}
- .hero{padding-top:55px}
- .editorgrid{grid-template-columns:1fr}
- textarea{min-height:230px}
+  nav{justify-content:center}
+  .navlinks{justify-content:center;gap:12px}
+  .hero{padding-top:55px}
+  .editorgrid{grid-template-columns:1fr}
+  textarea{min-height:230px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
@@ -114,7 +186,7 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
     <a href="index.html">Home</a>
     <a href="#learn">Learn</a>
     <a href="#playground">Editor</a>
-    <a href="#python">Python</a>
+    <a href="#pythonPractice">Python</a>
     <a href="#quiz">Quiz</a>
     <a href="#projects">Projects</a>
   </div>
@@ -125,7 +197,7 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
   <h1>LEARN ABOUT<br>CODING</h1>
   <p>Learn • Practice • Create • Innovate</p>
   <p>Apni coding journey aaj se shuru karo!
-     HTML se website banao, CSS se design karo aur JavaScript se use interactive banao.</p>
+  HTML se website banao, CSS se design karo aur JavaScript se use interactive banao.</p>
   <a class="btn" href="#learn">START LEARNING 🚀</a>
   <a class="btn purple" href="#playground">OPEN CODE EDITOR 💻</a>
 </header>
@@ -137,6 +209,7 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
     <h2>Choose Your <span>Language</span></h2>
     <p>Apni pasand ka topic chuno aur basics se seekhna shuru karo.</p>
   </div>
+
   <div class="grid">
     <article class="card">
       <div class="emoji">🌐</div><h3>HTML</h3>
@@ -146,8 +219,9 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
       <p><b>Example:</b></p>
       <code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code>
       <p>HTML page par heading dikhata hai.</p>
-      <a class="btn" href="#playground">Try HTML</a>
+      <button class="btn lessonBtn" data-lesson="html">Try HTML</button>
     </article>
+
     <article class="card">
       <div class="emoji">🎨</div><h3>CSS</h3>
       <p>Website ko colorful aur attractive banana seekho.</p>
@@ -156,8 +230,9 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
       <p><b>Example:</b></p>
       <code>h1 { color: cyan; }</code>
       <p>CSS heading ka rang badal sakta hai.</p>
-      <a class="btn" href="#playground">Try CSS</a>
+      <button class="btn lessonBtn" data-lesson="css">Try CSS</button>
     </article>
+
     <article class="card">
       <div class="emoji">⚡</div><h3>JavaScript</h3>
       <p>Buttons, games aur interactive features banao.</p>
@@ -165,9 +240,10 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
       <p><b>Example:</b></p>
       <code>alert("Hello!");</code>
       <p>JavaScript browser mein message dikha sakta hai.</p>
-      <a class="btn" href="#playground">Try JavaScript</a>
+      <button class="btn lessonBtn" data-lesson="js">Try JavaScript</button>
     </article>
-    <article class="card" id="python">
+
+    <article class="card">
       <div class="emoji">🐍</div><h3>Python</h3>
       <p>Programming ke basics aur simple projects seekho.</p>
       <span class="pill">Loops</span><span class="pill">Variables</span>
@@ -175,7 +251,7 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
       <p><b>Example:</b></p>
       <code>print("Hello World!")</code>
       <p>Yeh Python program text print karta hai.</p>
-      <a class="btn" href="#pythonPractice">Practice</a>
+      <button class="btn lessonBtn" data-lesson="python">Practice Python</button>
     </article>
   </div>
 </div>
@@ -188,8 +264,9 @@ footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
     <h2>Online Code <span>Editor</span></h2>
     <p>Code badlo, Run dabao aur apna result dekho.</p>
   </div>
+
   <div class="panel">
-    <label for="code">HTML + CSS + JavaScript</label>
+    <label for="code">HTML + CSS + JavaScript Editor</label>
     <textarea id="code" spellcheck="false"><!DOCTYPE html>
 <html>
 <head>
@@ -217,9 +294,11 @@ button {
 <button onclick="alert('Keep Learning!')">Click Me</button>
 </body>
 </html></textarea>
+
     <button class="btn" id="runCode">▶ RUN CODE</button>
     <button class="btn purple" id="resetCode">↺ RESET</button>
     <p class="small">Preview mein tumhare code ka result dikhega.</p>
+
     <div class="editorgrid">
       <div>
         <h3>🖥️ Live Preview</h3>
@@ -263,6 +342,7 @@ print("Welcome to Python!")</textarea>
     <h2>Coding <span>Quiz</span></h2>
     <p>Sahi answers chuno aur apna score check karo.</p>
   </div>
+
   <div class="panel">
     <form id="quizForm">
       <div class="quizq">
@@ -304,16 +384,17 @@ print("Welcome to Python!")</textarea>
     <h2>Mini Project <span>Gallery</span></h2>
     <p>In projects se practice shuru karo.</p>
   </div>
+
   <div class="grid">
     <article class="card">
       <div class="emoji">🎨</div><h3>Neon Webpage</h3>
       <p>HTML aur CSS se glowing cards aur buttons banao.</p>
-      <a href="#playground" class="btn">Start Project</a>
+      <button class="btn projectBtn" data-project="neon">Start Project</button>
     </article>
     <article class="card">
       <div class="emoji">🧮</div><h3>Simple Calculator</h3>
       <p>JavaScript se calculator banana seekho.</p>
-      <a href="#playground" class="btn">Practice</a>
+      <button class="btn projectBtn" data-project="calculator">Practice</button>
     </article>
     <article class="card">
       <div class="emoji">🧠</div><h3>Memory Game</h3>
@@ -335,13 +416,13 @@ print("Welcome to Python!")</textarea>
     <span class="tag">DAILY CHALLENGE</span>
     <h2>Today's <span>Coding Mission</span></h2>
     <p>HTML editor mein apna naam heading ke roop mein likho, background ko purple karo aur ek button add karo.</p>
-    <a href="#playground" class="btn">ACCEPT CHALLENGE 🚀</a>
+    <button class="btn" id="challengeBtn">ACCEPT CHALLENGE 🚀</button>
   </div>
 </div>
 </section>
 
 <footer>
-  <h3 style="color:#00eaff">🎮 JAITISH GAMING</h3>
+  <h3 style="color:#00eaff;text-shadow:0 0 15px #00eaff">🎮 JAITISH GAMING</h3>
   <p>LEARN ABOUT CODING</p>
   <p>Learn • Practice • Create • Innovate</p>
   <a class="btn" href="index.html">← Back to Home</a>
@@ -352,38 +433,126 @@ print("Welcome to Python!")</textarea>
 const editor = document.getElementById("code");
 const preview = document.getElementById("preview");
 const notice = document.getElementById("notice");
-
 const starterCode = editor.value;
 
+const examples = {
+  html: `<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;padding:25px">
+<h1>Hello World! 🌐</h1>
+<p>This is my first HTML page.</p>
+<img src="https://placehold.co/160x100" alt="Example image">
+</body>
+</html>`,
+  css: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{background:#100c2b;color:white;text-align:center;font-family:Arial;padding:30px}
+h1{color:#00eaff;text-shadow:0 0 20px #00eaff}
+.card{padding:20px;border:2px solid #8b5cff;border-radius:15px;box-shadow:0 0 20px #8b5cff}
+</style>
+</head>
+<body>
+<div class="card"><h1>Neon CSS ✨</h1><p>CSS se design aur colors badalte hain.</p></div>
+</body>
+</html>`,
+  js: `<!DOCTYPE html>
+<html>
+<body style="background:#080d20;color:#00eaff;text-align:center;font-family:Arial;padding:30px">
+<h1>JavaScript ⚡</h1>
+<p id="message">Button dabao!</p>
+<button onclick="document.getElementById('message').textContent='Great job, Coder!'">Click Me</button>
+</body>
+</html>`,
+  python: `name = "Jaitish"
+print("Hello", name)
+print("Welcome to Python!")
+print("I am learning coding.")`,
+  neon: `<!DOCTYPE html>
+<html>
+<head><style>
+body{background:#050711;color:white;text-align:center;font-family:Arial;padding:30px}
+h1{color:#00eaff;text-shadow:0 0 20px #00eaff}
+.card{border:1px solid #00eaff;padding:25px;border-radius:15px;box-shadow:0 0 25px #00eaff55}
+</style></head>
+<body><div class="card"><h1>My Neon Website ✨</h1><p>Made by Jaitish!</p></div></body>
+</html>`,
+  calculator: `<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;padding:25px">
+<h1>Simple Calculator 🧮</h1>
+<input id="a" type="number" placeholder="First number">
+<input id="b" type="number" placeholder="Second number">
+<br><br>
+<button onclick="document.getElementById('out').textContent=Number(a.value)+Number(b.value)">Add +</button>
+<p id="out">Result appears here</p>
+</body>
+</html>`,
+  challenge: `<!DOCTYPE html>
+<html>
+<head><style>
+body{background:#301060;color:white;text-align:center;font-family:Arial;padding:30px}
+button{padding:12px 20px;background:#00eaff;border:0;border-radius:8px}
+</style></head>
+<body><h1>Jaitish 🚀</h1><p>My first coding challenge!</p><button onclick="alert('Challenge complete!')">Click Me</button></body>
+</html>`
+};
+
 function runCode(){
-  // Preview runs inside a sandboxed iframe.
   preview.srcdoc = editor.value;
   notice.textContent = "Code preview updated! ✅";
 }
 
-document.getElementById("runCode").addEventListener("click", runCode);
+document.getElementById("runCode").addEventListener("click",runCode);
 
-document.getElementById("resetCode").addEventListener("click", () => {
+document.getElementById("resetCode").addEventListener("click",()=>{
   editor.value = starterCode;
   runCode();
 });
 
-runCode();
+function openLesson(type){
+  if(type === "python"){
+    document.getElementById("pythonPractice").scrollIntoView({behavior:"smooth"});
+    document.getElementById("pythonCode").value = examples.python;
+    document.getElementById("pythonMessage").textContent =
+      "Python example ready! Copy karke Python editor mein chalao. ✅";
+    return;
+  }
 
-document.querySelectorAll('.card .btn[href="#playground"]').forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    // The playground is a shared HTML/CSS/JS editor.
-    notice.textContent = "Editor ready! Apna code edit karo.";
+  editor.value = examples[type] || starterCode;
+  runCode();
+  document.getElementById("playground").scrollIntoView({behavior:"smooth"});
+  notice.textContent = type.toUpperCase()+" example loaded! Ab RUN CODE dabao. ✅";
+}
+
+document.querySelectorAll(".lessonBtn").forEach(button=>{
+  button.addEventListener("click",()=>{
+    openLesson(button.dataset.lesson);
   });
 });
 
-document.getElementById("copyPython").addEventListener("click", async ()=>{
-  const text = document.getElementById("pythonCode").value;
+document.querySelectorAll(".projectBtn").forEach(button=>{
+  button.addEventListener("click",()=>{
+    openLesson(button.dataset.project);
+  });
+});
+
+document.getElementById("challengeBtn").addEventListener("click",()=>{
+  editor.value = examples.challenge;
+  runCode();
+  document.getElementById("playground").scrollIntoView({behavior:"smooth"});
+  notice.textContent = "Daily challenge loaded! Ab RUN CODE dabao. 🚀";
+});
+
+document.getElementById("copyPython").addEventListener("click",async()=>{
+  const pythonText = document.getElementById("pythonCode").value;
   const message = document.getElementById("pythonMessage");
+
   try{
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(pythonText);
     message.textContent = "Python code copied! Ab Python editor mein paste karo. ✅";
-  }catch(e){
+  }catch(error){
     document.getElementById("pythonCode").select();
     message.textContent = "Code select ho gaya. Ctrl+C dabakar copy karo.";
   }
@@ -391,18 +560,19 @@ document.getElementById("copyPython").addEventListener("click", async ()=>{
 
 const answers = {q1:"b",q2:"a",q3:"c",q4:"a"};
 
-document.getElementById("quizForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  const data = new FormData(e.target);
+document.getElementById("quizForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  const data = new FormData(event.target);
   let score = 0;
   let unanswered = 0;
 
   for(const key of Object.keys(answers)){
     if(!data.has(key)) unanswered++;
-    else if(data.get(key)===answers[key]) score++;
+    else if(data.get(key) === answers[key]) score++;
   }
 
   const result = document.getElementById("quizResult");
+
   if(unanswered){
     result.textContent = "Pehle sabhi 4 questions ke answers chuno!";
   }else{
@@ -414,6 +584,8 @@ document.getElementById("quizForm").addEventListener("submit",e=>{
 document.getElementById("clearQuiz").addEventListener("click",()=>{
   document.getElementById("quizResult").textContent = "";
 });
+
+runCode();
 </script>
 </body>
 </html>
