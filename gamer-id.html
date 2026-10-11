@@ -59,7 +59,24 @@ button:disabled{opacity:.6;cursor:wait}
  width:82px;height:82px;flex-shrink:0;border-radius:15px;
  object-fit:cover;border:2px solid var(--glow);background:#202941
 }
-.playername{font-size:23px;font-weight:bold;overflow-wrap:anywhere}
+.playername{
+  font-size:23px;
+  font-weight:900;
+  overflow-wrap:anywhere;
+  color:#fff;
+  background:linear-gradient(
+    90deg,#00eaff,#a855f7,#ff38c7,#ffcc33,#39ff88,#00eaff
+  );
+  background-size:300% auto;
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:neonName 4s linear infinite;
+  filter:drop-shadow(0 0 8px #00eaff);
+}
+@keyframes neonName{
+  to{background-position:300% center}
+}
 .tag{color:var(--glow);margin-top:7px;font-size:13px;overflow-wrap:anywhere}
 .details{margin-top:23px;border-top:1px solid #ffffff25;padding-top:14px}
 .detail{min-width:0}
