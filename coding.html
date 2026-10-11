@@ -1,591 +1,574 @@
 
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LEARN ABOUT CODING | JAITISH GAMING</title>
+<title>JAITISH GAMER ID MAKER</title>
+
 <style>
-:root{
-  --cyan:#00eaff;
-  --purple:#8b5cff;
-  --bg:#050711;
-  --panel:#0c1224;
-  --text:#f4f7ff;
-  --muted:#aab5d0;
+:root {
+  --glow: #00eaff;
 }
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;line-height:1.65;
-  overflow-x:hidden;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-  radial-gradient(ellipse at 10% 10%,#00eaff20,transparent 40%),
-  radial-gradient(ellipse at 90% 30%,#8b5cff25,transparent 45%);
-}
-a{color:inherit;text-decoration:none}
-button,textarea{font:inherit}
-button{cursor:pointer}
-nav{
-  position:sticky;top:0;z-index:20;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:15px;flex-wrap:wrap;padding:14px 6%;
-  background:#050711ee;border-bottom:1px solid #00eaff45;
-  backdrop-filter:blur(15px);
-}
-.logo{
-  font-weight:900;color:var(--cyan);font-size:19px;
-  text-shadow:0 0 15px #00eaff88;
-}
-.navlinks{display:flex;gap:17px;flex-wrap:wrap;font-size:13px}
-.navlinks a{transition:.25s}
-.navlinks a:hover{
-  color:var(--cyan);
-  text-shadow:0 0 12px var(--cyan);
-}
-.hero{text-align:center;padding:80px 18px 55px}
-.tag{
-  display:inline-block;border:1px solid var(--cyan);
-  color:var(--cyan);padding:6px 14px;border-radius:30px;
-  box-shadow:0 0 15px #00eaff35;font-size:12px;
-}
-h1{
-  font-size:clamp(34px,7vw,68px);line-height:1.1;
-  margin:22px 0;
-  background:linear-gradient(90deg,#fff,var(--cyan),var(--purple),#fff);
-  background-size:250% auto;
-  color:transparent;background-clip:text;
-  animation:titleShine 5s linear infinite;
-}
-@keyframes titleShine{
-  to{background-position:250% center}
-}
-h2{font-size:clamp(24px,4vw,34px);margin-top:0}
-h2 span{color:var(--cyan);text-shadow:0 0 15px #00eaff50}
-p{color:var(--muted)}
-.hero p{max-width:650px;margin:0 auto 25px}
-.btn{
-  display:inline-block;padding:11px 18px;border-radius:9px;
-  border:1px solid var(--cyan);background:#00eaff12;
-  color:white;font-weight:bold;margin:5px;
-  box-shadow:0 0 14px #00eaff18;
-  transition:transform .25s,box-shadow .25s,background .25s;
-  position:relative;overflow:hidden;
-}
-.btn:before{
-  content:"";position:absolute;top:0;left:-130%;
-  width:65%;height:100%;
-  background:linear-gradient(100deg,transparent,#ffffff85,transparent);
-  transform:skewX(-22deg);
-  transition:left .6s;pointer-events:none;
-}
-.btn:hover:before{left:150%}
-.btn:hover{
-  background:var(--cyan);color:#020611;
-  box-shadow:0 0 12px var(--cyan),0 0 30px #00eaff80;
-  transform:translateY(-3px);
-}
-.btn.purple{border-color:var(--purple);background:#8b5cff18}
-.btn.purple:hover{
-  background:var(--purple);color:white;
-  box-shadow:0 0 25px #8b5cff90;
-}
-.wrap{width:min(1100px,90%);margin:auto}
-section{padding:52px 0;scroll-margin-top:85px}
-.center{text-align:center}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-.card{
-  background:linear-gradient(145deg,#101a30,#090d19);
-  border:1px solid #263550;border-radius:15px;padding:22px;
-  transition:transform .3s,box-shadow .3s,border-color .3s;
-  position:relative;overflow:hidden;
-}
-/* Moving shine across every card */
-.card:before{
-  content:"";position:absolute;top:-50%;left:-120%;
-  width:65%;height:200%;
-  background:linear-gradient(
-    110deg,transparent,#ffffff12,#00eaff70,#ffffff20,transparent
-  );
-  transform:rotate(18deg);
-  transition:left .75s ease;
-  pointer-events:none;
-}
-.card:hover:before{left:160%}
-.card:hover{
-  transform:translateY(-7px) scale(1.015);
-  border-color:var(--cyan);
-  box-shadow:0 0 12px #00eaff60,0 0 30px #00eaff25,
-  inset 0 0 15px #00eaff10;
-}
-.card h3{
-  margin:8px 0;color:var(--cyan);
-  text-shadow:0 0 12px #00eaff25;
-}
-.emoji{font-size:34px}
-.small{font-size:13px;color:var(--muted)}
-.pill{
-  display:inline-block;border:1px solid #35445e;
-  padding:3px 9px;border-radius:20px;font-size:11px;margin:3px;
-}
-.panel{
-  padding:23px;border:1px solid #263550;border-radius:16px;
-  background:var(--panel);box-shadow:0 0 22px #8b5cff0b;
-}
-.panel:hover{border-color:#00eaff55}
-.editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-textarea{
-  width:100%;min-height:260px;resize:vertical;
-  color:#a8ffcf;background:#030711;border:1px solid #35445e;
-  border-radius:10px;padding:14px;font:14px/1.6 Consolas,monospace;
-}
-textarea:focus{
-  outline:none;border-color:var(--cyan);
-  box-shadow:0 0 15px #00eaff30;
-}
-iframe{
-  width:100%;height:300px;background:white;
-  border:1px solid #35445e;border-radius:10px;
-}
-label{display:block;margin:8px 0;color:var(--cyan);font-weight:bold}
-input[type=radio]{accent-color:var(--cyan)}
-.quizq{border-bottom:1px solid #29364e;padding:12px 0}
-.quizq label{color:var(--text);font-weight:normal;cursor:pointer}
-#quizResult{font-weight:bold;color:var(--cyan);margin-top:12px}
-footer{padding:30px 15px;text-align:center;border-top:1px solid #263550}
-#notice{color:var(--cyan);min-height:24px}
-#pythonMessage{color:var(--cyan)}
-@media(max-width:700px){
-  nav{justify-content:center}
-  .navlinks{justify-content:center;gap:12px}
-  .hero{padding-top:55px}
-  .editorgrid{grid-template-columns:1fr}
-  textarea{min-height:230px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
-  }
-}
-</style>
-</head>
-<body>
 
-<nav>
-  <a class="logo" href="index.html">🎮 JAITISH GAMING</a>
-  <div class="navlinks">
-    <a href="index.html">Home</a>
-    <a href="#learn">Learn</a>
-    <a href="#playground">Editor</a>
-    <a href="#pythonPractice">Python</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#projects">Projects</a>
-  </div>
-</nav>
+* {
+  box-sizing: border-box;
+}
 
-<header class="hero">
-  <span class="tag">⚡ JAITISH CODING ACADEMY</span>
-  <h1>LEARN ABOUT<br>CODING</h1>
-  <p>Learn • Practice • Create • Innovate</p>
-  <p>Apni coding journey aaj se shuru karo!
-  HTML se website banao, CSS se design karo aur JavaScript se use interactive banao.</p>
-  <a class="btn" href="#learn">START LEARNING 🚀</a>
-  <a class="btn purple" href="#playground">OPEN CODE EDITOR 💻</a>
-</header>
-
-<section id="learn">
-<div class="wrap">
-  <div class="center">
-    <span class="tag">LEARN THE BASICS</span>
-    <h2>Choose Your <span>Language</span></h2>
-    <p>Apni pasand ka topic chuno aur basics se seekhna shuru karo.</p>
-  </div>
-
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">🌐</div><h3>HTML</h3>
-      <p>Website ka structure banana seekho.</p>
-      <span class="pill">Headings</span><span class="pill">Images</span>
-      <span class="pill">Links</span>
-      <p><b>Example:</b></p>
-      <code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code>
-      <p>HTML page par heading dikhata hai.</p>
-      <button class="btn lessonBtn" data-lesson="html">Try HTML</button>
-    </article>
-
-    <article class="card">
-      <div class="emoji">🎨</div><h3>CSS</h3>
-      <p>Website ko colorful aur attractive banana seekho.</p>
-      <span class="pill">Colors</span><span class="pill">Layout</span>
-      <span class="pill">Animation</span>
-      <p><b>Example:</b></p>
-      <code>h1 { color: cyan; }</code>
-      <p>CSS heading ka rang badal sakta hai.</p>
-      <button class="btn lessonBtn" data-lesson="css">Try CSS</button>
-    </article>
-
-    <article class="card">
-      <div class="emoji">⚡</div><h3>JavaScript</h3>
-      <p>Buttons, games aur interactive features banao.</p>
-      <span class="pill">Variables</span><span class="pill">Functions</span>
-      <p><b>Example:</b></p>
-      <code>alert("Hello!");</code>
-      <p>JavaScript browser mein message dikha sakta hai.</p>
-      <button class="btn lessonBtn" data-lesson="js">Try JavaScript</button>
-    </article>
-
-    <article class="card">
-      <div class="emoji">🐍</div><h3>Python</h3>
-      <p>Programming ke basics aur simple projects seekho.</p>
-      <span class="pill">Loops</span><span class="pill">Variables</span>
-      <span class="pill">Functions</span>
-      <p><b>Example:</b></p>
-      <code>print("Hello World!")</code>
-      <p>Yeh Python program text print karta hai.</p>
-      <button class="btn lessonBtn" data-lesson="python">Practice Python</button>
-    </article>
-  </div>
-</div>
-</section>
-
-<section id="playground">
-<div class="wrap">
-  <div class="center">
-    <span class="tag">LIVE PLAYGROUND</span>
-    <h2>Online Code <span>Editor</span></h2>
-    <p>Code badlo, Run dabao aur apna result dekho.</p>
-  </div>
-
-  <div class="panel">
-    <label for="code">HTML + CSS + JavaScript Editor</label>
-    <textarea id="code" spellcheck="false"><!DOCTYPE html>
-<html>
-<head>
-<style>
 body {
-  background: #080d20;
-  color: #00eaff;
-  text-align: center;
-  font-family: Arial;
-  padding: 25px;
-}
-button {
-  background: #8b5cff;
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 14px;
   color: white;
-  border: 0;
-  padding: 12px 20px;
-  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #182046, transparent 55%),
+    linear-gradient(135deg, #03040b, #10051d, #020710);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: var(--glow);
+  text-shadow: 0 0 15px var(--glow);
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #c5c9df;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 25px;
+  align-items: start;
+}
+
+.panel, .preview-panel {
+  padding: 22px;
+  border: 1px solid #ffffff22;
+  border-radius: 20px;
+  background: #0b1020eF;
+  box-shadow: 0 0 25px #0008;
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--glow);
+}
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  color: #d9e3ff;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #38405b;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  background: #080d19;
+  font-size: 15px;
+}
+
+input:focus, select:focus {
+  border-color: var(--glow);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+input[type="color"] {
+  height: 48px;
+  padding: 5px;
   cursor: pointer;
 }
-</style>
-</head>
-<body>
-<h1>Hello Coder! 🚀</h1>
-<p>Welcome to Jaitish Coding Zone.</p>
-<button onclick="alert('Keep Learning!')">Click Me</button>
-</body>
-</html></textarea>
 
-    <button class="btn" id="runCode">▶ RUN CODE</button>
-    <button class="btn purple" id="resetCode">↺ RESET</button>
-    <p class="small">Preview mein tumhare code ka result dikhega.</p>
-
-    <div class="editorgrid">
-      <div>
-        <h3>🖥️ Live Preview</h3>
-        <iframe id="preview" title="Code output" sandbox="allow-scripts"></iframe>
-      </div>
-      <div>
-        <h3>💡 Practice Tips</h3>
-        <p>1. HTML mein heading badlo.</p>
-        <p>2. CSS mein background ka color badlo.</p>
-        <p>3. Button ka text badlo.</p>
-        <p>4. RUN CODE dabakar result dekho.</p>
-        <p id="notice" aria-live="polite"></p>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section id="pythonPractice">
-<div class="wrap">
-  <div class="center">
-    <span class="tag">PYTHON PRACTICE</span>
-    <h2>First Python <span>Program</span></h2>
-  </div>
-  <div class="panel">
-    <p>Python seekhne ke liye yeh code apne computer ke Python editor mein chalao.</p>
-    <textarea id="pythonCode" spellcheck="false" style="min-height:125px">name = "Jaitish"
-print("Hello", name)
-print("Welcome to Python!")</textarea>
-    <button class="btn" id="copyPython">📋 COPY PYTHON CODE</button>
-    <p id="pythonMessage" aria-live="polite"></p>
-    <p class="small">Note: Yeh page Python code ko directly execute nahi karta. Python chalane ke liye computer par Python install karo ya trusted online Python runner use karo.</p>
-  </div>
-</div>
-</section>
-
-<section id="quiz">
-<div class="wrap">
-  <div class="center">
-    <span class="tag">TEST YOUR SKILLS</span>
-    <h2>Coding <span>Quiz</span></h2>
-    <p>Sahi answers chuno aur apna score check karo.</p>
-  </div>
-
-  <div class="panel">
-    <form id="quizForm">
-      <div class="quizq">
-        <b>1. Website ka structure banane ke liye kya use hota hai?</b>
-        <label><input type="radio" name="q1" value="a"> Python</label>
-        <label><input type="radio" name="q1" value="b"> HTML</label>
-        <label><input type="radio" name="q1" value="c"> Paint</label>
-      </div>
-      <div class="quizq">
-        <b>2. CSS ka main use kya hai?</b>
-        <label><input type="radio" name="q2" value="a"> Website styling</label>
-        <label><input type="radio" name="q2" value="b"> Typing only</label>
-        <label><input type="radio" name="q2" value="c"> Computer off karna</label>
-      </div>
-      <div class="quizq">
-        <b>3. Python mein output dikhane ke liye kya use karte hain?</b>
-        <label><input type="radio" name="q3" value="a"> show()</label>
-        <label><input type="radio" name="q3" value="b"> echo()</label>
-        <label><input type="radio" name="q3" value="c"> print()</label>
-      </div>
-      <div class="quizq">
-        <b>4. Browser mein interaction ke liye kaunsi language use hoti hai?</b>
-        <label><input type="radio" name="q4" value="a"> JavaScript</label>
-        <label><input type="radio" name="q4" value="b"> HTML only</label>
-        <label><input type="radio" name="q4" value="c"> Calculator</label>
-      </div>
-      <button class="btn" type="submit">CHECK MY SCORE 🏆</button>
-      <button class="btn purple" type="reset" id="clearQuiz">TRY AGAIN</button>
-    </form>
-    <div id="quizResult" aria-live="polite"></div>
-  </div>
-</div>
-</section>
-
-<section id="projects">
-<div class="wrap">
-  <div class="center">
-    <span class="tag">BUILD SOMETHING COOL</span>
-    <h2>Mini Project <span>Gallery</span></h2>
-    <p>In projects se practice shuru karo.</p>
-  </div>
-
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">🎨</div><h3>Neon Webpage</h3>
-      <p>HTML aur CSS se glowing cards aur buttons banao.</p>
-      <button class="btn projectBtn" data-project="neon">Start Project</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🧮</div><h3>Simple Calculator</h3>
-      <p>JavaScript se calculator banana seekho.</p>
-      <button class="btn projectBtn" data-project="calculator">Practice</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🧠</div><h3>Memory Game</h3>
-      <p>Cards aur matching logic se memory game banao.</p>
-      <a href="memory.html" class="btn">Open Memory Game</a>
-    </article>
-    <article class="card">
-      <div class="emoji">🏎️</div><h3>JAITISH RACING</h3>
-      <p>Apne racing game project ko explore karo.</p>
-      <a href="racing.html" class="btn">Play Racing</a>
-    </article>
-  </div>
-</div>
-</section>
-
-<section id="challenge">
-<div class="wrap">
-  <div class="panel center">
-    <span class="tag">DAILY CHALLENGE</span>
-    <h2>Today's <span>Coding Mission</span></h2>
-    <p>HTML editor mein apna naam heading ke roop mein likho, background ko purple karo aur ek button add karo.</p>
-    <button class="btn" id="challengeBtn">ACCEPT CHALLENGE 🚀</button>
-  </div>
-</div>
-</section>
-
-<footer>
-  <h3 style="color:#00eaff;text-shadow:0 0 15px #00eaff">🎮 JAITISH GAMING</h3>
-  <p>LEARN ABOUT CODING</p>
-  <p>Learn • Practice • Create • Innovate</p>
-  <a class="btn" href="index.html">← Back to Home</a>
-  <p class="small">Made with 💙 by Jaitish</p>
-</footer>
-
-<script>
-const editor = document.getElementById("code");
-const preview = document.getElementById("preview");
-const notice = document.getElementById("notice");
-const starterCode = editor.value;
-
-const examples = {
-  html: `<!DOCTYPE html>
-<html>
-<body style="font-family:Arial;text-align:center;padding:25px">
-<h1>Hello World! 🌐</h1>
-<p>This is my first HTML page.</p>
-<img src="https://placehold.co/160x100" alt="Example image">
-</body>
-</html>`,
-  css: `<!DOCTYPE html>
-<html>
-<head>
-<style>
-body{background:#100c2b;color:white;text-align:center;font-family:Arial;padding:30px}
-h1{color:#00eaff;text-shadow:0 0 20px #00eaff}
-.card{padding:20px;border:2px solid #8b5cff;border-radius:15px;box-shadow:0 0 20px #8b5cff}
-</style>
-</head>
-<body>
-<div class="card"><h1>Neon CSS ✨</h1><p>CSS se design aur colors badalte hain.</p></div>
-</body>
-</html>`,
-  js: `<!DOCTYPE html>
-<html>
-<body style="background:#080d20;color:#00eaff;text-align:center;font-family:Arial;padding:30px">
-<h1>JavaScript ⚡</h1>
-<p id="message">Button dabao!</p>
-<button onclick="document.getElementById('message').textContent='Great job, Coder!'">Click Me</button>
-</body>
-</html>`,
-  python: `name = "Jaitish"
-print("Hello", name)
-print("Welcome to Python!")
-print("I am learning coding.")`,
-  neon: `<!DOCTYPE html>
-<html>
-<head><style>
-body{background:#050711;color:white;text-align:center;font-family:Arial;padding:30px}
-h1{color:#00eaff;text-shadow:0 0 20px #00eaff}
-.card{border:1px solid #00eaff;padding:25px;border-radius:15px;box-shadow:0 0 25px #00eaff55}
-</style></head>
-<body><div class="card"><h1>My Neon Website ✨</h1><p>Made by Jaitish!</p></div></body>
-</html>`,
-  calculator: `<!DOCTYPE html>
-<html>
-<body style="font-family:Arial;text-align:center;padding:25px">
-<h1>Simple Calculator 🧮</h1>
-<input id="a" type="number" placeholder="First number">
-<input id="b" type="number" placeholder="Second number">
-<br><br>
-<button onclick="document.getElementById('out').textContent=Number(a.value)+Number(b.value)">Add +</button>
-<p id="out">Result appears here</p>
-</body>
-</html>`,
-  challenge: `<!DOCTYPE html>
-<html>
-<head><style>
-body{background:#301060;color:white;text-align:center;font-family:Arial;padding:30px}
-button{padding:12px 20px;background:#00eaff;border:0;border-radius:8px}
-</style></head>
-<body><h1>Jaitish 🚀</h1><p>My first coding challenge!</p><button onclick="alert('Challenge complete!')">Click Me</button></body>
-</html>`
-};
-
-function runCode(){
-  preview.srcdoc = editor.value;
-  notice.textContent = "Code preview updated! ✅";
+input[type="file"] {
+  font-size: 12px;
 }
 
-document.getElementById("runCode").addEventListener("click",runCode);
+option {
+  background: #080d19;
+  color: white;
+}
 
-document.getElementById("resetCode").addEventListener("click",()=>{
-  editor.value = starterCode;
-  runCode();
+.gamer-card {
+  --glow: #00eaff;
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--glow) 28%, transparent), transparent 60%),
+    linear-gradient(145deg, #171c35, #050711 75%);
+  border: 2px solid var(--glow);
+  box-shadow: 0 0 12px var(--glow), inset 0 0 22px #ffffff08;
+}
+
+.gamer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent 25%, #ffffff0d, transparent 70%);
+}
+
+.card-top {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.avatar {
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 3px solid var(--glow);
+  border-radius: 50%;
+  background: #080d19;
+  font-size: 40px;
+  box-shadow: 0 0 15px var(--glow);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-name {
+  margin: 0 0 8px;
+  font-size: clamp(19px, 4vw, 27px);
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+  animation: nameGlow 3s linear infinite alternate;
+}
+
+@keyframes nameGlow {
+  0% { color: #00eaff; text-shadow: 0 0 10px #00eaff; }
+  50% { color: #ffe600; text-shadow: 0 0 15px #ffe600; }
+  100% { color: #ff38c7; text-shadow: 0 0 15px #ff38c7; }
+}
+
+.tag {
+  color: #c6c9df;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.card-divider {
+  height: 1px;
+  margin: 20px 0;
+  background: linear-gradient(90deg, transparent, var(--glow), transparent);
+}
+
+.game-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.info-box {
+  padding: 13px;
+  border-radius: 12px;
+  background: #ffffff09;
+  border: 1px solid #ffffff12;
+  overflow-wrap: anywhere;
+}
+
+.info-box small {
+  display: block;
+  color: #9da8c7;
+  margin-bottom: 7px;
+}
+
+.info-box strong {
+  color: var(--glow);
+  font-size: 16px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: #d9e3ff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 1px solid var(--glow);
+  border-radius: 10px;
+  background: var(--glow);
+  color: #050710;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px var(--glow);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--glow);
+}
+
+button.danger {
+  border-color: #ff4565;
+  color: white;
+  background: #a51534;
+}
+
+.status {
+  min-height: 20px;
+  margin-top: 12px;
+  color: #64ffb4;
+  font-size: 13px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  color: #818aa8;
+  font-size: 12px;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎮 JAITISH GAMER ID</h1>
+  <p>Create your own neon gaming profile card!</p>
+</header>
+
+<main class="container">
+
+  <section class="panel">
+    <h2>⚙️ Customize Your ID</h2>
+
+    <label for="name">Player Name</label>
+    <input id="name" maxlength="24" placeholder="Enter player name" value="JAITISH">
+
+    <label for="tag">Gamer Tag / ID</label>
+    <input id="tag" maxlength="35" placeholder="Example: #JAITISH001" value="#JAITISH001">
+
+    <label for="game">Favorite Game</label>
+    <select id="game">
+      <option>BGMI</option>
+      <option>Free Fire</option>
+      <option>Minecraft</option>
+      <option>GTA V</option>
+      <option>Racing</option>
+      <option>JAITISH RACING</option>
+      <option>Other</option>
+    </select>
+
+    <label for="level">Player Level</label>
+    <input id="level" type="number" min="1" max="9999" value="99">
+
+    <label for="photo">Upload Profile Photo</label>
+    <input id="photo" type="file" accept="image/*">
+
+    <label for="color">🎨 Choose Neon Color Theme</label>
+    <select id="color">
+      <option value="#00eaff">🔵 Neon Cyan</option>
+      <option value="#ffe600">🟡 Neon Yellow</option>
+      <option value="#1685ff">🔵 Neon Blue</option>
+      <option value="#a855f7">🟣 Neon Purple</option>
+      <option value="#ff38c7">🩷 Neon Pink</option>
+      <option value="#ff3355">🔴 Neon Red</option>
+      <option value="#39ff88">🟢 Neon Green</option>
+      <option value="#ff8c00">🟠 Neon Orange</option>
+      <option value="#b7ff00">🟢 Neon Lime</option>
+      <option value="#ffd700">🟡 Neon Gold</option>
+      <option value="#00ffd5">🟢 Neon Aqua</option>
+      <option value="#8b5cff">🟣 Neon Violet</option>
+      <option value="#ff5f9e">🩷 Neon Rose</option>
+      <option value="#aaf5ff">🔹 Neon Ice</option>
+      <option value="#ff6f61">🟥 Neon Coral</option>
+      <option value="#64ffb4">🟢 Neon Mint</option>
+      <option value="#ff00ff">🟣 Neon Magenta</option>
+      <option value="#38bdf8">🔵 Neon Sky Blue</option>
+      <option value="#dc143c">🔴 Neon Crimson</option>
+      <option value="#ffbf00">🟡 Neon Amber</option>
+      <option value="#00b3a4">🟢 Neon Teal</option>
+      <option value="#4f46e5">🟣 Neon Indigo</option>
+      <option value="#ffb38a">🟠 Neon Peach</option>
+      <option value="#00c878">🟢 Neon Emerald</option>
+      <option value="#ff1493">🩷 Neon Hot Pink</option>
+      <option value="#c0c0c0">⚪ Neon Silver</option>
+      <option value="#ffffff">⚪ Neon White</option>
+      <option value="#e0115f">🔴 Neon Ruby</option>
+      <option value="#0047ff">🔵 Neon Electric Blue</option>
+      <option value="#d8a7ff">🟣 Neon Lavender</option>
+    </select>
+
+    <label for="customColor">🌈 Or Pick Your Own Color</label>
+    <input id="customColor" type="color" value="#00eaff">
+
+    <button id="saveBtn">💾 Save Gamer ID</button>
+    <button id="downloadBtn">⬇️ Download ID Card</button>
+    <button id="resetBtn" class="secondary">🔄 Reset Card</button>
+    <p id="status" class="status" role="status"></p>
+  </section>
+
+  <section class="preview-panel">
+    <h2>✨ Live ID Card Preview</h2>
+
+    <div class="gamer-card" id="gamerCard">
+      <div class="card-top">
+        <div class="avatar" id="avatar">🎮</div>
+        <div>
+          <h3 class="player-name" id="previewName">JAITISH</h3>
+          <div class="tag" id="previewTag">#JAITISH001</div>
+        </div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="game-info">
+        <div class="info-box">
+          <small>FAVORITE GAME</small>
+          <strong id="previewGame">BGMI</strong>
+        </div>
+        <div class="info-box">
+          <small>PLAYER LEVEL</small>
+          <strong id="previewLevel">99</strong>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span>⚡ JAITISH GAMING</span>
+        <span>GAMER ID</span>
+      </div>
+    </div>
+
+    <p style="color:#9da8c7;font-size:13px;line-height:1.7">
+      Change your details on the left. Your gamer card updates instantly.
+      Save your card in this browser or download it as an image.
+    </p>
+  </section>
+
+</main>
+
+<footer>© 2026 JAITISH GAMING • Made for Gamers ⚡</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = "jaitishGamerID_v3";
+
+let photoData = "";
+
+function applyColor(color) {
+  document.documentElement.style.setProperty("--glow", color);
+  $("gamerCard").style.setProperty("--glow", color);
+}
+
+function updateCard() {
+  $("previewName").textContent =
+    $("name").value.trim().toLocaleUpperCase() || "YOUR NAME";
+
+  $("previewTag").textContent =
+    $("tag").value.trim() || "#YOURTAG";
+
+  $("previewGame").textContent = $("game").value;
+
+  const level = Number($("level").value);
+  $("previewLevel").textContent =
+    Number.isFinite(level) && level >= 1
+      ? Math.min(9999, Math.floor(level))
+      : "1";
+
+  const color = $("customColor").dataset.customActive === "true"
+    ? $("customColor").value
+    : $("color").value;
+
+  applyColor(color);
+}
+
+["name", "tag", "game", "level"].forEach(id => {
+  $(id).addEventListener("input", updateCard);
+  $(id).addEventListener("change", updateCard);
 });
 
-function openLesson(type){
-  if(type === "python"){
-    document.getElementById("pythonPractice").scrollIntoView({behavior:"smooth"});
-    document.getElementById("pythonCode").value = examples.python;
-    document.getElementById("pythonMessage").textContent =
-      "Python example ready! Copy karke Python editor mein chalao. ✅";
+$("color").addEventListener("change", () => {
+  $("customColor").dataset.customActive = "false";
+  updateCard();
+});
+
+$("customColor").addEventListener("input", () => {
+  $("customColor").dataset.customActive = "true";
+  updateCard();
+});
+
+$("photo").addEventListener("change", event => {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    $("status").textContent = "Please choose an image file.";
     return;
   }
 
-  editor.value = examples[type] || starterCode;
-  runCode();
-  document.getElementById("playground").scrollIntoView({behavior:"smooth"});
-  notice.textContent = type.toUpperCase()+" example loaded! Ab RUN CODE dabao. ✅";
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    photoData = reader.result;
+    showPhoto();
+    $("status").textContent = "Profile photo updated!";
+  };
+
+  reader.onerror = () => {
+    $("status").textContent = "Could not read this image.";
+  };
+
+  reader.readAsDataURL(file);
+});
+
+function showPhoto() {
+  const avatar = $("avatar");
+  avatar.replaceChildren();
+
+  if (photoData) {
+    const img = document.createElement("img");
+    img.src = photoData;
+    img.alt = "Player profile";
+    avatar.appendChild(img);
+  } else {
+    avatar.textContent = "🎮";
+  }
 }
 
-document.querySelectorAll(".lessonBtn").forEach(button=>{
-  button.addEventListener("click",()=>{
-    openLesson(button.dataset.lesson);
-  });
-});
+function getSavedData() {
+  return {
+    name: $("name").value,
+    tag: $("tag").value,
+    game: $("game").value,
+    level: $("level").value,
+    color: $("color").value,
+    customColor: $("customColor").value,
+    customActive: $("customColor").dataset.customActive === "true",
+    photo: photoData
+  };
+}
 
-document.querySelectorAll(".projectBtn").forEach(button=>{
-  button.addEventListener("click",()=>{
-    openLesson(button.dataset.project);
-  });
-});
-
-document.getElementById("challengeBtn").addEventListener("click",()=>{
-  editor.value = examples.challenge;
-  runCode();
-  document.getElementById("playground").scrollIntoView({behavior:"smooth"});
-  notice.textContent = "Daily challenge loaded! Ab RUN CODE dabao. 🚀";
-});
-
-document.getElementById("copyPython").addEventListener("click",async()=>{
-  const pythonText = document.getElementById("pythonCode").value;
-  const message = document.getElementById("pythonMessage");
-
-  try{
-    await navigator.clipboard.writeText(pythonText);
-    message.textContent = "Python code copied! Ab Python editor mein paste karo. ✅";
-  }catch(error){
-    document.getElementById("pythonCode").select();
-    message.textContent = "Code select ho gaya. Ctrl+C dabakar copy karo.";
+$("saveBtn").addEventListener("click", () => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(getSavedData()));
+    $("status").textContent =
+      "✅ Gamer ID saved in this browser!";
+  } catch (error) {
+    $("status").textContent =
+      "Could not save. Try using a smaller profile photo.";
   }
 });
 
-const answers = {q1:"b",q2:"a",q3:"c",q4:"a"};
+function loadSavedData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
 
-document.getElementById("quizForm").addEventListener("submit",event=>{
-  event.preventDefault();
-  const data = new FormData(event.target);
-  let score = 0;
-  let unanswered = 0;
+    const data = JSON.parse(raw);
 
-  for(const key of Object.keys(answers)){
-    if(!data.has(key)) unanswered++;
-    else if(data.get(key) === answers[key]) score++;
+    $("name").value = data.name || "JAITISH";
+    $("tag").value = data.tag || "#JAITISH001";
+    $("game").value = data.game || "BGMI";
+    $("level").value = data.level || "99";
+
+    if (data.color) $("color").value = data.color;
+    if (data.customColor) $("customColor").value = data.customColor;
+
+    $("customColor").dataset.customActive =
+      data.customActive ? "true" : "false";
+
+    photoData = typeof data.photo === "string" ? data.photo : "";
+    showPhoto();
+  } catch (error) {
+    $("status").textContent = "Saved data could not be loaded.";
   }
+}
 
-  const result = document.getElementById("quizResult");
+$("resetBtn").addEventListener("click", () => {
+  $("name").value = "JAITISH";
+  $("tag").value = "#JAITISH001";
+  $("game").value = "BGMI";
+  $("level").value = "99";
+  $("color").value = "#00eaff";
+  $("customColor").value = "#00eaff";
+  $("customColor").dataset.customActive = "false";
+  $("photo").value = "";
+  photoData = "";
 
-  if(unanswered){
-    result.textContent = "Pehle sabhi 4 questions ke answers chuno!";
-  }else{
-    result.textContent = "Tumhara score: "+score+"/4 "+
-      (score===4 ? "🏆 Excellent!" : "💪 Practice karte raho!");
+  showPhoto();
+  updateCard();
+  $("status").textContent = "Card reset! Click Save to save these details.";
+});
+
+$("downloadBtn").addEventListener("click", async () => {
+  const button = $("downloadBtn");
+  button.disabled = true;
+  $("status").textContent = "Preparing your ID card...";
+
+  try {
+    if (typeof window.html2canvas !== "function") {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("Download library failed"));
+        document.head.appendChild(script);
+      });
+    }
+
+    const canvas = await window.html2canvas($("gamerCard"), {
+      backgroundColor: "#080b18",
+      scale: 2,
+      useCORS: true
+    });
+
+    const link = document.createElement("a");
+    link.download = "JAITISH-GAMER-ID.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    $("status").textContent = "✅ Your ID card has been downloaded!";
+  } catch (error) {
+    $("status").textContent =
+      "Download failed. Check your internet connection and try again.";
+  } finally {
+    button.disabled = false;
   }
 });
 
-document.getElementById("clearQuiz").addEventListener("click",()=>{
-  document.getElementById("quizResult").textContent = "";
-});
-
-runCode();
+loadSavedData();
+updateCard();
 </script>
+
 </body>
 </html>
