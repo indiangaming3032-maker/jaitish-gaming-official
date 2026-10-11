@@ -1,73 +1,101 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JAITISH GAMING | Gamer ID Maker</title>
+
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;padding:22px;font-family:Arial,sans-serif;color:white;
- background:radial-gradient(circle at top,#18264b,#050610 65%);
+ margin:0;padding:20px;font-family:Arial,sans-serif;color:white;
+ background:radial-gradient(circle at top,#18264b,#050610 70%);
  min-height:100vh
 }
 h1{text-align:center;color:#00eaff;text-shadow:0 0 15px #00eaff}
-.subtitle{text-align:center;color:#ccc}
-.container{max-width:950px;margin:25px auto;display:grid;
- grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-.panel,.preview{padding:20px;background:#111426;border:1px solid #343c60;
- border-radius:18px;box-shadow:0 0 20px #00eaff18}
+.subtitle{text-align:center;color:#c7cce0}
+.container{
+ max-width:1000px;margin:25px auto;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+ gap:22px;align-items:start
+}
+.panel,.preview{
+ padding:20px;background:#111426;border:1px solid #343c60;
+ border-radius:18px;box-shadow:0 0 20px #00eaff18;min-width:0
+}
 label{display:block;margin-top:14px;color:#bcefff}
 input,select{
  width:100%;padding:12px;margin-top:6px;border-radius:9px;
  border:1px solid #3d4a70;background:#080b17;color:white
 }
-button{border:0;border-radius:10px;padding:12px 15px;margin-top:15px;
- cursor:pointer;font-weight:bold;background:#00eaff;color:#06101a}
+button{
+ border:0;border-radius:10px;padding:12px 15px;margin-top:15px;
+ cursor:pointer;font-weight:bold;background:#00eaff;color:#06101a
+}
 button:hover{filter:brightness(1.15)}
+button:disabled{opacity:.6;cursor:wait}
 .card{
  --glow:#00eaff;position:relative;overflow:hidden;
- width:100%;max-width:440px;min-height:245px;margin:12px auto;
+ width:100%;max-width:440px;min-height:260px;margin:12px auto;
  padding:20px;border:2px solid var(--glow);border-radius:20px;
  background:linear-gradient(135deg,#10182e,#090b17);
- box-shadow:0 0 22px color-mix(in srgb,var(--glow) 45%,transparent);
+ box-shadow:0 0 22px var(--glow);
 }
-.card:before{content:"";position:absolute;width:180px;height:180px;
- border-radius:50%;background:var(--glow);filter:blur(100px);
- opacity:.2;right:-40px;top:-50px}
-.cardtop,.details{position:relative;display:flex;justify-content:space-between;gap:12px}
+.card:before{
+ content:"";position:absolute;width:180px;height:180px;
+ border-radius:50%;background:var(--glow);filter:blur(80px);
+ opacity:.18;right:-40px;top:-50px;pointer-events:none
+}
+.cardtop,.details{
+ position:relative;display:flex;justify-content:space-between;gap:12px
+}
 .brand{font-size:13px;letter-spacing:2px;color:var(--glow);font-weight:bold}
-.badge{border:1px solid var(--glow);border-radius:20px;padding:6px 9px;font-size:11px}
+.badge{
+ border:1px solid var(--glow);border-radius:20px;
+ padding:6px 9px;font-size:11px;white-space:nowrap
+}
 .profile{display:flex;gap:15px;align-items:center;margin-top:24px;position:relative}
-.avatar{width:82px;height:82px;flex-shrink:0;border-radius:15px;object-fit:cover;
- border:2px solid var(--glow);background:#202941}
+.avatar{
+ width:82px;height:82px;flex-shrink:0;border-radius:15px;
+ object-fit:cover;border:2px solid var(--glow);background:#202941
+}
 .playername{font-size:23px;font-weight:bold;overflow-wrap:anywhere}
-.tag{color:var(--glow);margin-top:7px;font-size:13px}
+.tag{color:var(--glow);margin-top:7px;font-size:13px;overflow-wrap:anywhere}
 .details{margin-top:23px;border-top:1px solid #ffffff25;padding-top:14px}
+.detail{min-width:0}
 .detail small{display:block;color:#aab4d0;font-size:10px;margin-bottom:5px}
 .detail strong{font-size:13px;overflow-wrap:anywhere}
-.footer{margin-top:17px;font-size:10px;letter-spacing:2px;color:#aab4d0;position:relative}
+.footer{
+ margin-top:18px;font-size:10px;letter-spacing:2px;
+ color:#aab4d0;position:relative
+}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions button{flex:1}
+.actions button{flex:1;min-width:100px}
 .note{font-size:12px;color:#adb6d0;line-height:1.6}
-@media(max-width:400px){body{padding:10px}.card{padding:14px}.playername{font-size:18px}}
+.status{font-size:13px;line-height:1.5;min-height:20px;color:#39ff88}
+@media(max-width:400px){
+ body{padding:10px}.card{padding:14px}.playername{font-size:18px}
+ .avatar{width:68px;height:68px}.detail strong{font-size:11px}
+}
 </style>
 </head>
+
 <body>
 <h1>🎮 GAMER ID MAKER</h1>
-<p class="subtitle">Create your own gaming identity!</p>
+<p class="subtitle">Create Your Own Gaming Identity!</p>
 
 <div class="container">
+
 <section class="panel">
-<h2>🪪 अपनी ID बनाओ</h2>
+<h2>🪪 Create Your Gamer ID</h2>
 
-<label>अपना नाम</label>
-<input id="name" maxlength="28" placeholder="जैसे: Jaitish">
+<label for="name">Player Name</label>
+<input id="name" maxlength="28" placeholder="Enter your name">
 
-<label>Gamer Tag</label>
-<input id="tag" maxlength="24" placeholder="जैसे: JAITISH_OP">
+<label for="tag">Gamer Tag</label>
+<input id="tag" maxlength="24" placeholder="Example: JAITISH_OP">
 
-<label>अपना गेम चुनो</label>
+<label for="game">Select Your Game</label>
 <select id="game">
 <option>JAITISH RACING</option>
 <option>Free Fire</option>
@@ -78,7 +106,7 @@ button:hover{filter:brightness(1.15)}
 <option>Other Gamer</option>
 </select>
 
-<label>गेमर लेवल</label>
+<label for="level">Select Your Level</label>
 <select id="level">
 <option value="1">Level 1 — Beginner</option>
 <option value="5">Level 5 — Player</option>
@@ -88,10 +116,10 @@ button:hover{filter:brightness(1.15)}
 <option value="99">Level 99 — Champion</option>
 </select>
 
-<label>अपनी फोटो चुनो</label>
+<label for="photo">Upload Your Photo</label>
 <input id="photo" type="file" accept="image/*">
 
-<label>कार्ड का रंग</label>
+<label for="color">Choose Card Color</label>
 <select id="color">
 <option value="#00eaff">Neon Cyan</option>
 <option value="#a855f7">Purple</option>
@@ -102,8 +130,278 @@ button:hover{filter:brightness(1.15)}
 </select>
 
 <div class="actions">
-<button id="save">💾 ID सेव करो</button>
-<button id="download">📥 डाउनलोड</button>
+<button type="button" id="save">💾 Save ID</button>
+<button type="button" id="download">📥 Download ID</button>
 </div>
-<button id="reset" style="width:100%;background:#ffcc33">नया कार्ड बनाओ</button>
-<p class="note">सेव की गई ID इसी ब्राउज़र में दोबारा खोली जा सकती है। फोटो और कार्ड की
+
+<button type="button" id="reset"
+style="width:100%;background:#ffcc33">🔄 Create New Card</button>
+
+<p id="status" class="status" role="status"></p>
+<p class="note">
+Your saved ID stays in this browser. Downloaded cards can be shared with friends.
+</p>
+</section>
+
+<section class="preview">
+<h2>✨ Live Preview</h2>
+
+<div class="card" id="gamerCard">
+<div class="cardtop">
+<div class="brand">JAITISH GAMING</div>
+<div class="badge">GAMER ID</div>
+</div>
+
+<div class="profile">
+<img id="avatar" class="avatar" alt="Player photo">
+<div>
+<div class="playername" id="previewName">YOUR NAME</div>
+<div class="tag" id="previewTag">@YOUR_TAG</div>
+</div>
+</div>
+
+<div class="details">
+<div class="detail">
+<small>GAME</small>
+<strong id="previewGame">JAITISH RACING</strong>
+</div>
+<div class="detail">
+<small>PLAYER LEVEL</small>
+<strong id="previewLevel">LEVEL 1</strong>
+</div>
+</div>
+
+<div class="footer">OFFICIAL PLAYER CARD • JG</div>
+</div>
+
+<p class="note">Your card updates automatically as you edit your details.</p>
+</section>
+
+</div>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = "jaitishGamerID_v2";
+
+let photoData = "";
+let saveTimer = null;
+
+function showStatus(message, success = true) {
+  $("status").textContent = message;
+  $("status").style.color = success ? "#39ff88" : "#ff7185";
+}
+
+function updateCard() {
+  const name = $("name").value.trim() || "YOUR NAME";
+  const tag = $("tag").value.trim() || "YOUR_TAG";
+  const game = $("game").value;
+  const level = $("level").value;
+  const color = $("color").value;
+
+  $("previewName").textContent = name;
+  $("previewTag").textContent = "@" + tag.replace(/^@+/, "");
+  $("previewGame").textContent = game;
+  $("previewLevel").textContent = "LEVEL " + level;
+
+  $("gamerCard").style.setProperty("--glow", color);
+  $("avatar").style.borderColor = color;
+
+  if (photoData) {
+    $("avatar").src = photoData;
+  } else {
+    $("avatar").removeAttribute("src");
+    $("avatar").style.background = "#202941";
+  }
+}
+
+function getSavedData() {
+  return {
+    name: $("name").value,
+    tag: $("tag").value,
+    game: $("game").value,
+    level: $("level").value,
+    color: $("color").value,
+    photo: photoData
+  };
+}
+
+function saveID() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(getSavedData()));
+    showStatus("✅ Gamer ID saved successfully!");
+    $("save").textContent = "✅ ID Saved!";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      $("save").textContent = "💾 Save ID";
+    }, 2000);
+  } catch (error) {
+    showStatus(
+      "Save failed. Try a smaller photo or clear browser storage.",
+      false
+    );
+  }
+}
+
+function loadSavedID() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+    ["name", "tag", "game", "level", "color"].forEach(id => {
+      if (typeof data[id] === "string") {
+        const field = $(id);
+        const validOption = Array.from(field.options)
+          .some(option => option.value === data[id]);
+
+        if (field.tagName !== "SELECT" || validOption) {
+          field.value = data[id];
+        }
+      }
+    });
+
+    if (typeof data.photo === "string" &&
+        data.photo.startsWith("data:image/")) {
+      photoData = data.photo;
+    }
+
+    updateCard();
+    showStatus("✅ Your previously saved ID has been loaded.");
+  } catch (error) {
+    showStatus("Could not load the saved ID.", false);
+  }
+}
+
+$("photo").addEventListener("change", function () {
+  const file = this.files && this.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    showStatus("Please select a valid image file.", false);
+    this.value = "";
+    return;
+  }
+
+  if (file.size > 12 * 1024 * 1024) {
+    showStatus("Image is too large. Please choose an image under 12 MB.", false);
+    this.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+    const image = new Image();
+
+    image.onload = function () {
+      try {
+        const canvas = document.createElement("canvas");
+        const maxSize = 500;
+        const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+
+        canvas.width = Math.max(1, Math.round(image.width * scale));
+        canvas.height = Math.max(1, Math.round(image.height * scale));
+
+        const context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        photoData = canvas.toDataURL("image/jpeg", 0.82);
+        updateCard();
+        showStatus("✅ Photo uploaded successfully!");
+      } catch (error) {
+        showStatus("Could not process this photo. Try another image.", false);
+      }
+    };
+
+    image.onerror = function () {
+      showStatus("Could not open this image. Try another one.", false);
+    };
+
+    image.src = reader.result;
+  };
+
+  reader.onerror = function () {
+    showStatus("Could not read this photo.", false);
+  };
+
+  reader.readAsDataURL(file);
+});
+
+["name", "tag", "game", "level", "color"].forEach(id => {
+  $(id).addEventListener("input", updateCard);
+  $(id).addEventListener("change", updateCard);
+});
+
+$("save").addEventListener("click", saveID);
+
+$("reset").addEventListener("click", function () {
+  $("name").value = "";
+  $("tag").value = "";
+  $("game").selectedIndex = 0;
+  $("level").value = "1";
+  $("color").value = "#00eaff";
+  $("photo").value = "";
+  photoData = "";
+
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    // The new card can still be created if storage is unavailable.
+  }
+
+  updateCard();
+  showStatus("✨ New card ready! Enter your details.");
+});
+
+$("download").addEventListener("click", async function () {
+  const button = this;
+  button.disabled = true;
+  button.textContent = "Preparing...";
+
+  try {
+    if (typeof window.html2canvas !== "function") {
+      const script = document.createElement("script");
+      script.src =
+        "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+
+      await new Promise((resolve, reject) => {
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("Download library unavailable"));
+        document.head.appendChild(script);
+      });
+    }
+
+    const canvas = await window.html2canvas($("gamerCard"), {
+      backgroundColor: "#090b17",
+      scale: 2,
+      useCORS: true
+    });
+
+    const link = document.createElement("a");
+    const safeName = ($("name").value.trim() || "Gamer")
+      .replace(/[^a-z0-9_-]/gi, "_");
+
+    link.download = safeName + "_Gamer_ID.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    showStatus("✅ Gamer ID image downloaded!");
+  } catch (error) {
+    showStatus(
+      "Download failed. Check your internet connection and try again.",
+      false
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = "📥 Download ID";
+  }
+});
+
+loadSavedID();
+updateCard();
+</script>
+
+</body>
+</html>
