@@ -1,396 +1,109 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JAITISH GAMING | VIP PASS</title>
-
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <style>
-:root {
-  --gold:#f4c95d;
-  --tier:#f4c95d;
-  --bg:#07070c;
-  --panel:#111119;
-  --muted:#aaaab8;
+:root{--gold:#f4c95d;--tier:#f4c95d}
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px 13px 35px;min-height:100vh;
+ font-family:Arial,Helvetica,sans-serif;color:white;
+ background:radial-gradient(ellipse at top,#30220b,transparent 43%),
+ radial-gradient(ellipse at bottom right,#170b32,transparent 45%),#07070c
 }
-
-* { box-sizing:border-box; }
-
-body {
-  margin:0;
-  min-height:100vh;
-  padding:22px 14px 40px;
-  font-family:Arial,Helvetica,sans-serif;
-  color:white;
-  background:
-    radial-gradient(ellipse at top,#30220b 0%,transparent 40%),
-    radial-gradient(ellipse at bottom right,#170b32 0%,transparent 40%),
-    var(--bg);
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{width:100%;max-width:760px;margin:auto}
+.header{text-align:center;margin:12px 0 25px}
+.logo{color:var(--gold);font-size:13px;font-weight:bold;letter-spacing:5px}
+.header h1{
+ font-size:clamp(28px,6vw,44px);margin:13px 0 8px;letter-spacing:2px;
+ background:linear-gradient(90deg,#fff3b0,#e6a927,#fff1a0);
+ -webkit-background-clip:text;background-clip:text;color:transparent
 }
-
-button,input,select { font:inherit; }
-
-button {
-  cursor:pointer;
-  border:0;
+.header p,.note{color:#aaaab8;font-size:13px;line-height:1.7}
+.panel{
+ padding:21px;margin-bottom:20px;border:1px solid #ffffff18;
+ border-radius:19px;background:linear-gradient(145deg,#171720,#0b0b11);
+ box-shadow:0 15px 45px #0008
 }
-
-.container {
-  width:100%;
-  max-width:760px;
-  margin:auto;
+.section-title{margin:0 0 17px;color:var(--gold);font-size:16px;letter-spacing:1px}
+label{display:block;margin:14px 0 8px;font-size:12px;color:#d8d8e4;letter-spacing:.6px}
+input,select{
+ width:100%;min-height:46px;padding:12px;border-radius:10px;
+ border:1px solid #ffffff20;background:#090910;color:white;outline:none
 }
-
-.header {
-  text-align:center;
-  margin:10px 0 25px;
+input:focus,select:focus{border-color:var(--gold)}
+.primary{
+ width:100%;margin-top:17px;padding:14px;border:0;border-radius:11px;
+ color:#191000;font-weight:bold;
+ background:linear-gradient(100deg,#f8d878,#d9a62f,#ffeaa0)
 }
-
-.logo {
-  color:var(--gold);
-  font-size:13px;
-  letter-spacing:5px;
-  font-weight:700;
+.primary:disabled{opacity:.6;cursor:wait}
+.secondary{
+ padding:12px 15px;border:1px solid #f4c95d65;
+ border-radius:10px;background:#17130a;color:#ffe49a
 }
-
-.header h1 {
-  margin:13px 0 8px;
-  font-size:clamp(27px,6vw,43px);
-  letter-spacing:2px;
-  background:linear-gradient(90deg,#fff3b0,#e6a927,#fff1a0);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+.hidden{display:none!important}
+.status{margin-top:12px;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.tier{
+ padding:13px 5px;text-align:center;border:1px solid #ffffff20;
+ border-radius:12px;background:#090910;color:white
 }
-
-.header p {
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
+.tier strong{display:block;font-size:12px;letter-spacing:.5px}
+.tier span{display:block;margin-top:5px;font-size:10px;color:#aaa}
+.tier.active{border-color:var(--tier);background:#ffffff0b;box-shadow:0 0 18px #f4c95d20}
+.game-note{font-size:11px;color:#a8a8b7;margin:8px 0 0}
+.pass{
+ --pass-color:#f4c95d;position:relative;overflow:hidden;width:100%;
+ max-width:530px;min-height:310px;margin:auto;padding:23px;
+ border:1px solid var(--pass-color);border-radius:22px;
+ background:radial-gradient(circle at 95% 0%,#f4c95d25,transparent 42%),
+ radial-gradient(circle at 0% 100%,#421c4a75,transparent 48%),
+ linear-gradient(145deg,#17151c,#08080e 75%);
+ box-shadow:0 12px 35px #0008
 }
-
-.panel {
-  padding:22px;
-  margin-bottom:20px;
-  border:1px solid #ffffff18;
-  border-radius:20px;
-  background:linear-gradient(145deg,#171720,#0b0b11);
-  box-shadow:0 15px 50px #0008;
+.pass-top,.pass-main,.pass-bottom{position:relative;z-index:1}
+.pass-top,.pass-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pass-brand{font-size:12px;font-weight:800;letter-spacing:2px}
+.pass-brand span{color:var(--pass-color)}
+.pass-status{padding:6px 9px;border:1px solid var(--pass-color);border-radius:20px;color:var(--pass-color);font-size:9px;letter-spacing:1px}
+.divider{height:1px;margin:17px 0;background:linear-gradient(90deg,var(--pass-color),#ffffff15,transparent)}
+.pass-main{display:grid;grid-template-columns:1fr 100px;gap:13px;align-items:center}
+.eyebrow{color:#b6b4c0;font-size:9px;letter-spacing:2px}
+.pass-tier{margin:7px 0 15px;color:var(--pass-color);font-size:25px;font-weight:800;letter-spacing:2px}
+.name-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 16px}
+.player-label{color:#42f5a7;font-size:12px;font-weight:600;letter-spacing:2px;white-space:nowrap}
+.member-name{
+ color:#ffe16b;font-size:30px;font-weight:500;text-transform:lowercase;
+ letter-spacing:1.5px;overflow-wrap:anywhere;text-shadow:0 0 14px #ffe16b40
 }
-
-.section-title {
-  margin:0 0 18px;
-  color:var(--gold);
-  font-size:16px;
-  letter-spacing:1px;
+.detail{margin-top:10px}
+.detail small{display:block;color:#aaa8b6;font-size:9px;letter-spacing:1px}
+.detail strong{display:block;margin-top:5px;color:white;font-size:12px;font-weight:600;overflow-wrap:anywhere}
+.photo-box{
+ width:100px;height:120px;display:flex;align-items:center;justify-content:center;
+ overflow:hidden;border:1px solid var(--pass-color);border-radius:12px;
+ background:#ffffff08;color:#b8b8c8;font-size:11px;text-align:center
 }
-
-label {
-  display:block;
-  margin:15px 0 8px;
-  font-size:12px;
-  color:#d8d8e4;
-  letter-spacing:.6px;
-}
-
-input,select {
-  width:100%;
-  min-height:46px;
-  padding:12px 13px;
-  border-radius:10px;
-  border:1px solid #ffffff20;
-  background:#090910;
-  color:white;
-  outline:none;
-}
-
-input:focus,select:focus {
-  border-color:var(--gold);
-  box-shadow:0 0 0 2px #f4c95d20;
-}
-
-.primary-btn {
-  width:100%;
-  margin-top:18px;
-  padding:14px;
-  border-radius:11px;
-  color:#191000;
-  font-weight:700;
-  background:linear-gradient(100deg,#f8d878,#d9a62f,#ffeaa0);
-  box-shadow:0 5px 22px #f4c95d20;
-}
-
-.primary-btn:disabled {
-  opacity:.55;
-  cursor:wait;
-}
-
-.secondary-btn {
-  padding:12px 16px;
-  border:1px solid #f4c95d65;
-  border-radius:10px;
-  background:#17130a;
-  color:#ffe49a;
-}
-
-.small-note {
-  color:#9b9ba9;
-  font-size:12px;
-  line-height:1.7;
-}
-
-.status {
-  margin-top:12px;
-  font-size:13px;
-  line-height:1.6;
-  overflow-wrap:anywhere;
-}
-
-.hidden { display:none !important; }
-
-.tiers {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:9px;
-}
-
-.tier {
-  padding:13px 5px;
-  text-align:center;
-  border:1px solid #ffffff20;
-  border-radius:12px;
-  background:#090910;
-  color:white;
-  transition:.2s;
-}
-
-.tier strong {
-  display:block;
-  font-size:12px;
-  letter-spacing:.5px;
-}
-
-.tier span {
-  display:block;
-  margin-top:5px;
-  font-size:10px;
-  color:#aaa;
-}
-
-.tier.active {
-  border-color:var(--tier);
-  background:#ffffff0b;
-  box-shadow:0 0 18px color-mix(in srgb,var(--tier) 15%,transparent);
-}
-
-.pass-wrap {
-  margin-top:18px;
-}
-
-.pass {
-  --pass-color:#f4c95d;
-  width:100%;
-  max-width:520px;
-  min-height:325px;
-  position:relative;
-  overflow:hidden;
-  margin:0 auto;
-  padding:24px;
-  border:1px solid color-mix(in srgb,var(--pass-color) 65%,transparent);
-  border-radius:23px;
-  background:
-    radial-gradient(circle at 95% 0%,color-mix(in srgb,var(--pass-color) 24%,transparent),transparent 42%),
-    radial-gradient(circle at 0% 100%,#421c4a75,transparent 48%),
-    linear-gradient(145deg,#17151c,#08080e 75%);
-  box-shadow:0 12px 35px #0008, inset 0 0 25px #ffffff05;
-}
-
-.pass:before {
-  content:"";
-  position:absolute;
-  width:210px;
-  height:210px;
-  right:-105px;
-  bottom:-110px;
-  border:1px solid color-mix(in srgb,var(--pass-color) 30%,transparent);
-  border-radius:50%;
-  box-shadow:0 0 0 20px #ffffff04,0 0 0 40px #ffffff03;
-  pointer-events:none;
-}
-
-.pass-top,.pass-bottom,.pass-main {
-  position:relative;
-  z-index:1;
-}
-
-.pass-top {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.pass-brand {
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.pass-brand span { color:var(--pass-color); }
-
-.pass-status {
-  padding:6px 9px;
-  border:1px solid color-mix(in srgb,var(--pass-color) 65%,transparent);
-  border-radius:20px;
-  color:var(--pass-color);
-  font-size:9px;
-  letter-spacing:1px;
-}
-
-.pass-divider {
-  height:1px;
-  margin:18px 0;
-  background:linear-gradient(90deg,var(--pass-color),#ffffff15,transparent);
-}
-
-.pass-main {
-  display:grid;
-  grid-template-columns:1fr 105px;
-  gap:16px;
-  align-items:center;
-}
-
-.pass-eyebrow {
-  color:#b6b4c0;
-  font-size:9px;
-  letter-spacing:2px;
-}
-
-.pass-tier {
-  margin:7px 0 18px;
-  color:var(--pass-color);
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.player-label {
-  text-align:center;
-  color:#42f5a7;
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:3px;
-  line-height:1.6;
-}
-
-.member-name {
-  margin:10px 0 17px;
-  color:#ffe16b;
-  font-size:32px;
-  font-weight:500;
-  text-align:center;
-  text-transform:lowercase;
-  letter-spacing:2px;
-  line-height:1.4;
-  overflow-wrap:anywhere;
-  text-shadow:0 0 14px #ffe16b40;
-}
-
-.pass-detail {
-  margin-top:11px;
-}
-
-.pass-detail small {
-  display:block;
-  color:#aaa8b6;
-  font-size:9px;
-  letter-spacing:1px;
-}
-
-.pass-detail strong {
-  display:block;
-  margin-top:5px;
-  color:#fff;
-  font-size:12px;
-  font-weight:600;
-  overflow-wrap:anywhere;
-}
-
-.photo-box {
-  width:105px;
-  height:125px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid color-mix(in srgb,var(--pass-color) 70%,transparent);
-  border-radius:12px;
-  background:#ffffff08;
-  color:#b8b8c8;
-  font-size:11px;
-  text-align:center;
-}
-
-.photo-box img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.pass-bottom {
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:18px;
-}
-
-.uid-text {
-  color:#c9c7d4;
-  font-size:9px;
-  letter-spacing:1px;
-  overflow-wrap:anywhere;
-}
-
-.pass-serial {
-  color:var(--pass-color);
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:2px;
-}
-
-.actions {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:15px;
-}
-
-.actions button { margin-top:0; }
-
-.footer {
-  text-align:center;
-  color:#777786;
-  font-size:11px;
-  line-height:1.7;
-  margin-top:24px;
-}
-
-@media(max-width:430px) {
-  .panel { padding:16px; }
-  .tiers { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .pass { padding:18px; min-height:310px; }
-  .pass-main { grid-template-columns:1fr 85px; gap:10px; }
-  .photo-box { width:85px; height:108px; }
-  .pass-tier { font-size:21px; }
-  .member-name { font-size:27px; }
-  .actions { grid-template-columns:1fr; }
-}
-
-@media print {
-  body { background:#07070c; }
+.photo-box img{width:100%;height:100%;object-fit:cover}
+.pass-bottom{font-size:10px;color:#c9c7d4;overflow-wrap:anywhere}
+.serial{color:var(--pass-color);font-weight:bold;letter-spacing:1px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.actions button{margin-top:0}
+.footer{text-align:center;color:#777786;font-size:11px;line-height:1.7;margin-top:24px}
+@media(max-width:430px){
+ .panel{padding:15px}.tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pass{padding:16px}.pass-main{grid-template-columns:1fr 78px;gap:9px}
+ .photo-box{width:78px;height:102px}.pass-tier{font-size:21px}
+ .member-name{font-size:25px}.player-label{font-size:11px;letter-spacing:1px}
+ .name-row{gap:8px}.actions{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -398,481 +111,421 @@ input:focus,select:focus {
 <body>
 <div class="container">
 
-  <header class="header">
-    <div class="logo">✦ JAITISH GAMING ✦</div>
-    <h1>VIP MEMBERSHIP</h1>
-    <p>Your gaming identity. Your level. Your exclusive pass.</p>
-  </header>
+<header class="header">
+ <div class="logo">✦ JAITISH GAMING ✦</div>
+ <h1>VIP MEMBERSHIP</h1>
+ <p>Gaming • Coding • Creativity • Fun</p>
+</header>
 
-  <section class="panel" id="accessPanel">
-    <h2 class="section-title">🔐 VIP ACCESS VERIFICATION</h2>
-    <p class="small-note">
-      Apna authorized VIP access code enter karo. Pass banane se pehle
-      server par code verify kiya jayega.
-    </p>
+<!-- FIRST SCREEN: ONLY VIP ACCESS -->
+<section class="panel" id="accessPanel">
+ <h2 class="section-title">🔐 VIP CODE ACCESS</h2>
+ <p class="note">पहले अपना VIP access code verify करो। सही code के बाद ही आगे का पेज खुलेगा।</p>
+ <label for="accessCode">VIP ACCESS CODE</label>
+ <input id="accessCode" type="password" placeholder="Enter VIP code" autocomplete="off">
+ <button class="primary" id="verifyBtn" type="button">VERIFY VIP ACCESS</button>
+ <div class="status" id="accessStatus" role="status"></div>
+</section>
 
-    <label for="accessTier">ACCESS TYPE</label>
-    <select id="accessTier">
-      <option value="VIP">Standard VIP</option>
-      <option value="Diamond">Diamond Pass</option>
-      <option value="Master">Master Pass</option>
-    </select>
+<!-- BUILDER -->
+<section class="panel hidden" id="builderPanel">
+ <h2 class="section-title">🎮 CREATE YOUR VIP PASS</h2>
 
-    <label for="accessCode">VIP ACCESS CODE</label>
-    <input id="accessCode" type="password"
-      placeholder="Enter your access code"
-      autocomplete="off">
+ <label for="playerName">PLAYER NAME — MAX 12 CHARACTERS</label>
+ <input id="playerName" type="text" maxlength="12" placeholder="Enter player name">
 
-    <button class="primary-btn" id="verifyBtn" type="button">
-      VERIFY ACCESS
-    </button>
+ <label for="gameSelect">SELECT YOUR GAME</label>
+ <select id="gameSelect">
+  <optgroup label="👑 JAITISH GAMING — YOUR GAMES">
+   <option value="NEON RACING">NEON RACING</option>
+   <option value="REACTION TEST">REACTION TEST</option>
+   <option value="ADDICTION MASTER">ADDICTION MASTER</option>
+   <option value="JAITISH MEMORY MASTER">JAITISH MEMORY MASTER</option>
+  </optgroup>
+  <optgroup label="🎮 MORE GAMES">
+   <option>Free Fire</option>
+   <option>BGMI</option>
+   <option>PUBG Mobile</option>
+   <option>Call of Duty Mobile</option>
+   <option>Minecraft</option>
+   <option>Roblox</option>
+   <option>GTA V</option>
+   <option>GTA San Andreas</option>
+   <option>GTA Online</option>
+   <option>Fortnite</option>
+   <option>Valorant</option>
+   <option>Counter-Strike 2</option>
+   <option>Apex Legends</option>
+   <option>League of Legends</option>
+   <option>Dota 2</option>
+   <option>Rocket League</option>
+   <option>EA Sports FC</option>
+   <option>eFootball</option>
+   <option>Asphalt 9</option>
+   <option>Asphalt Legends Unite</option>
+   <option>Need for Speed</option>
+   <option>Real Racing 3</option>
+   <option>CarX Street</option>
+   <option>Hill Climb Racing</option>
+   <option>Traffic Rider</option>
+   <option>Bus Simulator</option>
+   <option>Truck Simulator</option>
+   <option>Euro Truck Simulator 2</option>
+   <option>Forza Horizon</option>
+   <option>Forza Motorsport</option>
+   <option>Clash of Clans</option>
+   <option>Clash Royale</option>
+   <option>Brawl Stars</option>
+   <option>Call of Duty Warzone</option>
+   <option>The Sims 4</option>
+   <option>Among Us</option>
+   <option>Fall Guys</option>
+   <option>Stumble Guys</option>
+   <option>Subway Surfers</option>
+   <option>Temple Run 2</option>
+   <option>Pokémon GO</option>
+   <option>Genshin Impact</option>
+   <option>Honkai Star Rail</option>
+   <option>Elden Ring</option>
+   <option>Dark Souls</option>
+   <option>God of War</option>
+   <option>Marvel's Spider-Man</option>
+   <option>Red Dead Redemption 2</option>
+   <option>The Witcher 3</option>
+   <option>Cyberpunk 2077</option>
+   <option>Hollow Knight</option>
+   <option>Terraria</option>
+   <option>Stardew Valley</option>
+   <option>Chess</option>
+   <option>Carrom</option>
+   <option>Ludo King</option>
+   <option>8 Ball Pool</option>
+   <option>Shadow Fight 2</option>
+   <option>Shadow Fight 4</option>
+   <option>Plants vs. Zombies</option>
+   <option>Candy Crush Saga</option>
+   <option>Geometry Dash</option>
+   <option>Other Game</option>
+  </optgroup>
+ </select>
+ <label for="customGame">CUSTOM GAME NAME (ONLY FOR OTHER GAME)</label>
+ <input id="customGame" type="text" maxlength="35" placeholder="Optional">
 
-    <div class="status" id="accessStatus" role="status"></div>
-  </section>
+ <label for="playerLevel">PLAYER LEVEL (1–99)</label>
+ <select id="playerLevel"></select>
 
-  <section class="panel hidden" id="builderPanel">
-    <h2 class="section-title">👑 CREATE YOUR VIP PASS</h2>
+ <label>PLAYER UID (OPTIONAL)</label>
+ <label style="display:flex;align-items:center;gap:10px;letter-spacing:0">
+  <input id="includeUID" type="checkbox" style="width:18px;min-height:18px">
+  Show UID on my pass
+ </label>
+ <div id="uidWrap" class="hidden">
+  <label for="playerUID">PLAYER UID</label>
+  <input id="playerUID" type="text" maxlength="30" placeholder="Enter UID">
+ </div>
 
-    <label for="playerName">PLAYER NAME — MAX 12 CHARACTERS</label>
-    <input id="playerName" type="text" maxlength="12"
-      placeholder="Enter player name" autocomplete="nickname">
+ <label for="playerPhoto">PLAYER PHOTO (OPTIONAL)</label>
+ <input id="playerPhoto" type="file" accept="image/*">
 
-    <label for="gameSelect">SELECT YOUR GAME</label>
-    <select id="gameSelect">
-      <option value="Free Fire">Free Fire</option>
-      <option value="BGMI">BGMI</option>
-      <option value="PUBG Mobile">PUBG Mobile</option>
-      <option value="Call of Duty Mobile">Call of Duty Mobile</option>
-      <option value="Minecraft">Minecraft</option>
-      <option value="Roblox">Roblox</option>
-      <option value="GTA V">GTA V</option>
-      <option value="GTA San Andreas">GTA San Andreas</option>
-      <option value="GTA Online">GTA Online</option>
-      <option value="Fortnite">Fortnite</option>
-      <option value="Valorant">Valorant</option>
-      <option value="Counter-Strike 2">Counter-Strike 2</option>
-      <option value="Apex Legends">Apex Legends</option>
-      <option value="League of Legends">League of Legends</option>
-      <option value="Dota 2">Dota 2</option>
-      <option value="Rocket League">Rocket League</option>
-      <option value="FIFA / EA Sports FC">FIFA / EA Sports FC</option>
-      <option value="eFootball">eFootball</option>
-      <option value="Asphalt 9">Asphalt 9</option>
-      <option value="Asphalt Legends Unite">Asphalt Legends Unite</option>
-      <option value="Need for Speed">Need for Speed</option>
-      <option value="Real Racing 3">Real Racing 3</option>
-      <option value="CarX Street">CarX Street</option>
-      <option value="Hill Climb Racing">Hill Climb Racing</option>
-      <option value="Traffic Rider">Traffic Rider</option>
-      <option value="Bus Simulator">Bus Simulator</option>
-      <option value="Truck Simulator">Truck Simulator</option>
-      <option value="Euro Truck Simulator 2">Euro Truck Simulator 2</option>
-      <option value="Forza Horizon">Forza Horizon</option>
-      <option value="Forza Motorsport">Forza Motorsport</option>
-      <option value="Grand Theft Auto Online">Grand Theft Auto Online</option>
-      <option value="Clash of Clans">Clash of Clans</option>
-      <option value="Clash Royale">Clash Royale</option>
-      <option value="Brawl Stars">Brawl Stars</option>
-      <option value="Call of Duty Warzone">Call of Duty Warzone</option>
-      <option value="The Sims 4">The Sims 4</option>
-      <option value="Among Us">Among Us</option>
-      <option value="Fall Guys">Fall Guys</option>
-      <option value="Stumble Guys">Stumble Guys</option>
-      <option value="Subway Surfers">Subway Surfers</option>
-      <option value="Temple Run 2">Temple Run 2</option>
-      <option value="Pokémon GO">Pokémon GO</option>
-      <option value="Genshin Impact">Genshin Impact</option>
-      <option value="Honkai Star Rail">Honkai Star Rail</option>
-      <option value="Elden Ring">Elden Ring</option>
-      <option value="Dark Souls">Dark Souls</option>
-      <option value="God of War">God of War</option>
-      <option value="Spider-Man">Spider-Man</option>
-      <option value="Red Dead Redemption 2">Red Dead Redemption 2</option>
-      <option value="The Witcher 3">The Witcher 3</option>
-      <option value="Cyberpunk 2077">Cyberpunk 2077</option>
-      <option value="Hollow Knight">Hollow Knight</option>
-      <option value="Terraria">Terraria</option>
-      <option value="Stardew Valley">Stardew Valley</option>
-      <option value="Other Game">Other Game</option>
-    </select>
+ <label>SELECT MEMBERSHIP LEVEL</label>
+ <p class="note">Bronze, Silver, Gold और Platinum फ्री हैं। Diamond और Master के लिए अलग code जरूरी है।</p>
+ <div class="tiers" id="tiers">
+  <button type="button" class="tier active" data-tier="Bronze"><strong>BRONZE</strong><span>FREE</span></button>
+  <button type="button" class="tier" data-tier="Silver"><strong>SILVER</strong><span>FREE</span></button>
+  <button type="button" class="tier" data-tier="Gold"><strong>GOLD</strong><span>FREE</span></button>
+  <button type="button" class="tier" data-tier="Platinum"><strong>PLATINUM</strong><span>FREE</span></button>
+  <button type="button" class="tier" data-tier="Diamond"><strong>DIAMOND</strong><span>Separate code</span></button>
+  <button type="button" class="tier" data-tier="Master"><strong>MASTER</strong><span>Separate code</span></button>
+ </div>
 
-    <label for="customGame">CUSTOM GAME NAME (OPTIONAL)</label>
-    <input id="customGame" type="text" maxlength="35"
-      placeholder="Fill only if you selected Other Game">
+ <button class="primary" id="generateBtn" type="button">✨ GENERATE VIP PASS</button>
+ <div class="status" id="builderStatus" role="status"></div>
+</section>
 
-    <label for="playerLevel">PLAYER LEVEL</label>
-    <select id="playerLevel">
-      <option value="Rookie">Rookie</option>
-      <option value="Pro">Pro</option>
-      <option value="Elite">Elite</option>
-      <option value="Legend">Legend</option>
-      <option value="Champion">Champion</option>
-      <option value="Master">Master</option>
-    </select>
+<!-- PASS -->
+<section class="panel hidden" id="resultPanel">
+ <h2 class="section-title">🪪 YOUR VIP PASS</h2>
 
-    <label for="playerUID">PLAYER UID</label>
-    <input id="playerUID" type="text" maxlength="30"
-      placeholder="Enter your game UID">
-
-    <label for="playerPhoto">PLAYER PHOTO (OPTIONAL)</label>
-    <input id="playerPhoto" type="file" accept="image/*">
-
-    <p class="small-note">
-      Photo optional hai. Sirf apni ya permission wali photo use karo.
-      Pass par wahi details dikhengi jo tum yahan bharoge.
-    </p>
-
-    <label>SELECT VIP MEMBERSHIP LEVEL</label>
-    <div class="tiers" id="tiers">
-      <button type="button" class="tier active" data-tier="Bronze">
-        <strong>BRONZE</strong><span>Entry Level</span>
-      </button>
-      <button type="button" class="tier" data-tier="Silver">
-        <strong>SILVER</strong><span>Silver Member</span>
-      </button>
-      <button type="button" class="tier" data-tier="Gold">
-        <strong>GOLD</strong><span>Gold Member</span>
-      </button>
-      <button type="button" class="tier" data-tier="Platinum">
-        <strong>PLATINUM</strong><span>Elite Member</span>
-      </button>
-      <button type="button" class="tier" data-tier="Diamond">
-        <strong>DIAMOND</strong><span>Diamond Member</span>
-      </button>
-      <button type="button" class="tier" data-tier="Master">
-        <strong>MASTER</strong><span>Master Member</span>
-      </button>
+ <div class="pass" id="vipCard">
+  <div class="pass-top">
+   <div class="pass-brand">JAITISH <span>GAMING</span></div>
+   <div class="pass-status">✦ VIP MEMBER</div>
+  </div>
+  <div class="divider"></div>
+  <div class="pass-main">
+   <div>
+    <div class="eyebrow">MEMBERSHIP LEVEL</div>
+    <div class="pass-tier" id="outTier">BRONZE</div>
+    <div class="name-row">
+     <span class="player-label">PLAYER NAME</span>
+     <span class="member-name" id="outName">player</span>
     </div>
+    <div class="detail"><small>SELECTED GAME</small><strong id="outGame">NEON RACING</strong></div>
+    <div class="detail"><small>PLAYER LEVEL</small><strong id="outLevel">Level 1</strong></div>
+    <div class="detail hidden" id="outUIDWrap"><small>PLAYER UID</small><strong id="outUID"></strong></div>
+   </div>
+   <div class="photo-box" id="photoBox"><span>PLAYER<br>PHOTO</span></div>
+  </div>
+  <div class="divider"></div>
+  <div class="pass-bottom">
+   <div>JAITISH GAMING MEMBERSHIP</div>
+   <div class="serial" id="outSerial">JG-BRONZE</div>
+  </div>
+ </div>
 
-    <button class="primary-btn" id="generateBtn" type="button">
-      ✨ GENERATE VIP PASS
-    </button>
+ <div class="actions">
+  <button class="primary" id="downloadBtn" type="button">⬇ DOWNLOAD PASS</button>
+  <button class="secondary" id="editBtn" type="button">✏️ EDIT DETAILS</button>
+ </div>
+ <p class="note">यह JAITISH GAMING membership design है। यह अपने-आप किसी बाहरी गेम की official membership नहीं बनाता।</p>
+</section>
 
-    <div class="status" id="builderStatus" role="status"></div>
-  </section>
-
-  <section class="panel hidden" id="resultPanel">
-    <h2 class="section-title">🪪 YOUR VIP MEMBERSHIP PASS</h2>
-
-    <div class="pass-wrap">
-      <div class="pass" id="vipCard">
-        <div class="pass-top">
-          <div class="pass-brand">JAITISH <span>GAMING</span></div>
-          <div class="pass-status">✦ VERIFIED ACCESS</div>
-        </div>
-
-        <div class="pass-divider"></div>
-
-        <div class="pass-main">
-          <div>
-            <div class="pass-eyebrow">MEMBERSHIP LEVEL</div>
-            <div class="pass-tier" id="outTier">BRONZE</div>
-
-            <div class="player-label">PLAYER NAME</div>
-            <div class="member-name" id="outName">player</div>
-
-            <div class="pass-detail">
-              <small>SELECTED GAME</small>
-              <strong id="outGame">Free Fire</strong>
-            </div>
-
-            <div class="pass-detail">
-              <small>PLAYER LEVEL</small>
-              <strong id="outLevel">Rookie</strong>
-            </div>
-          </div>
-
-          <div class="photo-box" id="photoBox">
-            <span>PLAYER<br>PHOTO</span>
-          </div>
-        </div>
-
-        <div class="pass-divider"></div>
-
-        <div class="pass-bottom">
-          <div>
-            <div class="uid-text">PLAYER UID</div>
-            <strong id="outUID">Not provided</strong>
-          </div>
-          <div class="pass-serial" id="outSerial">JG • VIP</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="primary-btn" id="downloadBtn" type="button">
-        ⬇ DOWNLOAD PASS
-      </button>
-      <button class="secondary-btn" id="editBtn" type="button">
-        ✏️ EDIT DETAILS
-      </button>
-    </div>
-
-    <p class="small-note">
-      Note: Yeh downloadable membership design hai. Is par VERIFIED ACCESS
-      ka label server verification ke baad bhi sirf is page ka display label hai;
-      yeh kisi external tournament ya game ki official verification nahi hai.
-    </p>
-  </section>
-
-  <footer class="footer">
-    © JAITISH GAMING · VIP MEMBERSHIP<br>
-    Gaming • Coding • Creativity
-  </footer>
-
+<footer class="footer">© JAITISH GAMING · VIP MEMBERSHIP</footer>
 </div>
 
 <script>
 "use strict";
 
-/* Existing Supabase project configuration */
 const SUPABASE_URL = "https://sfecuepkrsoyddctpzpg.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_nEdWip2jcq_UXyxS10c7oA_X0JApgFS";
 const VERIFY_ENDPOINT = SUPABASE_URL + "/functions/v1/VIP_CODES";
 
-const tierColors = {
-  Bronze: "#cd8b52",
-  Silver: "#c9d3df",
-  Gold: "#f4c95d",
-  Platinum: "#b9d9ee",
-  Diamond: "#62eaff",
-  Master: "#e8b9ff"
+const colors = {
+ Bronze:"#cd8b52",
+ Silver:"#c9d3df",
+ Gold:"#f4c95d",
+ Platinum:"#b9d9ee",
+ Diamond:"#62eaff",
+ Master:"#e8b9ff"
 };
 
-let selectedTier = "Bronze";
-let verifiedAccess = false;
-let uploadedPhotoData = "";
-let passNumber = "JG-VIP";
-
 const $ = id => document.getElementById(id);
+let standardVerified = false;
+let selectedTier = "Bronze";
+let verifiedSpecialTiers = new Set();
+let uploadedPhotoData = "";
 
-function setStatus(id, message, success = false) {
-  const el = $(id);
-  el.textContent = message;
-  el.style.color = success ? "#42f5a7" : "#ff9999";
+for(let i=1;i<=99;i++){
+ const option=document.createElement("option");
+ option.value=String(i);
+ option.textContent="Level "+i;
+ $("playerLevel").appendChild(option);
 }
 
-function cleanText(value, maxLength) {
-  return String(value || "").trim().slice(0, maxLength);
+function setStatus(id,message,success=false){
+ $(id).textContent=message;
+ $(id).style.color=success?"#42f5a7":"#ff9999";
 }
 
-/* Verify code through the existing server function */
-$("verifyBtn").addEventListener("click", async () => {
-  const code = $("accessCode").value.trim();
-  const chosenAccess = $("accessTier").value;
-  const btn = $("verifyBtn");
+async function verifyCode(code,tier){
+ const response=await fetch(VERIFY_ENDPOINT,{
+  method:"POST",
+  headers:{
+   "Content-Type":"application/json",
+   "apikey":SUPABASE_PUBLISHABLE_KEY,
+   "Authorization":"Bearer "+SUPABASE_PUBLISHABLE_KEY
+  },
+  body:JSON.stringify({action:"verify",code:code,tier:tier})
+ });
+ let data={};
+ try{data=await response.json()}catch(_){}
+ return {ok:response.ok && data.valid===true,message:data.message||""};
+}
 
-  if (!code) {
-    setStatus("accessStatus", "Pehle apna access code enter karo.");
-    $("accessCode").focus();
-    return;
+/* FIRST: ONLY STANDARD VIP CODE */
+$("verifyBtn").addEventListener("click",async()=>{
+ const code=$("accessCode").value.trim();
+ if(!code){setStatus("accessStatus","पहले VIP code डालो।");return}
+
+ const btn=$("verifyBtn");
+ btn.disabled=true;
+ btn.textContent="VERIFYING...";
+
+ try{
+  const result=await verifyCode(code,"VIP");
+  if(!result.ok){
+   setStatus("accessStatus",result.message||"VIP code गलत है या verify नहीं हुआ।");
+   return;
   }
 
-  btn.disabled = true;
-  btn.textContent = "VERIFYING...";
-  setStatus("accessStatus", "Server par code verify ho raha hai...", true);
-
-  try {
-    const response = await fetch(VERIFY_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_PUBLISHABLE_KEY,
-        "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY
-      },
-      body: JSON.stringify({
-        action: "verify",
-        code: code,
-        tier: chosenAccess
-      })
-    });
-
-    let data = {};
-    try {
-      data = await response.json();
-    } catch (_) {
-      data = {};
-    }
-
-    if (!response.ok || data.valid !== true) {
-      verifiedAccess = false;
-      $("builderPanel").classList.add("hidden");
-      $("resultPanel").classList.add("hidden");
-      setStatus(
-        "accessStatus",
-        data.message || "Code verify nahi hua. Code aur access type check karo."
-      );
-      return;
-    }
-
-    verifiedAccess = true;
-    $("accessPanel").classList.add("hidden");
-    $("builderPanel").classList.remove("hidden");
-    setStatus("builderStatus", "Access verified. Ab apna pass customize karo.", true);
-    $("builderPanel").scrollIntoView({ behavior: "smooth", block: "start" });
-
-  } catch (error) {
-    setStatus(
-      "accessStatus",
-      "Server se connect nahi ho paya. Internet aur VIP_CODES function check karo."
-    );
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "VERIFY ACCESS";
-  }
+  standardVerified=true;
+  $("accessPanel").classList.add("hidden");
+  $("builderPanel").classList.remove("hidden");
+  setStatus("builderStatus","VIP access verified. अब अपना pass बनाओ।",true);
+  $("builderPanel").scrollIntoView({behavior:"smooth"});
+ }catch(error){
+  setStatus("accessStatus","Server से connect नहीं हुआ। Internet और VIP_CODES function जाँचो।");
+ }finally{
+  btn.disabled=false;
+  btn.textContent="VERIFY VIP ACCESS";
+ }
 });
 
-/* Tier selection */
-document.querySelectorAll(".tier").forEach(button => {
-  button.addEventListener("click", () => {
-    selectedTier = button.dataset.tier;
+/* TIER SELECTION: DIAMOND AND MASTER HAVE SEPARATE CODES */
+document.querySelectorAll(".tier").forEach(button=>{
+ button.addEventListener("click",async()=>{
+  if(!standardVerified)return;
 
-    document.querySelectorAll(".tier").forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
+  const tier=button.dataset.tier;
 
-    document.documentElement.style.setProperty(
-      "--tier",
-      tierColors[selectedTier]
-    );
+  if(tier==="Diamond"||tier==="Master"){
+   if(!verifiedSpecialTiers.has(tier)){
+    const code=prompt("अपना अलग "+tier+" VIP Code डालो:");
+    if(code===null||!code.trim()){
+     setStatus("builderStatus",tier+" code दिए बिना यह pass select नहीं होगा।");
+     return;
+    }
+
+    button.disabled=true;
+    setStatus("builderStatus",tier+" code verify हो रहा है...",true);
+
+    try{
+     const result=await verifyCode(code.trim(),tier);
+     if(!result.ok){
+      setStatus("builderStatus",result.message||tier+" code गलत है।");
+      return;
+     }
+     verifiedSpecialTiers.add(tier);
+    }catch(error){
+     setStatus("builderStatus","Server verification नहीं हो पाया। Internet जाँचो।");
+     return;
+    }finally{
+     button.disabled=false;
+    }
+   }
+  }
+
+  selectedTier=tier;
+  document.querySelectorAll(".tier").forEach(item=>{
+   item.classList.toggle("active",item.dataset.tier===selectedTier);
   });
+  $("vipCard").style.setProperty("--pass-color",colors[selectedTier]);
+  setStatus("builderStatus",selectedTier+" select हो गया।",true);
+ });
 });
 
-/* Optional player photo */
-$("playerPhoto").addEventListener("change", event => {
-  const file = event.target.files && event.target.files[0];
-
-  if (!file) {
-    uploadedPhotoData = "";
-    return;
-  }
-
-  if (!file.type.startsWith("image/")) {
-    setStatus("builderStatus", "Please ek image file select karo.");
-    event.target.value = "";
-    return;
-  }
-
-  if (file.size > 5 * 1024 * 1024) {
-    setStatus("builderStatus", "Photo 5 MB se chhoti honi chahiye.");
-    event.target.value = "";
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    uploadedPhotoData = String(reader.result || "");
-    const box = $("photoBox");
-    box.replaceChildren();
-
-    const img = document.createElement("img");
-    img.src = uploadedPhotoData;
-    img.alt = "Player photo";
-    box.appendChild(img);
-  };
-
-  reader.onerror = () => {
-    setStatus("builderStatus", "Photo load nahi hui. Dobara try karo.");
-  };
-
-  reader.readAsDataURL(file);
+/* OPTIONAL UID */
+$("includeUID").addEventListener("change",()=>{
+ $("uidWrap").classList.toggle("hidden",!$("includeUID").checked);
 });
 
-/* Generate pass */
-$("generateBtn").addEventListener("click", () => {
-  if (!verifiedAccess) {
-    setStatus("builderStatus", "Pehle VIP access verify karo.");
-    return;
-  }
+/* OPTIONAL PHOTO */
+$("playerPhoto").addEventListener("change",event=>{
+ const file=event.target.files&&event.target.files[0];
+ if(!file){uploadedPhotoData="";return}
 
-  const name = cleanText($("playerName").value, 12).toLowerCase();
-  let game = $("gameSelect").value;
-  const customGame = cleanText($("customGame").value, 35);
-  const level = $("playerLevel").value;
-  const uid = cleanText($("playerUID").value, 30);
+ if(!file.type.startsWith("image/")){
+  setStatus("builderStatus","कृपया image file चुनो।");
+  event.target.value="";
+  return;
+ }
+ if(file.size>5*1024*1024){
+  setStatus("builderStatus","Photo 5 MB से छोटी होनी चाहिए।");
+  event.target.value="";
+  return;
+ }
 
-  if (!name) {
-    setStatus("builderStatus", "Player name enter karo.");
-    $("playerName").focus();
-    return;
-  }
-
-  if (game === "Other Game") {
-    if (!customGame) {
-      setStatus("builderStatus", "Custom game name enter karo.");
-      $("customGame").focus();
-      return;
-    }
-    game = customGame;
-  }
-
-  $("outName").textContent = name;
-  $("outGame").textContent = game;
-  $("outLevel").textContent = level;
-  $("outUID").textContent = uid || "Not provided";
-  $("outTier").textContent = selectedTier.toUpperCase();
-
-  passNumber = "JG-" + selectedTier.toUpperCase() + "-VIP";
-
-  $("outSerial").textContent = passNumber;
-  $("vipCard").style.setProperty("--pass-color", tierColors[selectedTier]);
-
-  const photoBox = $("photoBox");
-
-  if (!uploadedPhotoData) {
-    photoBox.replaceChildren();
-    const placeholder = document.createElement("span");
-    placeholder.innerHTML = "PLAYER<br>PHOTO";
-    photoBox.appendChild(placeholder);
-  }
-
-  $("resultPanel").classList.remove("hidden");
-  setStatus("builderStatus", "VIP pass ready hai!", true);
-  $("resultPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+ const reader=new FileReader();
+ reader.onload=()=>{
+  uploadedPhotoData=String(reader.result||"");
+  const box=$("photoBox");
+  box.replaceChildren();
+  const img=document.createElement("img");
+  img.src=uploadedPhotoData;
+  img.alt="Player photo";
+  box.appendChild(img);
+ };
+ reader.onerror=()=>setStatus("builderStatus","Photo load नहीं हुई।");
+ reader.readAsDataURL(file);
 });
 
-/* Download the pass as a PNG image */
-$("downloadBtn").addEventListener("click", async () => {
-  if (!verifiedAccess) {
-    setStatus("builderStatus", "Access verify nahi hai.");
-    return;
+/* GENERATE PASS */
+$("generateBtn").addEventListener("click",()=>{
+ if(!standardVerified){
+  setStatus("builderStatus","पहले VIP code verify करो।");
+  return;
+ }
+
+ if((selectedTier==="Diamond"||selectedTier==="Master")&&
+    !verifiedSpecialTiers.has(selectedTier)){
+  setStatus("builderStatus",selectedTier+" का अलग code verify करना जरूरी है।");
+  return;
+ }
+
+ const name=$("playerName").value.trim().slice(0,12).toLowerCase();
+ if(!name){
+  setStatus("builderStatus","Player name डालो।");
+  $("playerName").focus();
+  return;
+ }
+
+ let game=$("gameSelect").value;
+ if(game==="Other Game"){
+  game=$("customGame").value.trim().slice(0,35);
+  if(!game){
+   setStatus("builderStatus","Custom game name डालो।");
+   $("customGame").focus();
+   return;
   }
+ }
 
-  const btn = $("downloadBtn");
-  btn.disabled = true;
-  btn.textContent = "PREPARING IMAGE...";
+ const includeUID=$("includeUID").checked;
+ const uid=includeUID?$("playerUID").value.trim().slice(0,30):"";
 
-  try {
-    if (typeof html2canvas !== "function") {
-      throw new Error("Image library load nahi hui. Internet check karo.");
-    }
+ $("outName").textContent=name;
+ $("outGame").textContent=game;
+ $("outLevel").textContent="Level "+$("playerLevel").value;
+ $("outTier").textContent=selectedTier.toUpperCase();
+ $("outSerial").textContent="JG-"+selectedTier.toUpperCase();
+ $("vipCard").style.setProperty("--pass-color",colors[selectedTier]);
 
-    const canvas = await html2canvas($("vipCard"), {
-      backgroundColor: "#09090f",
-      scale: 2,
-      useCORS: true
-    });
+ $("outUIDWrap").classList.toggle("hidden",!includeUID||!uid);
+ $("outUID").textContent=uid;
 
-    const link = document.createElement("a");
-    const safeName = cleanText($("playerName").value, 12)
-      .toLowerCase()
-      .replace(/[^a-z0-9_-]/g, "") || "player";
+ if(!uploadedPhotoData){
+  $("photoBox").replaceChildren();
+  const placeholder=document.createElement("span");
+  placeholder.innerHTML="PLAYER<br>PHOTO";
+  $("photoBox").appendChild(placeholder);
+ }
 
-    link.download = "jaitish-vip-" + safeName + ".png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-
-  } catch (error) {
-    alert(error.message || "Image download nahi ho paya. Dobara try karo.");
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "⬇ DOWNLOAD PASS";
-  }
+ $("resultPanel").classList.remove("hidden");
+ setStatus("builderStatus","तुम्हारा VIP pass तैयार है!",true);
+ $("resultPanel").scrollIntoView({behavior:"smooth"});
 });
 
-$("editBtn").addEventListener("click", () => {
-  $("builderPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+/* DOWNLOAD PASS */
+$("downloadBtn").addEventListener("click",async()=>{
+ const btn=$("downloadBtn");
+ btn.disabled=true;
+ btn.textContent="PREPARING...";
+
+ try{
+  if(typeof html2canvas!=="function"){
+   throw new Error("Image library load नहीं हुई। Internet जाँचो।");
+  }
+
+  const canvas=await html2canvas($("vipCard"),{
+   backgroundColor:"#09090f",
+   scale:2
+  });
+
+  const safeName=$("playerName").value.trim().toLowerCase()
+   .replace(/[^a-z0-9_-]/g,"")||"player";
+  const link=document.createElement("a");
+  link.download="jaitish-vip-"+safeName+".png";
+  link.href=canvas.toDataURL("image/png");
+  link.click();
+ }catch(error){
+  alert(error.message||"Pass download नहीं हुआ।");
+ }finally{
+  btn.disabled=false;
+  btn.textContent="⬇ DOWNLOAD PASS";
+ }
+});
+
+$("editBtn").addEventListener("click",()=>{
+ $("builderPanel").scrollIntoView({behavior:"smooth"});
 });
 </script>
 </body>
