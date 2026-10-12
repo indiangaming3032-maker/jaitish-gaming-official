@@ -4,56 +4,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08070e">
 <title>JAITISH GAMING | VIP MEMBERSHIP</title>
 <style>
 :root{--tier:#f4c95d}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#30200d,transparent 48%),linear-gradient(140deg,#05060b,#10101a,#05060b);color:white;font-family:Arial,sans-serif;min-height:100vh}
-header{text-align:center;padding:28px 12px 15px}
-.logo{font-size:clamp(32px,7vw,58px);letter-spacing:.2em;color:#f4c95d;text-shadow:0 0 22px #f4c95d88}
-.subtitle{color:#c6b58b;letter-spacing:2px;font-size:12px}
-main{max-width:1050px;margin:auto;padding:15px}
-.panel{background:#10111b;border:1px solid #b8944555;border-radius:18px;padding:20px;box-shadow:0 0 28px #0008;margin-bottom:20px;min-width:0}
-h2{color:var(--tier);margin-top:0}
-label{display:block;margin:15px 0 7px;color:#e5d8b7;font-size:14px}
-input,select,textarea{width:100%;padding:12px;color:white;background:#080a12;border:1px solid #55472b;border-radius:9px;font:inherit}
-input[type=file]{padding:9px}
+body{margin:0;min-height:100vh;color:white;font-family:Arial,sans-serif;background:radial-gradient(ellipse at 15% 0%,#a36b222b,transparent 38%),radial-gradient(ellipse at 90% 35%,#7025b31b,transparent 35%),linear-gradient(145deg,#06060b,#100e19 55%,#06060b)}
+header{text-align:center;padding:35px 15px 22px}
+.logo{font-size:clamp(34px,8vw,65px);font-weight:900;letter-spacing:.17em;color:#ffe7a0;text-shadow:0 0 15px #f4c95d99,0 0 38px #f4c95d44}
+.subtitle{margin-top:10px;color:#d3c29d;letter-spacing:2px;font-size:11px;line-height:1.8}
+.line{height:2px;width:200px;max-width:60%;margin:20px auto;background:linear-gradient(90deg,transparent,#f4c95d,transparent)}
+main{max-width:1150px;margin:auto;padding:15px}
+.panel{min-width:0;padding:clamp(17px,3vw,25px);margin-bottom:22px;border:1px solid #ffffff13;border-radius:20px;background:linear-gradient(145deg,#171621ed,#0d0d15f5);box-shadow:0 18px 55px #0005}
+h2{color:#ffe2a0;font-size:21px;margin:0 0 12px}
+label{display:block;margin:17px 0 8px;color:#e8dcbf;font-size:13px;font-weight:bold}
+input,select,textarea{width:100%;min-width:0;padding:13px;color:white;background:#090912;border:1px solid #393543;border-radius:10px;font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--tier);box-shadow:0 0 0 3px #f4c95d20}
+option{background:#11111b;color:white}
 textarea{min-height:85px;resize:vertical}
-option{background:#10111b}
-button{width:100%;padding:13px;border:1px solid var(--tier);border-radius:9px;background:linear-gradient(110deg,#f8d878,#c28a27);color:#171006;font-weight:bold;cursor:pointer;margin-top:13px}
+input[type=file]{padding:10px}
+button{width:100%;padding:14px;margin-top:14px;border:1px solid #ffe6a0;border-radius:10px;background:linear-gradient(110deg,#fff0b2,#eac45e 48%,#b98126);color:#171006;font-weight:900;cursor:pointer;transition:.2s}
+button:hover{filter:brightness(1.08);transform:translateY(-1px)}
 button:disabled{opacity:.6;cursor:wait}
 .hidden{display:none!important}
-.message{min-height:18px;color:#ffcf75;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
-.small-note{color:#aaa5b6;font-size:12px;line-height:1.6}
-.layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:20px;align-items:start}
-.photo-preview-box{text-align:center;margin:14px 0}
-#photoPreview{width:125px;height:125px;border-radius:50%;object-fit:cover;border:3px solid var(--tier)}
-.vip-card{--tier:#f4c95d;padding:22px;border:2px solid var(--tier);border-radius:19px;background:radial-gradient(circle at 100% 0%,#f4c95d22,transparent 55%),linear-gradient(145deg,#1c1b20,#080910 70%);overflow-wrap:anywhere}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.card-brand{font-size:11px;letter-spacing:2px;color:var(--tier)}
-.crown{font-size:30px}
-.card-divider{height:1px;background:var(--tier);opacity:.65;margin:18px 0}
-.member-name{font-size:25px;margin:8px 0;color:var(--tier);text-transform:uppercase;overflow-wrap:anywhere}
-.meta{font-size:13px;line-height:1.8;color:#dedde5}
-.tier-title{color:var(--tier);text-align:center;font-size:21px;letter-spacing:2px;margin:18px 0 6px}
-.about{color:#d3d0d9;font-size:13px;line-height:1.6;white-space:pre-wrap}
-.card-foot{text-align:center;font-size:10px;letter-spacing:2px;color:var(--tier);margin-top:18px}
-footer{text-align:center;padding:20px;color:#817c8c;font-size:12px}
+.small-note{color:#aaa9bb;font-size:12px;line-height:1.7}
+.message{min-height:18px;color:#ffdc89;font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+.layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px;align-items:start}
+.tag{display:inline-block;padding:6px 10px;margin-bottom:13px;border:1px solid #f4c95d44;border-radius:99px;color:#f4d58a;background:#f4c95d0c;font-size:10px;font-weight:bold;letter-spacing:1.5px}
+#photoPreview{width:125px;height:125px;object-fit:cover;border-radius:50%;border:3px solid var(--tier)}
+.photo-preview-box{text-align:center;margin:17px 0}
+.vip-card{--tier:#f4c95d;position:relative;isolation:isolate;padding:clamp(18px,4vw,27px);overflow:hidden;overflow-wrap:anywhere;border:1px solid color-mix(in srgb,var(--tier) 75%,white 10%);border-radius:23px;background:radial-gradient(ellipse at 95% 2%,color-mix(in srgb,var(--tier) 21%,transparent),transparent 42%),radial-gradient(ellipse at 0% 100%,color-mix(in srgb,var(--tier) 10%,transparent),transparent 45%),linear-gradient(145deg,#1b1a24,#0a0a11 68%,#14121a);box-shadow:0 15px 45px #0008,0 0 27px color-mix(in srgb,var(--tier) 12%,transparent),inset 0 1px #ffffff12}
+.vip-card:before{content:"VIP";position:absolute;right:-7px;bottom:45px;z-index:-1;font-size:clamp(75px,15vw,120px);font-weight:900;color:color-mix(in srgb,var(--tier) 5%,transparent);transform:rotate(-13deg);pointer-events:none}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-brand{font-size:12px;font-weight:900;letter-spacing:2px;color:var(--tier)}
+.card-kicker{margin-top:6px;font-size:9px;letter-spacing:2px;color:#aaa6b8}
+.crown{display:grid;place-items:center;min-width:54px;min-height:54px;padding:7px;border:1px solid color-mix(in srgb,var(--tier) 50%,transparent);border-radius:17px;background:color-mix(in srgb,var(--tier) 9%,transparent);font-size:29px}
+.card-divider{height:1px;margin:19px 0;background:linear-gradient(90deg,transparent,var(--tier),#ffffff15,transparent)}
+.photo-frame{width:139px;height:139px;padding:5px;margin:19px auto 16px;border:1px solid color-mix(in srgb,var(--tier) 65%,transparent);border-radius:50%;background:#17151f;box-shadow:0 0 24px color-mix(in srgb,var(--tier) 15%,transparent)}
+#outPhoto{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:2px solid var(--tier)}
+#photoPlaceholder{width:100%;height:100%;border:2px dashed var(--tier);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:43px}
+.player-label{text-align:center;color:#aaa6b8;font-size:9px;letter-spacing:3px}
+.member-name{margin:8px 0 15px;color:var(--tier);font-size:clamp(23px,5vw,31px);font-weight:900;text-align:center;text-transform:uppercase;overflow-wrap:anywhere;text-shadow:0 0 17px #f4c95d22}
+.meta{padding:13px 14px;border:1px solid #ffffff0c;border-radius:13px;background:#ffffff04;color:#d9d6e1;font-size:12px;line-height:2.1}
+.meta-row{display:flex;justify-content:space-between;gap:12px}
+.meta-row span{color:#a9a5b6}
+.meta-row strong{text-align:right;overflow-wrap:anywhere}
+.about{color:#e0dce8;font-size:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
+.tier-title{color:var(--tier);text-align:center;font-size:clamp(17px,4vw,22px);font-weight:900;letter-spacing:2px;margin:23px 0 8px}
+.card-foot{text-align:center;font-size:9px;font-weight:bold;letter-spacing:2px;color:var(--tier);margin-top:12px}
+.card-stamp{text-align:center;margin-top:19px}
+.card-stamp span{display:inline-block;padding:7px 12px;border:1px solid color-mix(in srgb,var(--tier) 38%,transparent);border-radius:99px;color:var(--tier);font-size:9px;letter-spacing:1.5px}
+footer{text-align:center;padding:25px 14px;color:#777487;font-size:11px}
+@media(max-width:480px){header{padding-top:28px}main{padding:11px}.panel{border-radius:17px;padding:17px}.vip-card{border-radius:19px}}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">V I P</div>
   <div class="subtitle">✦ JAITISH GAMING • EXCLUSIVE MEMBERSHIP ✦</div>
+  <div class="line"></div>
 </header>
 
 <main>
 <section class="panel" id="gate">
-  <h2>🔐 VIP ACCESS</h2>
-  <p class="small-note">Enter your VIP access code.</p>
+  <div class="tag">🔒 MEMBERS ONLY</div>
+  <h2>Welcome to VIP Access</h2>
+  <p class="small-note">Verify your access code to open your VIP Pass Studio.</p>
   <form id="gateForm">
-    <label for="accessCode">Secret VIP Code</label>
-    <input id="accessCode" type="password" placeholder="Enter VIP code" required autocomplete="off">
+    <label for="accessCode">Secret VIP Access Code</label>
+    <input id="accessCode" type="password" placeholder="Enter your access code" required autocomplete="off">
     <button id="unlockBtn" type="submit">👑 VERIFY & UNLOCK VIP</button>
   </form>
   <p class="message" id="gateMessage" role="status"></p>
@@ -62,7 +81,9 @@ footer{text-align:center;padding:20px;color:#817c8c;font-size:12px}
 <section id="builder" class="hidden">
 <div class="layout">
 <section class="panel">
-  <h2>⚙️ Create Your VIP Pass</h2>
+  <div class="tag">⚙️ CUSTOMIZE YOUR PASS</div>
+  <h2>Create Your VIP Pass</h2>
+  <p class="small-note">Choose a game, enter your details, and personalize your card.</p>
 
   <label for="playerName">Player Name</label>
   <input id="playerName" maxlength="30" value="JAITISH">
@@ -78,14 +99,62 @@ footer{text-align:center;padding:20px;color:#817c8c;font-size:12px}
   <label for="playerLevel">Player Level</label>
   <input id="playerLevel" type="number" min="1" max="9999" value="50">
 
-  <label for="game">Select Game</label>
+  <label for="game">🎮 Select Your Game (40 Games)</label>
   <select id="game">
-    <option>Free Fire</option>
-    <option>BGMI</option>
-    <option>Minecraft</option>
-    <option>GTA V</option>
-    <option>JAITISH RACING</option>
-    <option>Other</option>
+    <optgroup label="🔥 Battle Royale & Shooting">
+      <option>Free Fire</option>
+      <option>Free Fire MAX</option>
+      <option>BGMI</option>
+      <option>PUBG Mobile</option>
+      <option>PUBG: Battlegrounds</option>
+      <option>Call of Duty: Mobile</option>
+      <option>Call of Duty: Warzone</option>
+      <option>Fortnite</option>
+      <option>Valorant</option>
+      <option>Counter-Strike 2</option>
+      <option>Apex Legends</option>
+      <option>Rainbow Six Siege</option>
+    </optgroup>
+    <optgroup label="🏎️ Racing & Driving">
+      <option>JAITISH RACING</option>
+      <option>GTA V</option>
+      <option>GTA Online</option>
+      <option>Forza Horizon 5</option>
+      <option>Need for Speed Heat</option>
+      <option>Need for Speed Unbound</option>
+      <option>Asphalt 9: Legends</option>
+      <option>Real Racing 3</option>
+      <option>CarX Street</option>
+      <option>Euro Truck Simulator 2</option>
+    </optgroup>
+    <optgroup label="🌍 Open World & Sandbox">
+      <option>Minecraft</option>
+      <option>Roblox</option>
+      <option>Grand Theft Auto: San Andreas</option>
+      <option>Red Dead Redemption 2</option>
+      <option>Cyberpunk 2077</option>
+      <option>Terraria</option>
+      <option>ARK: Survival Evolved</option>
+      <option>Palworld</option>
+    </optgroup>
+    <optgroup label="⚔️ Adventure, Action & RPG">
+      <option>Genshin Impact</option>
+      <option>Honkai: Star Rail</option>
+      <option>Wuthering Waves</option>
+      <option>Elden Ring</option>
+      <option>God of War</option>
+      <option>Black Myth: Wukong</option>
+    </optgroup>
+    <optgroup label="⚽ Sports & Other">
+      <option>EA SPORTS FC Mobile</option>
+      <option>eFootball</option>
+      <option>Rocket League</option>
+      <option>Clash of Clans</option>
+      <option>Clash Royale</option>
+      <option>Among Us</option>
+      <option>Stumble Guys</option>
+      <option>Other</option>
+    </optgroup>
   </select>
 
   <div id="uidBox">
@@ -116,47 +185,46 @@ footer{text-align:center;padding:20px;color:#817c8c;font-size:12px}
     <div class="card-top">
       <div>
         <div class="card-brand">JAITISH GAMING</div>
-        <div class="small-note">EXCLUSIVE MEMBER</div>
+        <div class="card-kicker">EXCLUSIVE MEMBER PASS</div>
       </div>
       <div class="crown" id="cardCrown">🥇</div>
     </div>
     <div class="card-divider"></div>
-    <div style="text-align:center;margin:14px 0">
-      <img id="outPhoto" class="hidden" alt="Player photo" style="width:125px;height:125px;object-fit:cover;border-radius:50%;border:3px solid var(--tier)">
-      <div id="photoPlaceholder" style="width:125px;height:125px;margin:auto;border-radius:50%;border:2px dashed var(--tier);display:flex;align-items:center;justify-content:center;font-size:42px">🎮</div>
+    <div class="photo-frame">
+      <img id="outPhoto" class="hidden" alt="Player photo">
+      <div id="photoPlaceholder">🎮</div>
     </div>
-    <div class="small-note">PLAYER NAME</div>
+    <div class="player-label">PLAYER NAME</div>
     <div class="member-name" id="outName">JAITISH</div>
     <div class="meta">
-      Gamer Level: <strong id="outLevel">50</strong><br>
-      Game: <strong id="outGame">Free Fire</strong>
-      <div id="outUid">Free Fire UID: <strong id="outUidValue">Not entered</strong></div>
+      <div class="meta-row"><span>Gamer Level</span><strong id="outLevel">50</strong></div>
+      <div class="meta-row"><span>Game</span><strong id="outGame">Free Fire</strong></div>
+      <div class="meta-row" id="outUid"><span>Free Fire UID</span><strong id="outUidValue">Not entered</strong></div>
     </div>
     <div class="card-divider"></div>
-    <div class="small-note">ABOUT</div>
+    <div class="player-label" style="text-align:left">ABOUT THE PLAYER</div>
     <div class="about" id="outAbout">Gaming is my passion!</div>
     <div class="tier-title" id="outTier">🥇 GOLD PASS</div>
     <div class="card-foot" id="outFooter">★ GOLD MEMBER ★</div>
+    <div class="card-stamp"><span>✦ JAITISH GAMING ✦</span></div>
   </div>
-  <p class="small-note">Your photo and details appear on this card.</p>
+  <p class="small-note">Your photo and details appear on this card. Download as a PNG image.</p>
 </section>
 </div>
 </section>
 
-<p class="small-note">VIP verification is performed through the configured Supabase Edge Function. Card downloads are local to your device.</p>
+<p class="small-note" style="text-align:center">VIP verification is performed through the configured Supabase Edge Function. Card downloads are generated on your device.</p>
 </main>
-<footer>© 2026 JAITISH GAMING • V I P MEMBERSHIP</footer>
+<footer>© 2026 JAITISH GAMING • V I P MEMBERSHIP • PLAY WITH PRIDE</footer>
 
 <script>
 "use strict";
-
 const $ = id => document.getElementById(id);
 
 const SUPABASE_URL = "https://sfecuepkrsoyddctpzpg.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_nEdWip2jcq_UXyxS10c7oA_X0JApgFS";
 const VIP_FUNCTION_URL = SUPABASE_URL + "/functions/v1/VIP_CODES";
 
-let verifiedTiers = new Set();
 let lastTier = "Gold";
 let photoData = "";
 
@@ -169,60 +237,36 @@ const tierSettings = {
   Master:{color:"#e8b9ff",emoji:"👑⚜️",footer:"MASTER • LEGENDARY MEMBER"}
 };
 
-/*
-  Expected Edge Function API:
-  POST /functions/v1/VIP_CODES
-  { "action":"verify", "code":"...", "tier":"VIP" }
-  Expected successful JSON: { "valid": true }
-  The server must implement and enforce this contract.
-*/
 async function verifyCode(code, tier) {
   const response = await fetch(VIP_FUNCTION_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": SUPABASE_PUBLISHABLE_KEY,
-      "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "apikey":SUPABASE_PUBLISHABLE_KEY,
+      "Authorization":"Bearer " + SUPABASE_PUBLISHABLE_KEY
     },
-    body: JSON.stringify({
-      action: "verify",
-      code: code,
-      tier: tier
-    })
+    body:JSON.stringify({action:"verify",code:code,tier:tier})
   });
-
   const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.message || data.error || ("Function returned HTTP " + response.status));
-  }
-
-  if (data.valid !== true) {
-    throw new Error(data.message || "Code rejected by the server.");
-  }
-
+  if (!response.ok) throw new Error(data.message || data.error || ("Function returned HTTP " + response.status));
+  if (data.valid !== true) throw new Error(data.message || "Code rejected by the server.");
   return true;
 }
 
 $("gateForm").addEventListener("submit", async event => {
   event.preventDefault();
-
   const button = $("unlockBtn");
   const code = $("accessCode").value.trim();
   button.disabled = true;
   $("gateMessage").textContent = "⏳ Verifying VIP code with server...";
-
   try {
-    await verifyCode(code, "VIP");
+    await verifyCode(code,"VIP");
     $("gate").classList.add("hidden");
     $("builder").classList.remove("hidden");
-    verifiedTiers.add("VIP");
     $("gateMessage").textContent = "";
     updateCard();
   } catch (error) {
-    $("gateMessage").textContent =
-      "❌ Verification failed: " + error.message +
-      " Check that the VIP_CODES Function is deployed and supports this request.";
+    $("gateMessage").textContent = "❌ Verification failed: " + error.message;
     $("accessCode").value = "";
   } finally {
     button.disabled = false;
@@ -231,7 +275,6 @@ $("gateForm").addEventListener("submit", async event => {
 
 $("playerPhoto").addEventListener("change", function() {
   const file = this.files[0];
-
   if (!file) {
     photoData = "";
     $("photoPreview").removeAttribute("src");
@@ -243,21 +286,17 @@ $("playerPhoto").addEventListener("change", function() {
     updateCard();
     return;
   }
-
   if (!file.type.startsWith("image/")) {
     this.value = "";
     $("photoMessage").textContent = "Please select an image file.";
     return;
   }
-
   if (file.size > 5 * 1024 * 1024) {
     this.value = "";
     $("photoMessage").textContent = "Photo must be smaller than 5 MB.";
     return;
   }
-
   const reader = new FileReader();
-
   reader.onload = event => {
     photoData = event.target.result;
     $("photoPreview").src = photoData;
@@ -268,24 +307,17 @@ $("playerPhoto").addEventListener("change", function() {
     $("photoMessage").textContent = "✅ Photo selected!";
     updateCard();
   };
-
-  reader.onerror = () => {
-    $("photoMessage").textContent = "Could not read photo. Try another.";
-  };
-
+  reader.onerror = () => $("photoMessage").textContent = "Could not read photo. Try another.";
   reader.readAsDataURL(file);
 });
 
 $("tier").addEventListener("change", async () => {
   const selected = $("tier").value;
-
   if (selected === lastTier) {
     updateCard();
     return;
   }
-
-  if (selected === "Bronze" || selected === "Silver" ||
-      selected === "Gold" || selected === "Platinum") {
+  if (["Bronze","Silver","Gold","Platinum"].includes(selected)) {
     lastTier = selected;
     updateCard();
     $("status").textContent = "";
@@ -295,9 +327,7 @@ $("tier").addEventListener("change", async () => {
   const promptLabel = selected === "Diamond"
     ? "Enter your Diamond Pass code:"
     : "Enter your Master Pass code:";
-
   const entered = window.prompt(promptLabel);
-
   if (entered === null) {
     $("tier").value = lastTier;
     updateCard();
@@ -306,10 +336,8 @@ $("tier").addEventListener("change", async () => {
 
   $("tier").disabled = true;
   $("status").textContent = "⏳ Verifying " + selected + " Pass...";
-
   try {
-    await verifyCode(entered.trim(), selected);
-    verifiedTiers.add(selected);
+    await verifyCode(entered.trim(),selected);
     lastTier = selected;
     $("status").textContent = "✅ " + selected + " Pass verified!";
   } catch (error) {
@@ -323,7 +351,7 @@ $("tier").addEventListener("change", async () => {
 
 function updateCard() {
   const name = $("playerName").value.trim() || "YOUR NAME";
-  const level = Math.max(1, Math.min(9999, Number($("playerLevel").value) || 1));
+  const level = Math.max(1,Math.min(9999,Number($("playerLevel").value) || 1));
   const game = $("game").value;
   const uid = $("uid").value.trim();
   const about = $("about").value.trim() || "No introduction added.";
@@ -334,50 +362,47 @@ function updateCard() {
   $("outLevel").textContent = level;
   $("outGame").textContent = game;
   $("outAbout").textContent = about;
-  $("uidBox").classList.toggle("hidden", game !== "Free Fire");
-  $("outUid").classList.toggle("hidden", game !== "Free Fire");
+  $("uidBox").classList.toggle("hidden",game !== "Free Fire" && game !== "Free Fire MAX");
+  $("outUid").classList.toggle("hidden",game !== "Free Fire" && game !== "Free Fire MAX");
+  $("outUid").querySelector("span").textContent = game === "Free Fire MAX" ? "Free Fire MAX UID" : "Free Fire UID";
   $("outUidValue").textContent = uid || "Not entered";
   $("outTier").textContent = settings.emoji + " " + tier.toUpperCase() + " PASS";
   $("outFooter").textContent = "★ " + settings.footer + " ★";
   $("cardCrown").textContent = settings.emoji;
-  $("vipCard").style.setProperty("--tier", settings.color);
+  $("vipCard").style.setProperty("--tier",settings.color);
   $("photoPreview").style.borderColor = settings.color;
   $("outPhoto").style.borderColor = settings.color;
   $("photoPlaceholder").style.borderColor = settings.color;
 }
 
 ["playerName","playerLevel","game","uid","about"].forEach(id => {
-  $(id).addEventListener("input", updateCard);
-  $(id).addEventListener("change", updateCard);
+  $(id).addEventListener("input",updateCard);
+  $(id).addEventListener("change",updateCard);
 });
 
 $("downloadBtn").addEventListener("click", async () => {
   const button = $("downloadBtn");
   button.disabled = true;
   $("status").textContent = "Preparing your VIP card...";
-
   try {
     if (typeof window.html2canvas !== "function") {
-      await new Promise((resolve, reject) => {
+      await new Promise((resolve,reject) => {
         const script = document.createElement("script");
         script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
         script.onload = resolve;
-        script.onerror = () => reject(new Error("Could not load image library. Check internet."));
+        script.onerror = () => reject(new Error("Could not load image library. Check your internet."));
         document.head.appendChild(script);
       });
     }
-
-    const canvas = await window.html2canvas($("vipCard"), {
-      backgroundColor: "#080910",
-      scale: 2,
-      useCORS: true
+    const canvas = await window.html2canvas($("vipCard"),{
+      backgroundColor:"#0a0a11",
+      scale:2,
+      useCORS:true
     });
-
     const link = document.createElement("a");
     link.download = "JAITISH-VIP-PASS.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
-
     $("status").textContent = "✅ VIP card downloaded!";
   } catch (error) {
     $("status").textContent = "Download failed: " + error.message;
