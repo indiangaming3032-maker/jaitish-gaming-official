@@ -6,245 +6,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VIP | JAITISH GAMING</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <style>
-:root {
-  --gold: #f4c95d;
-  --bg: #070711;
-  --panel: #121225;
-  --text: #ffffff;
+:root{
+  --gold:#f4c95d;
+  --bg:#070711;
+  --panel:#121225;
+  --text:#ffffff;
 }
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--text);
-  font-family: Arial, sans-serif;
-  background:
-    radial-gradient(circle at top, #25204d 0, transparent 45%),
-    #070711;
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;color:var(--text);
+  font-family:Arial,sans-serif;
+  background:radial-gradient(circle at top,#25204d 0,transparent 45%),#070711;
 }
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
-
-header {
-  padding: 22px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ffffff18;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  padding:22px 15px;text-align:center;
+  border-bottom:1px solid #ffffff18;
 }
-.logo {
-  font-size: 27px;
-  font-weight: 900;
-  color: #ffe58a;
-  text-shadow: 0 0 20px #ffbf36;
+.logo{
+  font-size:27px;font-weight:900;color:#ffe58a;
+  text-shadow:0 0 20px #ffbf36;
 }
-header p { color: #aaaac4; margin-bottom: 0; }
-
-.container {
-  width: min(1100px, 94%);
-  margin: 25px auto;
+header p{color:#aaaac4;margin-bottom:0}
+.container{width:min(1100px,94%);margin:25px auto}
+.panel{
+  background:#121225ef;border:1px solid #ffffff19;
+  border-radius:18px;padding:20px;margin-bottom:20px;
+  box-shadow:0 12px 40px #0005;
 }
-.panel {
-  background: #121225eF;
-  border: 1px solid #ffffff19;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 12px 40px #0005;
+h2{margin-top:0}
+.muted{color:#a7a7c0;font-size:13px}
+input,select,textarea{
+  width:100%;color:white;background:#080817;
+  border:1px solid #41415f;border-radius:10px;
+  padding:12px;outline:none;
 }
-h2 { margin-top: 0; }
-.muted { color: #a7a7c0; font-size: 13px; }
-
-input, select, textarea {
-  width: 100%;
-  color: white;
-  background: #080817;
-  border: 1px solid #41415f;
-  border-radius: 10px;
-  padding: 12px;
-  outline: none;
+input:focus,select:focus,textarea:focus{border-color:#f4c95d}
+select option{background:#101020}
+label{display:block;font-size:13px;color:#c7c7df;margin:0 0 7px}
+.field{margin-bottom:15px}
+.grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px
 }
-input:focus, select:focus, textarea:focus {
-  border-color: #f4c95d;
+.btn{
+  border:0;border-radius:10px;padding:12px 17px;
+  font-weight:800;color:#15100a;
+  background:linear-gradient(135deg,#ffe89a,#e5a92e)
 }
-select option { background: #101020; }
-label {
-  display: block;
-  font-size: 13px;
-  color: #c7c7df;
-  margin: 0 0 7px;
+.btn.secondary{background:#252540;color:white;border:1px solid #4b4b6b}
+.btn.danger{background:#572535;color:white}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.tiers{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px
 }
-.field { margin-bottom: 15px; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
+.tier{
+  border:1px solid #41415e;background:#0b0b1a;
+  border-radius:12px;padding:15px 8px;text-align:center;color:white
 }
-.btn {
-  border: 0;
-  border-radius: 10px;
-  padding: 12px 17px;
-  font-weight: 800;
-  color: #15100a;
-  background: linear-gradient(135deg, #ffe89a, #e5a92e);
+.tier strong{display:block;margin-bottom:5px}
+.tier small{color:#aaaac0}
+.tier.active{
+  border-color:var(--gold);box-shadow:0 0 18px #f4c95d33;
+  background:#28200f
 }
-.btn.secondary {
-  background: #252540;
-  color: white;
-  border: 1px solid #4b4b6b;
+.preview-wrap{display:flex;justify-content:center}
+.vip-card{
+  --card-color:#f4c95d;width:100%;max-width:540px;
+  min-height:310px;padding:25px;overflow:hidden;position:relative;
+  border-radius:22px;color:white;
+  background:radial-gradient(circle at 100% 0%,color-mix(in srgb,var(--card-color) 38%,transparent),transparent 45%),linear-gradient(140deg,#1d1d32,#07070d 75%);
+  border:2px solid var(--card-color);
+  box-shadow:0 0 30px color-mix(in srgb,var(--card-color) 22%,transparent)
 }
-.btn.danger { background: #572535; color: white; }
-.btn:disabled { opacity: .5; cursor: not-allowed; }
-.actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-.tiers {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+.vip-card::after{
+  content:"VIP";position:absolute;right:-4px;bottom:-32px;
+  font-size:125px;font-weight:1000;color:#ffffff08;pointer-events:none
 }
-.tier {
-  border: 1px solid #41415e;
-  background: #0b0b1a;
-  border-radius: 12px;
-  padding: 15px 8px;
-  text-align: center;
-  color: white;
+.card-top,.card-content,.card-bottom{position:relative;z-index:1}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.card-brand{font-size:12px;letter-spacing:2px;font-weight:900}
+.crown{font-size:32px}
+.level{margin-top:22px;font-size:12px;color:var(--card-color);letter-spacing:3px;font-weight:900}
+.player-name{font-size:clamp(24px,5vw,35px);font-weight:900;overflow-wrap:anywhere;margin:7px 0}
+.card-game{color:#d2d2e5;font-size:14px}
+.card-content{display:flex;gap:15px;align-items:center;margin-top:12px}
+.avatar{
+  width:78px;height:78px;flex-shrink:0;display:grid;place-items:center;
+  overflow:hidden;border-radius:14px;border:1px solid var(--card-color);
+  background:#ffffff10;font-size:35px
 }
-.tier strong { display: block; margin-bottom: 5px; }
-.tier small { color: #aaaac0; }
-.tier.active {
-  border-color: var(--gold);
-  box-shadow: 0 0 18px #f4c95d33;
-  background: #28200f;
+.avatar img{width:100%;height:100%;object-fit:cover}
+.card-about{font-size:12px;color:#dedeee;overflow-wrap:anywhere}
+.card-bottom{
+  display:flex;justify-content:space-between;gap:10px;
+  margin-top:20px;padding-top:12px;border-top:1px solid #ffffff30;
+  font-size:10px;color:#bcbcd1
 }
-
-.preview-wrap { display: flex; justify-content: center; }
-.vip-card {
-  --card-color: #f4c95d;
-  width: 100%;
-  max-width: 540px;
-  min-height: 310px;
-  padding: 25px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 22px;
-  color: white;
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--card-color) 38%, transparent), transparent 45%),
-    linear-gradient(140deg, #1d1d32, #07070d 75%);
-  border: 2px solid var(--card-color);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--card-color) 22%, transparent);
+.card-bottom strong{color:var(--card-color)}
+.access-overlay,.code-overlay{
+  position:fixed;inset:0;z-index:10;display:flex;
+  align-items:center;justify-content:center;padding:20px;background:#03030af5
 }
-.vip-card::after {
-  content: "VIP";
-  position: absolute;
-  right: -4px;
-  bottom: -32px;
-  font-size: 125px;
-  font-weight: 1000;
-  color: #ffffff08;
-  pointer-events: none;
+.access-box,.code-box{
+  width:min(420px,100%);padding:28px;border:1px solid #f4c95d70;
+  border-radius:20px;background:#121225;text-align:center;
+  box-shadow:0 0 45px #f4c95d19
 }
-.card-top, .card-content, .card-bottom {
-  position: relative;
-  z-index: 1;
-}
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-}
-.card-brand { font-size: 12px; letter-spacing: 2px; font-weight: 900; }
-.crown { font-size: 32px; }
-.level {
-  margin-top: 22px;
-  font-size: 12px;
-  color: var(--card-color);
-  letter-spacing: 3px;
-  font-weight: 900;
-}
-.player-name {
-  font-size: clamp(24px, 5vw, 35px);
-  font-weight: 900;
-  overflow-wrap: anywhere;
-  margin: 7px 0;
-}
-.card-game { color: #d2d2e5; font-size: 14px; }
-.card-content {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  margin-top: 12px;
-}
-.avatar {
-  width: 78px;
-  height: 78px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid var(--card-color);
-  background: #ffffff10;
-  font-size: 35px;
-}
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.card-about {
-  font-size: 12px;
-  color: #dedeee;
-  overflow-wrap: anywhere;
-}
-.card-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 20px;
-  padding-top: 12px;
-  border-top: 1px solid #ffffff30;
-  font-size: 10px;
-  color: #bcbcd1;
-}
-.card-bottom strong { color: var(--card-color); }
-
-.access-overlay, .code-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: #03030af5;
-}
-.access-box, .code-box {
-  width: min(420px, 100%);
-  padding: 28px;
-  border: 1px solid #f4c95d70;
-  border-radius: 20px;
-  background: #121225;
-  text-align: center;
-  box-shadow: 0 0 45px #f4c95d19;
-}
-.access-box h1, .code-box h2 { color: #ffe28a; }
-.hidden { display: none !important; }
-.error { color: #ff8d9b; min-height: 20px; font-size: 13px; }
-footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
-
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-  .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .panel { padding: 15px; }
-  .vip-card { padding: 18px; min-height: 290px; }
+.access-box h1,.code-box h2{color:#ffe28a}
+.hidden{display:none!important}
+.error{color:#ff8d9b;min-height:20px;font-size:13px}
+footer{text-align:center;padding:20px;color:#77778f;font-size:12px}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .panel{padding:15px}
+  .vip-card{padding:18px;min-height:290px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- ROYAL PAGE ACCESS -->
+<!-- ROYAL VIP ACCESS -->
 <div class="access-overlay" id="accessOverlay">
   <div class="access-box">
     <div style="font-size:45px">🔐</div>
@@ -252,8 +137,7 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
     <p class="muted">Enter your Royal VIP access code to continue.</p>
     <form id="accessForm">
       <div class="field">
-        <input id="accessCode" type="password"
-          placeholder="Enter Royal VIP code" autocomplete="off" required>
+        <input id="accessCode" type="password" placeholder="Enter Royal VIP code" autocomplete="off" required>
       </div>
       <button class="btn" style="width:100%">UNLOCK VIP 🔓</button>
     </form>
@@ -262,7 +146,7 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
   </div>
 </div>
 
-<!-- DIAMOND / MASTER LOCAL CODE CHECK -->
+<!-- DIAMOND AND MASTER CODE WINDOW -->
 <div class="code-overlay hidden" id="codeOverlay">
   <div class="code-box">
     <div style="font-size:42px" id="codeIcon">💎</div>
@@ -270,8 +154,7 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
     <p class="muted" id="codeDescription">Enter your tier code.</p>
     <form id="tierCodeForm">
       <div class="field">
-        <input id="tierCode" type="password"
-          placeholder="Enter tier code" autocomplete="off" required>
+        <input id="tierCode" type="password" placeholder="Enter tier code" autocomplete="off" required>
       </div>
       <div class="actions" style="justify-content:center">
         <button class="btn" type="submit">UNLOCK</button>
@@ -291,27 +174,14 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
 
   <section class="panel">
     <h2>👑 Choose Your VIP Level</h2>
-    <p class="muted">Diamond and Master use local code checks in this page.</p>
-
+    <p class="muted">Choose your VIP level. Diamond and Master require their own codes.</p>
     <div class="tiers" id="tiers">
-      <button class="tier active" data-tier="Bronze">
-        <strong>🥉 Bronze</strong><small>VIP Level 1</small>
-      </button>
-      <button class="tier" data-tier="Silver">
-        <strong>🥈 Silver</strong><small>VIP Level 2</small>
-      </button>
-      <button class="tier" data-tier="Gold">
-        <strong>🥇 Gold</strong><small>VIP Level 3</small>
-      </button>
-      <button class="tier" data-tier="Platinum">
-        <strong>💠 Platinum</strong><small>VIP Level 4</small>
-      </button>
-      <button class="tier" data-tier="Diamond">
-        <strong>💎 Diamond</strong><small>VIP Level 5</small>
-      </button>
-      <button class="tier" data-tier="Master">
-        <strong>👑 Master</strong><small>VIP Level 6</small>
-      </button>
+      <button class="tier active" data-tier="Bronze"><strong>🥉 Bronze</strong><small>VIP Level 1</small></button>
+      <button class="tier" data-tier="Silver"><strong>🥈 Silver</strong><small>VIP Level 2</small></button>
+      <button class="tier" data-tier="Gold"><strong>🥇 Gold</strong><small>VIP Level 3</small></button>
+      <button class="tier" data-tier="Platinum"><strong>💠 Platinum</strong><small>VIP Level 4</small></button>
+      <button class="tier" data-tier="Diamond"><strong>💎 Diamond</strong><small>VIP Level 5</small></button>
+      <button class="tier" data-tier="Master"><strong>👑 Master</strong><small>VIP Level 6</small></button>
     </div>
     <p id="tierStatus" class="muted">Selected: Bronze</p>
   </section>
@@ -347,8 +217,7 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
 
     <div class="field">
       <label for="playerAbout">About Player</label>
-      <textarea id="playerAbout" maxlength="120" rows="3"
-        placeholder="Write something about your gaming style..."></textarea>
+      <textarea id="playerAbout" maxlength="120" rows="3" placeholder="Write something about your gaming style..."></textarea>
     </div>
 
     <div class="field">
@@ -357,9 +226,9 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
     </div>
 
     <div class="actions">
-      <button class="btn" id="updateCard">UPDATE VIP CARD</button>
-      <button class="btn secondary" id="downloadCard">DOWNLOAD PNG 📥</button>
-      <button class="btn danger" id="resetCard">RESET</button>
+      <button class="btn" id="updateCard" type="button">UPDATE VIP CARD</button>
+      <button class="btn secondary" id="downloadCard" type="button">DOWNLOAD PNG 📥</button>
+      <button class="btn danger" id="resetCard" type="button">RESET</button>
     </div>
     <p id="downloadStatus" class="muted"></p>
   </section>
@@ -386,18 +255,14 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
         </div>
 
         <div class="card-about" id="cardAbout">Gaming • Coding • Creativity</div>
-
         <div class="card-bottom">
           <div>PLAYER UID<br><strong id="cardUID">NOT SET</strong></div>
           <div style="text-align:right">MEMBERSHIP<br><strong id="cardMember">VIP MEMBER</strong></div>
         </div>
       </div>
     </div>
-    <p class="muted" style="text-align:center">
-      Your card preview updates when you press UPDATE VIP CARD.
-    </p>
+    <p class="muted" style="text-align:center">Your card preview updates when you press UPDATE VIP CARD.</p>
   </section>
-
 </main>
 
 <footer>© <span id="year"></span> JAITISH GAMING • VIP PASS STUDIO</footer>
@@ -405,11 +270,7 @@ footer { text-align: center; padding: 20px; color: #77778f; font-size: 12px; }
 <script>
 "use strict";
 
-/*
-  LOCAL-ONLY DEMO:
-  Codes below are visible to anyone who inspects this HTML.
-  This page does not contact a verification server.
-*/
+/* LOCAL-ONLY: no server, no Supabase, no external libraries. */
 const ROYAL_CODE = "jai royal 4927";
 const TIER_CODES = {
   Diamond: "JAI-DIAMOND-8392",
@@ -417,227 +278,300 @@ const TIER_CODES = {
 };
 
 const $ = id => document.getElementById(id);
-
 let selectedTier = "Bronze";
 let pendingTier = null;
-let unlockedTiers = new Set(["Bronze", "Silver", "Gold", "Platinum"]);
 let previousTier = "Bronze";
+let unlockedTiers = new Set(["Bronze","Silver","Gold","Platinum"]);
 let photoData = "";
 
 const tierColors = {
-  Bronze: "#cd8b55",
-  Silver: "#d7dbe5",
-  Gold: "#f4c95d",
-  Platinum: "#75e5ff",
-  Diamond: "#69eaff",
-  Master: "#c77dff"
+  Bronze:"#cd8b55",
+  Silver:"#d7dbe5",
+  Gold:"#f4c95d",
+  Platinum:"#75e5ff",
+  Diamond:"#69eaff",
+  Master:"#c77dff"
 };
-
 const tierIcons = {
-  Bronze: "🥉",
-  Silver: "🥈",
-  Gold: "🥇",
-  Platinum: "💠",
-  Diamond: "💎",
-  Master: "👑"
+  Bronze:"🥉",
+  Silver:"🥈",
+  Gold:"🥇",
+  Platinum:"💠",
+  Diamond:"💎",
+  Master:"👑"
 };
 
 $("year").textContent = new Date().getFullYear();
 
-$("accessForm").addEventListener("submit", event => {
+$("accessForm").addEventListener("submit",event=>{
   event.preventDefault();
-
-  if ($("accessCode").value.trim() === ROYAL_CODE) {
+  if($("accessCode").value.trim() === ROYAL_CODE){
     $("accessOverlay").classList.add("hidden");
     $("mainApp").classList.remove("hidden");
-    $("accessError").textContent = "";
+    $("accessError").textContent="";
     updateCard();
-  } else {
-    $("accessError").textContent = "Incorrect Royal VIP code. Try again.";
+  }else{
+    $("accessError").textContent="Incorrect Royal VIP code. Try again.";
     $("accessCode").select();
   }
 });
 
-function chooseTier(tier) {
-  if (tier === "Diamond" || tier === "Master") {
-    if (unlockedTiers.has(tier)) {
-      applyTier(tier);
+function chooseTier(tier){
+  if(tier==="Diamond" || tier==="Master"){
+    if(!unlockedTiers.has(tier)){
+      previousTier=selectedTier;
+      pendingTier=tier;
+      $("codeIcon").textContent=tierIcons[tier];
+      $("codeTitle").textContent="Unlock "+tier+" Pass";
+      $("codeDescription").textContent="Enter your "+tier+" Pass code to unlock this tier.";
+      $("tierCode").value="";
+      $("tierError").textContent="";
+      $("codeOverlay").classList.remove("hidden");
+      $("tierCode").focus();
       return;
     }
-    previousTier = selectedTier;
-    pendingTier = tier;
-
-    $("codeIcon").textContent = tierIcons[tier];
-    $("codeTitle").textContent = "Unlock " + tier + " Pass";
-    $("codeDescription").textContent =
-      "Enter your " + tier + " Pass code to unlock this tier.";
-    $("tierCode").value = "";
-    $("tierError").textContent = "";
-    $("codeOverlay").classList.remove("hidden");
-    $("tierCode").focus();
-    return;
   }
-
   applyTier(tier);
 }
 
-function applyTier(tier) {
-  selectedTier = tier;
+function applyTier(tier){
+  selectedTier=tier;
   unlockedTiers.add(tier);
-
-  document.querySelectorAll(".tier").forEach(button => {
-    button.classList.toggle("active", button.dataset.tier === tier);
+  document.querySelectorAll(".tier").forEach(button=>{
+    button.classList.toggle("active",button.dataset.tier===tier);
   });
-
-  $("tierStatus").textContent = "Selected: " + tier + " VIP";
-  $("vipCard").style.setProperty("--card-color", tierColors[tier]);
-  $("cardLevel").textContent = tier.toUpperCase() + " MEMBER";
-  $("cardCrown").textContent = tierIcons[tier];
-  $("cardMember").textContent = tier.toUpperCase() + " PASS";
+  $("tierStatus").textContent="Selected: "+tier+" VIP";
+  $("vipCard").style.setProperty("--card-color",tierColors[tier]);
+  $("cardLevel").textContent=tier.toUpperCase()+" MEMBER";
+  $("cardCrown").textContent=tierIcons[tier];
+  $("cardMember").textContent=tier.toUpperCase()+" PASS";
   updateCard();
 }
 
-document.querySelectorAll(".tier").forEach(button => {
-  button.addEventListener("click", () => chooseTier(button.dataset.tier));
+document.querySelectorAll(".tier").forEach(button=>{
+  button.addEventListener("click",()=>chooseTier(button.dataset.tier));
 });
 
-$("tierCodeForm").addEventListener("submit", event => {
+$("tierCodeForm").addEventListener("submit",event=>{
   event.preventDefault();
-  if (!pendingTier) return;
-
-  const typedCode = $("tierCode").value.trim();
-  const expectedCode = TIER_CODES[pendingTier];
-
-  if (typedCode === expectedCode) {
-    const tier = pendingTier;
-    pendingTier = null;
+  if(!pendingTier)return;
+  const typedCode=$("tierCode").value.trim();
+  const expectedCode=TIER_CODES[pendingTier];
+  if(typedCode===expectedCode){
+    const tier=pendingTier;
+    pendingTier=null;
     $("codeOverlay").classList.add("hidden");
-    $("tierError").textContent = "";
+    $("tierError").textContent="";
     applyTier(tier);
-  } else {
-    $("tierError").textContent = "Incorrect code. Please try again.";
+  }else{
+    $("tierError").textContent="Incorrect code. Please try again.";
     $("tierCode").select();
   }
 });
 
-$("cancelCode").addEventListener("click", () => {
-  pendingTier = null;
+$("cancelCode").addEventListener("click",()=>{
+  pendingTier=null;
   $("codeOverlay").classList.add("hidden");
   applyTier(previousTier);
 });
 
-function updateCard() {
-  const name = $("playerName").value.trim();
-  const game = $("gameName").value.trim();
-  const uid = $("playerUID").value.trim();
-  const about = $("playerAbout").value.trim();
-  const theme = $("cardTheme").value;
+function updateCard(){
+  const name=$("playerName").value.trim();
+  const game=$("gameName").value.trim();
+  const uid=$("playerUID").value.trim();
+  const about=$("playerAbout").value.trim();
+  const theme=$("cardTheme").value;
 
-  $("vipCard").style.setProperty("--card-color", theme);
-  $("cardLevel").textContent = selectedTier.toUpperCase() + " MEMBER";
-  $("cardCrown").textContent = tierIcons[selectedTier];
-  $("cardName").textContent = name || "YOUR NAME";
-  $("cardGame").textContent = game || "GAMER • JAITISH GAMING";
-  $("cardUID").textContent = uid || "NOT SET";
-  $("cardAbout").textContent = about || "Gaming • Coding • Creativity";
-  $("cardMember").textContent = selectedTier.toUpperCase() + " PASS";
+  $("vipCard").style.setProperty("--card-color",theme);
+  $("cardLevel").textContent=selectedTier.toUpperCase()+" MEMBER";
+  $("cardCrown").textContent=tierIcons[selectedTier];
+  $("cardName").textContent=name||"YOUR NAME";
+  $("cardGame").textContent=game||"GAMER • JAITISH GAMING";
+  $("cardUID").textContent=uid||"NOT SET";
+  $("cardAbout").textContent=about||"Gaming • Coding • Creativity";
+  $("cardMember").textContent=selectedTier.toUpperCase()+" PASS";
 
-  const avatar = $("avatar");
-  avatar.innerHTML = "";
-
-  if (photoData) {
-    const image = document.createElement("img");
-    image.src = photoData;
-    image.alt = "Player profile";
+  const avatar=$("avatar");
+  avatar.innerHTML="";
+  if(photoData){
+    const image=document.createElement("img");
+    image.src=photoData;
+    image.alt="Player profile";
     avatar.appendChild(image);
-  } else {
-    avatar.textContent = "🎮";
+  }else{
+    avatar.textContent="🎮";
   }
 }
 
-$("updateCard").addEventListener("click", () => {
+$("updateCard").addEventListener("click",()=>{
   updateCard();
-  $("downloadStatus").textContent = "VIP card updated successfully!";
+  $("downloadStatus").textContent="VIP card updated successfully!";
 });
+$("cardTheme").addEventListener("change",updateCard);
 
-$("cardTheme").addEventListener("change", updateCard);
-
-$("playerPhoto").addEventListener("change", event => {
-  const file = event.target.files && event.target.files[0];
-  if (!file) return;
-
-  if (!file.type.startsWith("image/")) {
-    $("downloadStatus").textContent = "Please select an image file.";
+$("playerPhoto").addEventListener("change",event=>{
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  if(!file.type.startsWith("image/")){
+    $("downloadStatus").textContent="Please select an image file.";
     return;
   }
-
-  if (file.size > 5 * 1024 * 1024) {
-    $("downloadStatus").textContent = "Please choose an image smaller than 5 MB.";
-    event.target.value = "";
+  if(file.size>5*1024*1024){
+    $("downloadStatus").textContent="Please choose an image smaller than 5 MB.";
+    event.target.value="";
     return;
   }
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    photoData = reader.result;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    photoData=reader.result;
     updateCard();
-    $("downloadStatus").textContent = "Photo added to VIP card.";
+    $("downloadStatus").textContent="Photo added to VIP card.";
   };
-  reader.onerror = () => {
-    $("downloadStatus").textContent = "Could not read that image.";
-  };
+  reader.onerror=()=>{$("downloadStatus").textContent="Could not read that image.";};
   reader.readAsDataURL(file);
 });
 
-$("downloadCard").addEventListener("click", async () => {
-  updateCard();
-
-  if (typeof window.html2canvas !== "function") {
-    $("downloadStatus").textContent =
-      "PNG tool did not load. Check your internet and reload the page.";
-    return;
+function roundRect(ctx,x,y,width,height,radius){
+  ctx.beginPath();
+  ctx.roundRect(x,y,width,height,radius);
+}
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+  const words=text.split(/\s+/);
+  let line="",lines=0;
+  for(const word of words){
+    const test=line?line+" "+word:word;
+    if(ctx.measureText(test).width>maxWidth&&line){
+      ctx.fillText(line,x,y);
+      y+=lineHeight;
+      lines++;
+      line=word;
+      if(lines>=maxLines-1)break;
+    }else{
+      line=test;
+    }
   }
+  if(line&&lines<maxLines)ctx.fillText(line,x,y,maxWidth);
+}
 
-  const button = $("downloadCard");
-  button.disabled = true;
-  $("downloadStatus").textContent = "Preparing your VIP card...";
+$("downloadCard").addEventListener("click",async()=>{
+  updateCard();
+  const button=$("downloadCard");
+  button.disabled=true;
+  $("downloadStatus").textContent="Preparing your VIP card...";
 
-  try {
-    const canvas = await html2canvas($("vipCard"), {
-      backgroundColor: null,
-      scale: 2,
-      useCORS: true
-    });
+  try{
+    const canvas=document.createElement("canvas");
+    canvas.width=1080;
+    canvas.height=620;
+    const ctx=canvas.getContext("2d");
+    const color=$("cardTheme").value||tierColors[selectedTier];
 
-    const link = document.createElement("a");
-    link.download = "JAITISH-" + selectedTier.toUpperCase() + "-VIP.png";
-    link.href = canvas.toDataURL("image/png");
+    const bg=ctx.createLinearGradient(0,0,1080,620);
+    bg.addColorStop(0,"#24243d");
+    bg.addColorStop(1,"#07070d");
+    ctx.fillStyle=bg;
+    ctx.fillRect(0,0,1080,620);
+
+    ctx.strokeStyle=color;
+    ctx.lineWidth=6;
+    roundRect(ctx,8,8,1064,604,38);
+    ctx.stroke();
+
+    ctx.fillStyle=color;
+    ctx.font="bold 28px Arial";
+    ctx.fillText("JAITISH GAMING",55,65);
+    ctx.font="20px Arial";
+    ctx.fillStyle="#c9c9dc";
+    ctx.fillText("OFFICIAL VIP PASS",55,98);
+
+    ctx.font="52px Arial";
+    ctx.fillStyle=color;
+    ctx.fillText(tierIcons[selectedTier]||"👑",940,85);
+
+    ctx.font="bold 25px Arial";
+    ctx.fillText(selectedTier.toUpperCase()+" MEMBER",55,175);
+
+    ctx.fillStyle="#ffffff";
+    ctx.font="bold 54px Arial";
+    ctx.fillText(($("playerName").value.trim()||"YOUR NAME").slice(0,24),55,245,850);
+
+    ctx.fillStyle="#d2d2e5";
+    ctx.font="28px Arial";
+    ctx.fillText($("gameName").value.trim()||"GAMER • JAITISH GAMING",55,295,900);
+
+    if(photoData){
+      await new Promise((resolve,reject)=>{
+        const img=new Image();
+        img.onload=()=>{
+          ctx.save();
+          roundRect(ctx,55,330,145,145,20);
+          ctx.clip();
+          ctx.drawImage(img,55,330,145,145);
+          ctx.restore();
+          ctx.strokeStyle=color;
+          ctx.lineWidth=3;
+          roundRect(ctx,55,330,145,145,20);
+          ctx.stroke();
+          resolve();
+        };
+        img.onerror=reject;
+        img.src=photoData;
+      });
+    }else{
+      ctx.fillStyle="#ffffff18";
+      roundRect(ctx,55,330,145,145,20);
+      ctx.fill();
+      ctx.font="70px Arial";
+      ctx.fillStyle="#ffffff";
+      ctx.fillText("🎮",88,425);
+    }
+
+    ctx.fillStyle="#dedeee";
+    ctx.font="24px Arial";
+    wrapCanvasText(ctx,$("playerAbout").value.trim()||"Gaming • Coding • Creativity",235,365,770,34,3);
+
+    ctx.strokeStyle="#ffffff45";
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(55,520);
+    ctx.lineTo(1025,520);
+    ctx.stroke();
+
+    ctx.fillStyle="#bcbcd1";
+    ctx.font="20px Arial";
+    ctx.fillText("PLAYER UID",55,555);
+    ctx.fillText("MEMBERSHIP",730,555);
+
+    ctx.fillStyle=color;
+    ctx.font="bold 25px Arial";
+    ctx.fillText(($("playerUID").value.trim()||"NOT SET").slice(0,30),55,590,600);
+    ctx.fillText(selectedTier.toUpperCase()+" PASS",730,590);
+
+    const link=document.createElement("a");
+    link.download="JAITISH-"+selectedTier.toUpperCase()+"-VIP.png";
+    link.href=canvas.toDataURL("image/png");
     link.click();
-
-    $("downloadStatus").textContent = "VIP card downloaded!";
-  } catch (error) {
-    $("downloadStatus").textContent =
-      "Download failed. Please reload the page and try again.";
-  } finally {
-    button.disabled = false;
+    $("downloadStatus").textContent="VIP card PNG downloaded!";
+  }catch(error){
+    $("downloadStatus").textContent="Download failed. Please try again.";
+  }finally{
+    button.disabled=false;
   }
 });
 
-$("resetCard").addEventListener("click", () => {
-  $("playerName").value = "";
-  $("gameName").value = "";
-  $("playerUID").value = "";
-  $("playerAbout").value = "";
-  $("playerPhoto").value = "";
-  $("cardTheme").value = "#f4c95d";
-  photoData = "";
+$("resetCard").addEventListener("click",()=>{
+  $("playerName").value="";
+  $("gameName").value="";
+  $("playerUID").value="";
+  $("playerAbout").value="";
+  $("playerPhoto").value="";
+  $("cardTheme").value="#f4c95d";
+  photoData="";
   updateCard();
-  $("downloadStatus").textContent = "Card fields reset.";
+  $("downloadStatus").textContent="Card fields reset.";
 });
 
 updateCard();
 </script>
-
 </body>
 </html>
-```
