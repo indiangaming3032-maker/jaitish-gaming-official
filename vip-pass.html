@@ -1,490 +1,430 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP | JAITISH GAMING</title>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIP PASS | JAITISH GAMING</title>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <style>
-:root{--gold:#f4c95d;--tier:#62eaff}
+:root{--gold:#f4c95d;--bg:#070914;--panel:#11172b;--text:#fff}
 *{box-sizing:border-box}
-body{margin:0;padding:18px;background:radial-gradient(ellipse at top,#15203b,#05060c 65%);color:#fff;font-family:Arial,sans-serif}
-header{text-align:center;margin:8px 0 22px}
-header h1{color:var(--gold);letter-spacing:3px;margin:8px 0;text-shadow:0 0 18px #d4a83c77}
-header p{color:#aab3ca;font-size:13px}
-.panel{background:#101522;border:1px solid #ffffff17;border-radius:14px;padding:15px;box-shadow:0 10px 30px #0005;min-width:0}
-h2{font-size:16px;margin:0 0 14px;color:#f4d77b}
-label{display:block;font-size:12px;color:#b8c2d8;margin:12px 0 6px}
-input,select,textarea{width:100%;background:#080c17;border:1px solid #303950;border-radius:8px;color:white;padding:10px;font:inherit;font-size:13px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#62eaff}
-textarea{resize:vertical;min-height:65px}
-button{cursor:pointer;border:1px solid #ffffff20;border-radius:8px;padding:10px 12px;color:#fff;background:#202b40;font-weight:bold;font-size:12px}
-button:hover{filter:brightness(1.2)}
-button:disabled{opacity:.6;cursor:wait}
-.primary{color:#07101b;background:linear-gradient(120deg,#f4c95d,#fff0ad);border:0}
-.small-note{color:#929db4;font-size:11px;line-height:1.5}
-.workspace{display:grid;grid-template-columns:minmax(220px,290px) minmax(0,1fr);gap:16px;max-width:1100px;margin:auto;align-items:start}
-.theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.theme-btn{border:1px solid #ffffff22;padding:9px 5px;text-align:center;min-width:0}
-.theme-btn.active{outline:2px solid white;outline-offset:1px}
-.swatch{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
-.color-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-input[type=color]{height:38px;padding:3px}
-#status{font-size:12px;line-height:1.5;margin-top:10px;min-height:20px}
-.preview-panel{min-width:0}
-.preview-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.preview-heading h2{margin:0}
-
-/* Original square VIP card */
-#pass{--card-accent:#62eaff;position:relative;width:100%;max-width:570px;margin:auto;aspect-ratio:1/1;overflow:hidden;border:2px solid var(--card-accent);border-radius:0;background:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--card-accent) 18%,transparent),transparent 60%),linear-gradient(145deg,#121a2a,#05070d 65%);color:#fff;padding:clamp(12px,3vw,24px);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 0 15px color-mix(in srgb,var(--card-accent) 40%,transparent),inset 0 0 20px #0008}
-#pass:before{content:"";position:absolute;width:180px;height:180px;border:1px solid color-mix(in srgb,var(--card-accent) 30%,transparent);border-radius:50%;right:-90px;top:-80px;box-shadow:0 0 0 15px #ffffff04,0 0 0 32px #ffffff03;pointer-events:none}
-.card-top,.card-middle,.card-bottom{position:relative;z-index:1}
-.card-top{display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid color-mix(in srgb,var(--card-accent) 60%,transparent);padding-bottom:10px}
-.brand{font-size:clamp(10px,2vw,16px);font-weight:900;letter-spacing:clamp(1px,.4vw,3px);color:var(--card-accent)}
-.edition{font-size:9px;color:#d3d8e8;text-align:right;letter-spacing:1px}
-.card-middle{text-align:center;padding:5px 0}
-.photo-frame{width:clamp(66px,17vw,118px);height:clamp(66px,17vw,118px);margin:0 auto 10px;border:2px solid var(--card-accent);padding:3px;border-radius:50%;background:#070a13;box-shadow:0 0 16px color-mix(in srgb,var(--card-accent) 35%,transparent);overflow:hidden}
-#photoPreview{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.photo-placeholder{font-size:36px;line-height:1.8}
-#outName{font-size:clamp(18px,4vw,30px);margin:5px 0;overflow-wrap:anywhere;font-weight:900;text-shadow:0 0 12px color-mix(in srgb,var(--card-accent) 40%,transparent)}
-#outLevel{color:var(--card-accent);font-size:clamp(12px,2.5vw,19px);font-weight:900;letter-spacing:2px}
-#outTier{font-size:9px;letter-spacing:2px;color:#d7def1;margin-top:5px}
-.card-bottom{border-top:1px solid color-mix(in srgb,var(--card-accent) 55%,transparent);padding-top:10px}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.stat{background:#ffffff08;border:1px solid #ffffff12;padding:8px;min-width:0}
-.stat-label{font-size:8px;color:#9daac4;letter-spacing:1px}
-.stat-value{font-size:clamp(10px,2vw,14px);font-weight:bold;margin-top:5px;overflow-wrap:anywhere}
-.about-label{font-size:8px;color:var(--card-accent);margin-top:10px;letter-spacing:1px}
-#outAbout{font-size:clamp(9px,1.7vw,12px);line-height:1.4;margin-top:4px;overflow-wrap:anywhere;white-space:pre-wrap;max-height:3em;overflow:hidden}
-.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:9px;font-size:8px;color:#aab4ca;letter-spacing:1px}
-.card-foot span:first-child{color:var(--card-accent);font-weight:bold}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.actions button{flex:1}
-.uid-controls{display:none}
-#uidBox{display:none}
-
-/* Locked VIP access */
-#accessGate{position:fixed;inset:0;z-index:100000;background:radial-gradient(ellipse at top,#15203b,#03040a 75%);display:flex;align-items:center;justify-content:center;padding:20px}
-.gate-card{width:100%;max-width:380px;padding:26px;border:1px solid #62eaff;border-radius:16px;background:linear-gradient(145deg,#151d30,#070912);box-shadow:0 0 35px #62eaff35;text-align:center}
-.gate-logo{font-size:48px}
-.gate-card h2{color:#62eaff;margin:12px 0}
-.gate-card p{font-size:13px;color:#b8c2d8;line-height:1.6}
-.gate-error{color:#ff7185;font-size:12px;min-height:20px;margin-top:10px}
-#appContent{display:none}
-.vip-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:18px}
-.vip-modal.open{display:flex}
-.vip-modal-card{width:100%;max-width:380px;background:linear-gradient(145deg,#151d30,#070912);border:1px solid #62eaff;box-shadow:0 0 35px #62eaff35;border-radius:16px;padding:24px;text-align:center}
-.modal-emoji{font-size:48px;margin-bottom:8px}
-.vip-modal-card h2{margin:8px 0;color:#62eaff}
-.vip-modal-card p{font-size:13px;color:#b8c2d8;line-height:1.5}
-@media(max-width:650px){body{padding:10px}.workspace{grid-template-columns:minmax(0,1fr)}.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#pass{max-width:100%}}
+body{margin:0;background:radial-gradient(ellipse at top,#20234b,#070914 65%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+header{text-align:center;padding:24px 12px 12px}
+.logo{font-size:clamp(25px,6vw,42px);font-weight:900;color:#f4c95d;text-shadow:0 0 18px #f4c95d66}
+.subtitle{color:#bfc8e7}
+.wrap{width:min(100% - 24px,950px);margin:auto}
+.panel{background:#11172beF;border:1px solid #ffffff18;border-radius:20px;padding:20px;margin:18px 0;box-shadow:0 10px 35px #0005}
+h2{text-align:center;color:var(--gold);margin-top:0}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border-radius:10px;border:1px solid #444b68;background:#090e20;color:white}
+label{font-size:14px;color:#dce1f5}
+.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:bold;background:linear-gradient(110deg,#f4c95d,#ff9c45);color:#16101a}
+.btn2{border:1px solid #59617f;border-radius:11px;padding:11px 14px;background:#1b2240;color:white}
+.full{width:100%}
+.error{color:#ff8095;min-height:20px;font-size:14px}
+.success{color:#7bffbc}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
+.tier{padding:17px 8px;border-radius:14px;background:#171e38;border:1px solid #424c70;text-align:center;cursor:pointer;transition:.2s}
+.tier:hover{transform:translateY(-3px);border-color:var(--gold)}
+.tier .emoji{font-size:30px}
+.tier b{display:block;margin:7px 0;color:var(--gold)}
+.small{font-size:12px;color:#aeb9dc}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+#gate{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(ellipse at top,#25234d,#050711 70%)}
+.gatebox{width:min(100%,420px);text-align:center;background:#11172b;border:1px solid #f4c95d88;border-radius:22px;padding:25px;box-shadow:0 0 40px #d4a93d22}
+.gateicon{font-size:54px}
+#app{padding-bottom:40px}
+.pass-card{--card:#f4c95d;position:relative;overflow:hidden;min-height:310px;padding:25px;border-radius:22px;background:linear-gradient(135deg,#19172a,#30324a);border:2px solid var(--card);color:white;box-shadow:0 0 24px color-mix(in srgb,var(--card),transparent 75%)}
+.pass-card:before{content:"";position:absolute;width:210px;height:210px;border:30px solid color-mix(in srgb,var(--card),transparent 87%);border-radius:50%;right:-65px;top:-70px}
+.card-top,.card-bottom,.card-content{position:relative;z-index:1}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.card-brand{font-weight:900;letter-spacing:1px}
+.card-level{color:var(--card);font-size:12px;font-weight:bold}
+.card-content{display:flex;align-items:center;gap:18px;margin:26px 0}
+.avatar{width:95px;height:105px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;border:2px solid var(--card);background:#080c1c;overflow:hidden;font-size:35px}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.player-name{font-size:clamp(20px,5vw,28px);font-weight:900;overflow-wrap:anywhere}
+.player-game{color:#d5dcf5;margin-top:8px}
+.card-bottom{border-top:1px solid #ffffff38;padding-top:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}
+.card-uid{overflow-wrap:anywhere}
+footer{text-align:center;padding:20px;color:#929dbd;font-size:12px}
 </style>
 </head>
 <body>
 
-<!-- VIP PAGE ACCESS LOCK -->
-<div id="accessGate">
-  <div class="gate-card">
-    <div class="gate-logo">🔐</div>
-    <h2>JAITISH VIP ACCESS</h2>
-    <p>Enter your VIP access code to open the VIP Pass Creator.</p>
+<!-- VIP पर आते ही सबसे पहले यह कोड बॉक्स खुलेगा -->
+<section id="gate">
+  <div class="gatebox">
+    <div class="gateicon">🔐</div>
+    <div class="logo">JAITISH GAMING</div>
+    <h2 style="margin-bottom:8px">ROYAL VIP ACCESS</h2>
+    <p class="subtitle">अपना VIP access code डालें</p>
     <form id="gateForm">
-      <label for="gateCode">VIP Access Code</label>
-      <input id="gateCode" type="password" autocomplete="off" placeholder="Enter access code" required>
-      <button class="primary" type="submit" style="width:100%;margin-top:12px">🔓 Unlock VIP</button>
+      <input id="gateCode" type="password" placeholder="Enter VIP Code" autocomplete="off" required>
+      <button class="btn full" type="submit">UNLOCK VIP 🚀</button>
     </form>
-    <div id="gateError" class="gate-error" role="status"></div>
+    <p id="gateError" class="error"></p>
+    <p class="small">Authorized VIP members only</p>
   </div>
-</div>
+</section>
 
-<div id="appContent">
+<main id="app" class="hidden">
 <header>
-  <h1>💎 JAITISH GAMING</h1>
-  <p>VIP PASS CREATOR · PREMIUM MEMBER EDITION</p>
+  <div class="logo">👑 JAITISH GAMING</div>
+  <p class="subtitle">OFFICIAL VIP PASS CENTER</p>
 </header>
 
-<main class="workspace">
+<div class="wrap">
 <section class="panel">
-  <h2>🎨 Theme Options</h2>
-  <div id="themeGrid" class="theme-grid"></div>
-  <label for="customAccent">Custom theme colours</label>
-  <div class="color-row">
-    <div><label for="customAccent">Main colour</label><input id="customAccent" type="color" value="#62eaff"></div>
-    <div><label for="customBg">Background</label><input id="customBg" type="color" value="#080b14"></div>
+  <h2>🏆 CHOOSE YOUR VIP LEVEL</h2>
+  <div class="grid">
+    <div class="tier" onclick="chooseTier('Bronze')"><div class="emoji">🥉</div><b>BRONZE</b><span class="small">Bronze Pass</span></div>
+    <div class="tier" onclick="chooseTier('Silver')"><div class="emoji">🥈</div><b>SILVER</b><span class="small">Silver Pass</span></div>
+    <div class="tier" onclick="chooseTier('Gold')"><div class="emoji">🥇</div><b>GOLD</b><span class="small">Gold Pass</span></div>
+    <div class="tier" onclick="chooseTier('Platinum')"><div class="emoji">💠</div><b>PLATINUM</b><span class="small">Platinum Pass</span></div>
+    <div class="tier" onclick="chooseTier('Diamond')"><div class="emoji">💎</div><b>DIAMOND</b><span class="small">Special verification</span></div>
+    <div class="tier" onclick="chooseTier('Master')"><div class="emoji">👑</div><b>MASTER</b><span class="small">Master verification</span></div>
   </div>
-  <button id="customBtn" style="width:100%;margin-top:8px">Apply Custom Theme</button>
-  <p class="small-note">Choose a theme to update your VIP card instantly.</p>
-
-  <h2 style="margin-top:22px">📝 Card Details</h2>
-  <label for="playerName">Player name</label>
-  <input id="playerName" maxlength="30" value="JAITISH" placeholder="Enter player name">
-
-  <label for="gameSelect">Select game</label>
-  <select id="gameSelect">
-    <option>FREE FIRE</option><option>BGMI</option><option>GTA V</option><option>MINECRAFT</option><option>JAITISH GAMING</option><option>OTHER</option>
-  </select>
-
-  <div id="uidControls" class="uid-controls">
-    <label><input id="showUid" type="checkbox" style="width:auto;vertical-align:middle"> Show Free Fire UID</label>
-    <input id="uidInput" maxlength="30" placeholder="Enter Free Fire UID">
-  </div>
-
-  <label for="tierSelect">VIP level</label>
-  <select id="tierSelect">
-    <option value="Bronze">🥉 Bronze</option>
-    <option value="Silver">🥈 Silver</option>
-    <option value="Gold" selected>🥇 Gold</option>
-    <option value="Platinum">💠 Platinum</option>
-    <option value="Diamond">💎 Diamond</option>
-    <option value="Master">👑 Master</option>
-  </select>
-
-  <div id="tierCodeBox" class="vip-modal">
-    <div class="vip-modal-card">
-      <div id="modalEmoji" class="modal-emoji">💎</div>
-      <h2 id="modalTitle">VIP ACCESS</h2>
-      <p id="modalMessage">Enter your level's access code.</p>
-      <label for="tierCode">Level verification code</label>
-      <input id="tierCode" type="password" autocomplete="off" placeholder="Enter your code">
-      <button id="verifyBtn" class="primary" style="width:100%;margin-top:12px">🔐 Verify & Unlock</button>
-      <button id="cancelVipBtn" style="width:100%;margin-top:8px">Cancel</button>
-      <div id="status" role="status" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <label for="photoInput">Player photo</label>
-  <input id="photoInput" type="file" accept="image/*">
-  <label for="aboutInput">About section</label>
-  <textarea id="aboutInput" maxlength="180">Exclusive Jaitish Gaming member</textarea>
+  <p id="tierStatus" class="success"></p>
 </section>
 
-<section class="panel preview-panel">
-  <div class="preview-heading"><h2>👑 Live VIP Preview</h2><span class="small-note">LIVE CARD</span></div>
-  <article id="pass">
-    <div class="card-top"><div class="brand">✦ JAITISH GAMING ✦</div><div class="edition">OFFICIAL<br>VIP PASS</div></div>
-    <div class="card-middle">
-      <div class="photo-frame">
-        <img id="photoPreview" alt="Player photo" style="display:none">
-        <div id="photoPlaceholder" class="photo-placeholder">👤</div>
+<section class="panel">
+  <h2>🎨 CUSTOMIZE YOUR VIP CARD</h2>
+  <div class="row">
+    <div>
+      <label for="playerName">Player Name</label>
+      <input id="playerName" maxlength="35" placeholder="अपना नाम लिखें" value="JAITISH">
+    </div>
+    <div>
+      <label for="gameName">Game</label>
+      <select id="gameName">
+        <option>Free Fire</option>
+        <option>BGMI</option>
+        <option>GTA V</option>
+        <option>Minecraft</option>
+        <option>Racing</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+  <label for="uidInput">Game UID (optional)</label>
+  <input id="uidInput" maxlength="40" placeholder="अपना Game UID लिखें">
+
+  <label for="photoInput">अपनी फोटो चुनें</label>
+  <input id="photoInput" type="file" accept="image/*">
+
+  <label for="aboutInput">About Player</label>
+  <textarea id="aboutInput" maxlength="100" rows="2" placeholder="Gaming • Loyalty • Royal">Gaming • Loyalty • Royal</textarea>
+
+  <label for="themeInput">Card Theme</label>
+  <select id="themeInput">
+    <option value="#f4c95d">Royal Gold</option>
+    <option value="#00eaff">Neon Cyan</option>
+    <option value="#b56bff">Royal Purple</option>
+    <option value="#ff648f">Rose Pink</option>
+    <option value="#65ffad">Emerald Green</option>
+    <option value="#ffffff">Ice White</option>
+    <option value="#ff783e">Fire Orange</option>
+  </select>
+</section>
+
+<section class="panel">
+  <h2>🪪 YOUR VIP PASS</h2>
+  <div id="passCard" class="pass-card">
+    <div class="card-top">
+      <div class="card-brand">🎮 JAITISH GAMING</div>
+      <div id="cardLevel" class="card-level">ROYAL VIP</div>
+    </div>
+    <div class="card-content">
+      <div class="avatar">
+        <img id="cardPhoto" class="hidden" alt="Player photo">
+        <span id="avatarEmoji">👑</span>
       </div>
-      <div id="outName">JAITISH</div>
-      <div id="outLevel">🥇 GOLD VIP</div>
-      <div id="outTier">GOLD ELITE MEMBER</div>
+      <div>
+        <div class="small">OFFICIAL PLAYER</div>
+        <div id="cardName" class="player-name">JAITISH</div>
+        <div id="cardGame" class="player-game">Free Fire</div>
+        <div id="cardAbout" class="small">Gaming • Loyalty • Royal</div>
+      </div>
     </div>
     <div class="card-bottom">
-      <div class="stats">
-        <div class="stat"><div class="stat-label">GAME</div><div class="stat-value" id="outGame">FREE FIRE</div></div>
-        <div class="stat" id="uidBox"><div class="stat-label">PLAYER UID</div><div class="stat-value" id="outUid"></div></div>
-        <div class="stat"><div class="stat-label">MEMBER STATUS</div><div class="stat-value">VIP MEMBER</div></div>
-        <div class="stat"><div class="stat-label">MEMBER CLUB</div><div class="stat-value">JAITISH ELITE</div></div>
-      </div>
-      <div class="about-label">✦ ABOUT THE PLAYER</div>
-      <div id="outAbout">Exclusive Jaitish Gaming member</div>
-      <div class="card-foot"><span id="footTier">🥇 GOLD</span><span>JAITISH GAMING ©</span></div>
+      <div>UID: <span id="cardUid" class="card-uid">Not added</span></div>
+      <div id="cardSerial">JAITISH • VIP</div>
     </div>
-  </article>
-  <div class="actions">
-    <button class="primary" id="downloadBtn">⬇ Download VIP Card PNG</button>
-    <button id="resetBtn">↻ Reset Details</button>
   </div>
-  <p class="small-note">For the cleanest export, wait for the preview to finish updating before downloading.</p>
+  <p class="small">फोटो, नाम और थीम बदलने के बाद कार्ड डाउनलोड कर सकते हो।</p>
+  <button class="btn full" id="downloadBtn">📥 DOWNLOAD VIP CARD (PNG)</button>
+  <p id="downloadStatus" class="error"></p>
 </section>
+
+<section class="panel">
+  <h2>ℹ️ VIP PASS INFO</h2>
+  <p>👑 JAITISH GAMING — Gaming • Coding • Creativity • Fun</p>
+  <p class="small">यह एक custom digital VIP card है। कार्ड डाउनलोड करना किसी बाहरी गेम में आधिकारिक VIP सदस्यता नहीं देता।</p>
+  <button class="btn2" onclick="lockVIP()">🔒 Lock VIP Page</button>
+</section>
+</div>
+<footer>© JAITISH GAMING • VIP PASS CENTER</footer>
 </main>
+
+<!-- Diamond / Master verification -->
+<div id="verifyModal" class="hidden" style="position:fixed;inset:0;z-index:30;background:#000c;display:flex;align-items:center;justify-content:center;padding:18px">
+  <div class="gatebox">
+    <div id="verifyEmoji" class="gateicon">💎</div>
+    <h2 id="verifyTitle">VIP VERIFICATION</h2>
+    <p class="subtitle">इस लेवल के लिए अलग कोड आवश्यक है।</p>
+    <form id="verifyForm">
+      <input id="verifyCode" type="password" placeholder="Diamond / Master Code" autocomplete="off" required>
+      <button class="btn full" id="verifyBtn" type="submit">VERIFY CODE</button>
+      <button class="btn2 full" type="button" onclick="closeVerify()" style="margin-top:10px">CANCEL</button>
+    </form>
+    <p id="verifyStatus" class="error"></p>
+  </div>
 </div>
 
 <script>
-/*
-IMPORTANT:
-This browser-side gate is a convenience lock, not strong security.
-For genuine protection, verify page access on a server.
-*/
+/* ========== CONFIGURATION ========== */
+
+// Royal VIP page access code
 const PAGE_ACCESS_CODE = "jai royal 4927";
 
-$("gateCode")?.addEventListener("input", () => {
-  $("gateError").textContent = "";
-});
+// Supabase Edge Function configuration.
+// Diamond/Master codes must be configured and checked on the server.
+const SUPABASE_URL = "https://sfecuepkrsoyddctpzpg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_nEdWip2jcq_UXyxS10c7oA_X0JApgFS";
+const VERIFY_URL = SUPABASE_URL + "/functions/v1/smooth-worker";
 
-function $(id){return document.getElementById(id)}
+let selectedTier = "Bronze";
+let verifiedTier = "";
+let pendingTier = "Diamond";
+let previousTier = "Bronze";
+let photoData = "";
 
-$("gateForm").addEventListener("submit",event=>{
+const $ = id => document.getElementById(id);
+
+const tierInfo = {
+  Bronze:   {emoji:"🥉", color:"#cd8b55"},
+  Silver:   {emoji:"🥈", color:"#c9d1df"},
+  Gold:     {emoji:"🥇", color:"#f4c95d"},
+  Platinum: {emoji:"💠", color:"#71e7ff"},
+  Diamond:  {emoji:"💎", color:"#5ce9ff"},
+  Master:   {emoji:"👑", color:"#c17aff"}
+};
+
+// Access gate
+$("gateForm").addEventListener("submit", function(event){
   event.preventDefault();
-  const code=$("gateCode").value.trim();
 
-  if(code===PAGE_ACCESS_CODE){
-    $("accessGate").style.display="none";
-    $("appContent").style.display="block";
-    $("gateError").textContent="";
-    initVIP();
-  }else{
-    $("gateError").textContent="❌ Incorrect access code. VIP remains locked.";
-    $("gateCode").value="";
+  if ($("gateCode").value.trim() === PAGE_ACCESS_CODE) {
+    $("gate").classList.add("hidden");
+    $("app").classList.remove("hidden");
+    $("gateError").textContent = "";
+    renderCard();
+  } else {
+    $("gateError").textContent = "❌ गलत VIP कोड! दोबारा कोशिश करो।";
+    $("gateCode").value = "";
     $("gateCode").focus();
   }
 });
 
-const themes=[
-["Gold","#f4c95d","#080b14"],["Diamond Blue","#62eaff","#080b14"],
-["Royal Purple","#b78aff","#090714"],["Ruby Red","#ff526c","#14070d"],
-["Emerald","#42e6a4","#06130f"],["Ice Silver","#d9e8ff","#090e18"],
-["Neon Pink","#ff66c4","#150714"],["Orange","#ff9a47","#140b05"],
-["Electric Lime","#c5ff4b","#0d1205"],["Royal Blue","#588bff","#060b19"],
-["Aqua","#36ffe0","#041312"],["Rose Gold","#ffc0a8","#160b0b"],
-["Violet","#9b6dff","#0b0716"],["Fire","#ff6938","#160703"],
-["Midnight","#a5b5d8","#070912"],["Cyber Green","#00ff88","#03130b"],
-["Neon Cyan","#00eaff","#030e16"],["Crimson","#ff244b","#15050b"],
-["Lavender","#d6a6ff","#110918"],["White Gold","#fff0b2","#12110b"],
-["Ocean","#27a9ff","#03101b"],["Toxic","#b3ff00","#0d1202"],
-["Sunset","#ff8caa","#170812"],["Steel","#9aa9c3","#090c12"],
-["Royal Gold","#e6bd58","#100d06"],["Galaxy","#c28bff","#09051a"],
-["Arctic","#9efcff","#061217"],["Cherry","#ff3b8d","#150511"],
-["Bronze","#dca16b","#140c07"],["Legend","#ffe082","#0c0b08"]
-];
-
-let activeTheme=1;
-let verifiedTier="";
-let previousTier="Gold";
-let pendingTier="";
-let initialized=false;
-
-function setTheme(accent,bg,index=-1){
-  activeTheme=index;
-  $("pass").style.setProperty("--card-accent",accent);
-  $("pass").style.background=
-    "radial-gradient(ellipse at 50% 0%,"+accent+"25,transparent 60%),linear-gradient(145deg,"+bg+",#05070d 75%)";
-  $("customAccent").value=accent;
-  $("customBg").value=bg;
-  document.querySelectorAll(".theme-btn").forEach((b,i)=>b.classList.toggle("active",i===index));
-}
-
-function tierDetails(tier){
-  const data={
-    Bronze:{emoji:"🥉",color:"#dca16b",label:"BRONZE MEMBER"},
-    Silver:{emoji:"🥈",color:"#d5e0f2",label:"SILVER ELITE MEMBER"},
-    Gold:{emoji:"🥇",color:"#f4c95d",label:"GOLD ELITE MEMBER"},
-    Platinum:{emoji:"💠",color:"#a8e5ff",label:"PLATINUM ELITE MEMBER"},
-    Diamond:{emoji:"💎",color:"#62eaff",label:"DIAMOND ELITE MEMBER"},
-    Master:{emoji:"👑⚜️",color:"#e8b9ff",label:"MASTER • LEGENDARY MEMBER"}
-  };
-  return data[tier]||data.Bronze;
-}
-
-function updateCard(){
-  const name=$("playerName").value.trim()||"PLAYER NAME";
-  const game=$("gameSelect").value;
-  const tier=$("tierSelect").value;
-  const d=tierDetails(tier);
-  $("outName").textContent=name;
-  $("outGame").textContent=game;
-  $("outLevel").textContent=d.emoji+" "+tier.toUpperCase()+" VIP";
-  $("outTier").textContent=d.label;
-  $("footTier").textContent=d.emoji+" "+tier.toUpperCase();
-  $("outAbout").textContent=$("aboutInput").value.trim()||"JAITISH GAMING VIP MEMBER";
-  $("uidControls").style.display=game==="FREE FIRE"?"block":"none";
-  const show=game==="FREE FIRE"&&$("showUid").checked&&$("uidInput").value.trim();
-  $("uidBox").style.display=show?"block":"none";
-  $("outUid").textContent=show?$ ("uidInput").value.trim():"";
-}
-
-function openVipModal(tier){
-  pendingTier=tier;
-  $("tierCodeBox").classList.add("open");
-  $("modalEmoji").textContent=tier==="Diamond"?"💎":"👑";
-  $("modalTitle").textContent=tier.toUpperCase()+" VIP ACCESS";
-  $("modalMessage").textContent="Enter the correct "+tier+" code to unlock this level.";
-  $("tierCode").value="";
-  $("tierCode").placeholder="Enter "+tier+" code";
-  $("status").style.color="#ff7185";
-  $("status").textContent="";
-  $("verifyBtn").disabled=false;
-  $("verifyBtn").textContent="🔐 Verify & Unlock";
-  setTimeout(()=>$("tierCode").focus(),50);
-}
-
-function closeVipModal(){$("tierCodeBox").classList.remove("open")}
-
+// Choose a VIP tier
 function chooseTier(tier){
-  if((tier==="Diamond"||tier==="Master")&&verifiedTier!==tier){
-    $("tierSelect").value=previousTier;
-    updateCard();
-    openVipModal(tier);
+  if (!tierInfo[tier]) return;
+
+  previousTier = selectedTier;
+
+  if (tier === "Diamond" || tier === "Master") {
+    if (verifiedTier === tier) {
+      selectedTier = tier;
+      renderCard();
+      $("tierStatus").textContent = tier + " PASS ACTIVE";
+      return;
+    }
+
+    pendingTier = tier;
+    $("verifyEmoji").textContent = tierInfo[tier].emoji;
+    $("verifyTitle").textContent = tier.toUpperCase() + " VERIFICATION";
+    $("verifyCode").value = "";
+    $("verifyStatus").textContent = "";
+    $("verifyModal").classList.remove("hidden");
+    $("verifyCode").focus();
     return;
   }
-  if(tier!=="Diamond"&&tier!=="Master")verifiedTier="";
-  previousTier=tier;
-  const d=tierDetails(tier);
-  setTheme(d.color,"#080b14",-1);
-  updateCard();
+
+  selectedTier = tier;
+  renderCard();
+  $("tierStatus").textContent = tier + " PASS SELECTED";
 }
 
-function initVIP(){
-  if(initialized)return;
-  initialized=true;
-
-  themes.forEach((t,i)=>{
-    const b=document.createElement("button");
-    b.type="button";
-    b.className="theme-btn";
-    b.innerHTML='<span class="swatch" style="background:'+t[1]+'"></span>'+t[0];
-    b.addEventListener("click",()=>setTheme(t[1],t[2],i));
-    $("themeGrid").appendChild(b);
-  });
-
-  $("customBtn").addEventListener("click",()=>setTheme($("customAccent").value,$("customBg").value,-1));
-
-  ["playerName","gameSelect","showUid","uidInput","aboutInput"].forEach(id=>{
-    $(id).addEventListener("input",updateCard);
-    $(id).addEventListener("change",updateCard);
-  });
-
-  $("tierSelect").addEventListener("change",()=>chooseTier($("tierSelect").value));
-
-  $("cancelVipBtn").addEventListener("click",()=>{
-    $("tierSelect").value=previousTier;
-    pendingTier="";
-    closeVipModal();
-    const d=tierDetails(previousTier);
-    setTheme(d.color,"#080b14",-1);
-    updateCard();
-  });
-
-  $("photoInput").addEventListener("change",event=>{
-    const file=event.target.files&&event.target.files[0];
-    if(!file)return;
-    if(!file.type.startsWith("image/")){
-      alert("Please choose an image file.");
-      event.target.value="";
-      return;
-    }
-    const reader=new FileReader();
-    reader.onload=()=>{
-      $("photoPreview").src=reader.result;
-      $("photoPreview").style.display="block";
-      $("photoPlaceholder").style.display="none";
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // Existing Supabase verification endpoint
-  const SUPABASE_URL="https://sfecuepkrsoyddctpzpg.supabase.co";
-  const SUPABASE_KEY="sb_publishable_nEdWip2jcq_UXyxS10c7oA_X0JApgFS";
-  const VERIFY_URL=SUPABASE_URL+"/functions/v1/smooth-worker";
-
-  $("verifyBtn").addEventListener("click",async()=>{
-    const tier=pendingTier;
-    const code=$("tierCode").value.trim();
-
-    if(tier!=="Diamond"&&tier!=="Master"){
-      $("status").textContent="Select Diamond or Master first.";
-      return;
-    }
-    if(!code){
-      $("status").textContent="❌ Please enter your "+tier+" code.";
-      return;
-    }
-
-    const btn=$("verifyBtn");
-    btn.disabled=true;
-    btn.textContent="Checking code...";
-    $("status").style.color="#b8c2d8";
-    $("status").textContent="Checking code securely...";
-
-    try{
-      const response=await fetch(VERIFY_URL,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer "+SUPABASE_KEY
-        },
-        body:JSON.stringify({action:"verify",code:code,tier:tier})
-      });
-      let result={};
-      try{result=await response.json()}catch(e){}
-
-      if(response.ok&&result.valid===true){
-        verifiedTier=tier;
-        previousTier=tier;
-        pendingTier="";
-        $("tierSelect").value=tier;
-        const d=tierDetails(tier);
-        setTheme(d.color,"#080b14",-1);
-        updateCard();
-        $("status").style.color="#55f5a2";
-        $("status").textContent="✅ "+tier+" VIP unlocked!";
-        btn.textContent="✅ Unlocked!";
-        setTimeout(()=>{
-          closeVipModal();
-          btn.disabled=false;
-          btn.textContent="🔐 Verify & Unlock";
-        },800);
-      }else{
-        $("status").style.color="#ff7185";
-        $("status").textContent=result.message||"❌ Invalid code. Try again.";
-        btn.disabled=false;
-        btn.textContent="🔐 Verify & Unlock";
-      }
-    }catch(e){
-      $("status").style.color="#ff7185";
-      $("status").textContent="⚠️ Verification server unavailable. Try again.";
-      btn.disabled=false;
-      btn.textContent="🔐 Verify & Unlock";
-    }
-  });
-
-  $("downloadBtn").addEventListener("click",async()=>{
-    const tier=$("tierSelect").value;
-    if((tier==="Diamond"||tier==="Master")&&verifiedTier!==tier){
-      alert("Please verify your "+tier+" code before downloading.");
-      return;
-    }
-    if(typeof html2canvas!=="function"){
-      alert("Export library did not load. Check your internet.");
-      return;
-    }
-
-    const btn=$("downloadBtn");
-    btn.disabled=true;
-    btn.textContent="Preparing PNG...";
-    try{
-      const canvas=await html2canvas($("pass"),{scale:3,backgroundColor:null,useCORS:true});
-      const link=document.createElement("a");
-      const name=($("playerName").value.trim()||"PLAYER").replace(/[^a-z0-9_-]/gi,"_");
-      link.download="JAITISH_"+tier.toUpperCase()+"_VIP_"+name+".png";
-      link.href=canvas.toDataURL("image/png");
-      link.click();
-    }catch(e){
-      alert("Could not create the PNG. Please try again.");
-    }finally{
-      btn.disabled=false;
-      btn.textContent="⬇ Download VIP Card PNG";
-    }
-  });
-
-  $("resetBtn").addEventListener("click",()=>{
-    $("playerName").value="JAITISH";
-    $("gameSelect").value="FREE FIRE";
-    $("tierSelect").value="Gold";
-    $("showUid").checked=false;
-    $("uidInput").value="";
-    $("aboutInput").value="Exclusive Jaitish Gaming member";
-    $("tierCode").value="";
-    $("photoInput").value="";
-    $("photoPreview").removeAttribute("src");
-    $("photoPreview").style.display="none";
-    $("photoPlaceholder").style.display="block";
-    $("status").textContent="";
-    verifiedTier="";
-    pendingTier="";
-    previousTier="Gold";
-    closeVipModal();
-    setTheme("#f4c95d","#080b14",0);
-    updateCard();
-  });
-
-  setTheme("#f4c95d","#080b14",0);
-  updateCard();
+function closeVerify(){
+  $("verifyModal").classList.add("hidden");
+  $("verifyStatus").textContent = "";
 }
+
+// Verify Diamond / Master through Supabase
+$("verifyForm").addEventListener("submit", async function(event){
+  event.preventDefault();
+
+  const code = $("verifyCode").value.trim();
+  if (!code) {
+    $("verifyStatus").textContent = "कृपया कोड डालें।";
+    return;
+  }
+
+  const btn = $("verifyBtn");
+  btn.disabled = true;
+  btn.textContent = "VERIFYING...";
+  $("verifyStatus").textContent = "Server से जाँच हो रही है...";
+
+  try {
+    const response = await fetch(VERIFY_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      },
+      body: JSON.stringify({
+        action: "verify",
+        code: code,
+        tier: pendingTier
+      })
+    });
+
+    const rawResponse = await response.text();
+    let result = {};
+
+    try {
+      result = JSON.parse(rawResponse);
+    } catch (parseError) {
+      throw new Error("Server ने सही JSON जवाब नहीं दिया। Supabase smooth-worker जाँचें।");
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        typeof result.message === "string"
+          ? result.message
+          : "Server error (HTTP " + response.status + ")."
+      );
+    }
+
+    if (result.valid === true) {
+      verifiedTier = pendingTier;
+      selectedTier = pendingTier;
+      $("tierStatus").textContent = "✅ " + pendingTier + " PASS VERIFIED";
+      $("verifyModal").classList.add("hidden");
+      $("verifyCode").value = "";
+      renderCard();
+    } else {
+      $("verifyStatus").textContent =
+        typeof result.message === "string"
+          ? result.message
+          : "❌ गलत कोड या इस लेवल की अनुमति नहीं है।";
+    }
+
+  } catch (error) {
+    console.error("VIP verification error:", error);
+    $("verifyStatus").textContent =
+      "जाँच नहीं हो सकी: " + (error.message || "Network error") +
+      " — Supabase function और code configuration जाँचें।";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "VERIFY CODE";
+  }
+});
+
+// Live card preview
+function renderCard(){
+  const info = tierInfo[selectedTier];
+
+  $("passCard").style.setProperty("--card", info.color);
+  $("cardLevel").textContent = selectedTier.toUpperCase() + " PASS";
+  $("cardName").textContent = $("playerName").value.trim() || "JAITISH";
+  $("cardGame").textContent = $("gameName").value;
+  $("cardUid").textContent = $("uidInput").value.trim() || "Not added";
+  $("cardAbout").textContent = $("aboutInput").value.trim() || "Gaming • Royal";
+  $("cardSerial").textContent = "JAITISH • " + selectedTier.toUpperCase();
+
+  $("themeInput").style.borderColor = info.color;
+}
+
+["playerName","gameName","uidInput","aboutInput"].forEach(id => {
+  $(id).addEventListener("input", renderCard);
+  $(id).addEventListener("change", renderCard);
+});
+
+$("themeInput").addEventListener("change", function(){
+  $("passCard").style.setProperty("--card", this.value);
+});
+
+$("photoInput").addEventListener("change", function(){
+  const file = this.files && this.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    $("downloadStatus").textContent = "कृपया image फ़ाइल चुनें।";
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    $("downloadStatus").textContent = "कृपया 5 MB से छोटी फोटो चुनें।";
+    this.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(){
+    photoData = reader.result;
+    $("cardPhoto").src = photoData;
+    $("cardPhoto").classList.remove("hidden");
+    $("avatarEmoji").classList.add("hidden");
+  };
+  reader.readAsDataURL(file);
+});
+
+$("downloadBtn").addEventListener("click", async function(){
+  const btn = this;
+  btn.disabled = true;
+  $("downloadStatus").textContent = "कार्ड तैयार हो रहा है...";
+
+  try {
+    if (typeof html2canvas !== "function") {
+      throw new Error("PNG डाउनलोड लाइब्रेरी लोड नहीं हुई। इंटरनेट कनेक्शन जाँचें।");
+    }
+
+    const canvas = await html2canvas($("passCard"), {
+      backgroundColor: null,
+      scale: 2,
+      useCORS: true
+    });
+
+    const link = document.createElement("a");
+    link.download = "JAITISH-" + selectedTier.toUpperCase() + "-VIP.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    $("downloadStatus").textContent = "✅ VIP कार्ड डाउनलोड हो गया!";
+    $("downloadStatus").className = "success";
+  } catch (error) {
+    $("downloadStatus").textContent = "डाउनलोड नहीं हुआ: " + error.message;
+    $("downloadStatus").className = "error";
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+function lockVIP(){
+  $("app").classList.add("hidden");
+  $("gate").classList.remove("hidden");
+  $("gateCode").value = "";
+  $("gateError").textContent = "";
+}
+
+renderCard();
 </script>
 </body>
 </html>
