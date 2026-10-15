@@ -137,6 +137,46 @@ code{display:block;position:relative;margin-top:15px;padding:15px;background:#01
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;max-width:1100px;margin:auto}
 .gallery-item{height:220px;border-radius:18px;overflow:hidden;border:1px solid var(--theme);background:#080b13;position:relative;box-shadow:0 0 15px rgba(0,234,255,.08);transition:.3s}
 .gallery-item:hover{transform:scale(1.03);box-shadow:0 0 25px var(--theme)}
+ /* JAITISH GAMING - NEON DYNAMIC GALLERY */
+.gallery-item{
+  animation: neonFloat 4s ease-in-out infinite;
+  border: 1px solid var(--theme);
+  box-shadow: 0 0 12px var(--theme);
+  transition: transform .4s, box-shadow .4s;
+}
+
+.gallery-item:nth-child(2n){
+  animation-delay: .5s;
+}
+
+.gallery-item:nth-child(3n){
+  animation-delay: 1s;
+}
+
+.gallery-item:hover{
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 0 18px var(--theme),
+              0 0 35px var(--theme2);
+}
+
+.gallery-item img{
+  transition: transform .6s, filter .4s;
+}
+
+.gallery-item:hover img{
+  transform: scale(1.12);
+  filter: brightness(1.15) saturate(1.2);
+}
+
+@keyframes neonFloat{
+  0%,100%{
+    box-shadow: 0 0 10px var(--theme);
+  }
+  50%{
+    box-shadow: 0 0 22px var(--theme),
+                0 0 35px var(--theme2);
+  }
+}
 .gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
 .gallery-title{position:absolute;bottom:0;left:0;right:0;padding:15px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-weight:bold;font-size:18px}
 
@@ -433,6 +473,30 @@ else:
  <h2 class="section-title">🖼️ GALLERY</h2>
  <p class="section-subtitle">JAITISH GAMING • Photos • Memories • Creativity</p>
  <div class="gallery">
+    <div class="gallery-item">
+    <img src="neon1.jpg" alt="Neon Gaming 1" loading="lazy">
+    <div class="gallery-title">⚡ NEON GAMING</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="neon2.jpg" alt="Neon Gaming 2" loading="lazy">
+    <div class="gallery-title">🏎️ NEON RACING</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="neon3.jpg" alt="Neon Gaming 3" loading="lazy">
+    <div class="gallery-title">🎮 GAMING WORLD</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="neon4.jpg" alt="Neon Gaming 4" loading="lazy">
+    <div class="gallery-title">💜 NEON POWER</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="neon5.jpg" alt="Neon Gaming 5" loading="lazy">
+    <div class="gallery-title">👑 JAITISH GAMING</div>
+  </div>
   <div class="gallery-item"><img src="photo2.jpg" alt="Gaming"><div class="gallery-title">🎮 GAMING</div></div>
   <div class="gallery-item"><img src="photo3.jpg" alt="Racing"><div class="gallery-title">🏎️ RACING</div></div>
   <div class="gallery-item"><img src="photo4.jpg" alt="Action"><div class="gallery-title">⚡ ACTION</div></div>
