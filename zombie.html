@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAITISH ZOMBIE SURVIVAL</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050611;color:#fff;font-family:Arial,sans-serif;text-align:center}
+header{padding:18px 8px;background:#0b0d20;border-bottom:2px solid #00f5ff}
+h1{margin:0;color:#00f5ff;text-shadow:0 0 14px #00f5ff;font-size:clamp(23px,5vw,36px)}
+header p{color:#c7c9ff;margin:8px 0 0}
+.wrap{max-width:900px;margin:auto;padding:12px}
+.stats{display:flex;justify-content:space-around;gap:8px;flex-wrap:wrap;margin:10px 0}
+.stat{background:#11152a;border:1px solid #8a35ff;border-radius:10px;padding:9px 14px;min-width:100px}
+.stat span{color:#00f5ff;font-weight:bold}
+#game{display:block;width:100%;max-width:800px;margin:auto;background:#101527;border:2px solid #00f5ff;border-radius:12px;box-shadow:0 0 20px #00f5ff33;touch-action:none}
+button{background:#11152a;color:#fff;border:2px solid #00f5ff;border-radius:10px;padding:12px 18px;font-size:16px;font-weight:bold;cursor:pointer;touch-action:manipulation}
+button:active{background:#263d52}
+#start{background:#00cbd5;color:#001015;border:0}
+.controls{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}
+.pad{display:grid;grid-template-columns:repeat(3,54px);grid-template-rows:repeat(2,48px);gap:5px}
+.pad button{padding:5px;font-size:22px}
+.pad .up{grid-column:2;grid-row:1}
+.pad .left{grid-column:1;grid-row:2}
+.pad .down{grid-column:2;grid-row:2}
+.pad .right{grid-column:3;grid-row:2}
+.fire{border-color:#ff315d;color:#ff6380;min-width:90px;min-height:85px;border-radius:50%;font-size:20px}
+.hint{color:#c4c9e9;font-size:13px;line-height:1.7}
+#message{color:#ffdf67;font-weight:bold;min-height:24px}
+</style>
+</head>
+<body>
+<header>
+<h1>🧟 JAITISH ZOMBIE SURVIVAL</h1>
+<p>⚡ Survive • Shoot • Become a Legend ⚡</p>
+</header>
+<div class="wrap">
+<div class="stats">
+<div class="stat">❤️ Health: <span id="health">100</span></div>
+<div class="stat">🏆 Score: <span id="score">0</span></div>
+<div class="stat">💀 Kills: <span id="kills">0</span></div>
+<div class="stat">🌊 Wave: <span id="wave">1</span></div>
+</div>
+<canvas id="game" width="800" height="500"></canvas>
+<div id="message">START दबाकर गेम शुरू करो!</div>
+<div class="controls">
+<button id="start">▶ START / RESTART</button>
+<div class="pad">
+<button class="up" data-move="up">⬆️</button>
+<button class="left" data-move="left">⬅️</button>
+<button class="down" data-move="down">⬇️</button>
+<button class="right" data-move="right">➡️</button>
+</div>
+<button id="fire" class="fire">🔫<br>FIRE</button>
+</div>
+<p class="hint">
+लैपटॉप: WASD / Arrow Keys से चलो • Space से गोली चलाओ<br>
+मोबाइल: तीर वाले बटन से चलो और FIRE दबाकर रखो।<br>
+ज़ॉम्बी से बचो, उन्हें हराओ और ज्यादा से ज्यादा स्कोर बनाओ!
+</p>
+</div>
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+const $=id=>document.getElementById(id);
+const W=800,H=500;
+let player,zombies,bullets,score,kills,health,wave,running,gameOver,spawnTimer,lastTime;
+let keys={},moveTouch={},fireTouch=false;
+function reset(){
+ player={x:W/2,y:H/2,r:14,speed:210,angle:0,inv:0};
+ zombies=[];bullets=[];score=0;kills=0;health=100;wave=1;
+ spawnTimer=0;lastTime=0;running=true;gameOver=false;
+ keys={};moveTouch={};fireTouch=false;
+ $("message").textContent="ज़ॉम्बी आ रहे हैं! सर्वाइव करो!";
+ updateStats();
+}
+function updateStats(){
+ $("health").textContent=Math.max(0,Math.ceil(health));
+ $("score").textContent=score;
+ $("kills").textContent=kills;
+ $("wave").textContent=wave;
+}
+function spawnZombie(){
+ let side=Math.floor(Math.random()*4),x,y;
+ if(side===0){x=Math.random()*W;y=-20}
+ else if(side===1){x=W+20;y=Math.random()*H}
+ else if(side===2){x=Math.random()*W;y=H+20}
+ else{x=-20;y=Math.random()*H}
+ zombies.push({x,y,r:13+Math.random()*3,speed:35+Math.random()*18+wave*3,hp:1});
+}
+function shoot(){
+ if(!running||gameOver)return;
+ let target=null,dist=Infinity;
+ for(const z of zombies){
+  const d=Math.hypot(z.x-player.x,z.y-player.y);
+  if(d<dist){dist=d;target=z}
+ }
+ let angle=target?Math.atan2(target.y-player.y,target.x-player.x):player.angle;
+ if(!target)angle=player.angle;
+ bullets.push({x:player.x+Math.cos(angle)*17,y:player.y+Math.sin(angle)*17,vx:Math.cos(angle)*440,vy:Math.sin(angle)*440,life:1.5});
+ player.angle=angle;
+}
+let shotCooldown=0;
+function endGame(){
+ running=false;gameOver=true;
+ $("message").textContent="💀 GAME OVER! स्कोर: "+score+" — फिर से खेलने के लिए START दबाओ।";
+}
+function drawBackground(){
+ ctx.fillStyle="#101527";ctx.fillRect(0,0,W,H);
+ ctx.strokeStyle="#202944";ctx.lineWidth=1;
+ for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+ for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+}
+function circle(x,y,r,color,glow){
+ ctx.save();ctx.shadowBlur=glow;ctx.shadowColor=color;
+ ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+function drawPlayer(){
+ ctx.save();ctx.translate(player.x,player.y);ctx.rotate(player.angle);
+ ctx.shadowBlur=16;ctx.shadowColor="#00f5ff";
+ ctx.fillStyle="#00ddeb";ctx.beginPath();ctx.arc(0,0,player.r,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle="#fff";ctx.fillRect(5,-4,19,8);
+ ctx.restore();
+ circle(player.x-4,player.y-3,3,"#fff",5);
+}
+function drawZombie(z){
+ circle(z.x,z.y,z.r,"#79df46",10);
+ circle(z.x-4,z.y-3,2.5,"#17230c",0);
+ circle(z.x+4,z.y-3,2.5,"#17230c",0);
+ ctx.strokeStyle="#203e17";ctx.lineWidth=2;
+ ctx.beginPath();ctx.moveTo(z.x-5,z.y+5);ctx.lineTo(z.x+5,z.y+5);ctx.stroke();
+}
+function frame(t){
+ requestAnimationFrame(frame);
+ if(!lastTime)lastTime=t;
+ const dt=Math.min((t-lastTime)/1000,.035);lastTime=t;
+ drawBackground();
+ if(running&&!gameOver){
+  let dx=0,dy=0;
+  if(keys.ArrowLeft||keys.a||moveTouch.left)dx--;
+  if(keys.ArrowRight||keys.d||moveTouch.right)dx++;
+  if(keys.ArrowUp||keys.w||moveTouch.up)dy--;
+  if(keys.ArrowDown||keys.s||moveTouch.down)dy++;
+  if(dx||dy){
+   const len=Math.hypot(dx,dy);
+   player.x+=dx/len*player.speed*dt;
+   player.y+=dy/len*player.speed*dt;
+   player.angle=Math.atan2(dy,dx);
+  }
+  player.x=Math.max(player.r,Math.min(W-player.r,player.x));
+  player.y=Math.max(player.r,Math.min(H-player.r,player.y));
+  shotCooldown-=dt;
+  if((keys[" "]||fireTouch)&&shotCooldown<=0){shoot();shotCooldown=.23}
+  spawnTimer-=dt;
+  if(spawnTimer<=0){
+   spawnZombie();
+   spawnTimer=Math.max(.28,1.05-wave*.06);
+  }
+  wave=1+Math.floor(kills/10);
+  for(let i=zombies.length-1;i>=0;i--){
+   const z=zombies[i],a=Math.atan2(player.y-z.y,player.x-z.x);
+   z.x+=Math.cos(a)*z.speed*dt;z.y+=Math.sin(a)*z.speed*dt;
+   if(Math.hypot(z.x-player.x,z.y-player.y)<z.r+player.r){
+    health-=24*dt;
+    if(health<=0){health=0;endGame();break}
+   }
+  }
+  for(let i=bullets.length-1;i>=0;i--){
+   const b=bullets[i];b.x+=b.vx*dt;b.y+=b.vy*dt;b.life-=dt;
+   let hit=false;
+   for(let j=zombies.length-1;j>=0;j--){
+    const z=zombies[j];
+    if(Math.hypot(b.x-z.x,b.y-z.y)<z.r+4){
+     zombies.splice(j,1);score+=10;kills++;hit=true;break;
+    }
+   }
+   if(hit||b.life<=0||b.x<0||b.x>W||b.y<0||b.y>H)bullets.splice(i,1);
+  }
+  updateStats();
+ }
+ for(const z of zombies||[])drawZombie(z);
+ for(const b of bullets||[])circle(b.x,b.y,4,"#ffdf52",10);
+ if(player)drawPlayer();
+ if(!running){
+  ctx.fillStyle="#050611bb";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#00f5ff";ctx.textAlign="center";ctx.font="bold 32px Arial";
+  ctx.fillText(gameOver?"GAME OVER":"JAITISH ZOMBIE SURVIVAL",W/2,H/2);
+  ctx.font="18px Arial";ctx.fillStyle="#fff";
+  ctx.fillText("START दबाकर खेलो",W/2,H/2+36);
+ }
+}
+$("start").addEventListener("click",()=>reset());
+document.addEventListener("keydown",e=>{
+ const k=e.key.length===1?e.key.toLowerCase():e.key;
+ keys[k]=true;
+ if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key))e.preventDefault();
+});
+document.addEventListener("keyup",e=>{
+ const k=e.key.length===1?e.key.toLowerCase():e.key;
+ keys[k]=false;
+});
+document.querySelectorAll("[data-move]").forEach(btn=>{
+ const dir=btn.dataset.move;
+ const on=e=>{e.preventDefault();moveTouch[dir]=true};
+ const off=e=>{e.preventDefault();moveTouch[dir]=false};
+ btn.addEventListener("pointerdown",on);
+ btn.addEventListener("pointerup",off);
+ btn.addEventListener("pointercancel",off);
+ btn.addEventListener("pointerleave",off);
+});
+const fire=$("fire");
+fire.addEventListener("pointerdown",e=>{e.preventDefault();fireTouch=true;});
+["pointerup","pointercancel","pointerleave"].forEach(ev=>fire.addEventListener(ev,e=>{e.preventDefault();fireTouch=false;}));
+reset();
+running=false;
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
